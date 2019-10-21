@@ -78,6 +78,7 @@ file:///Users/thomas/Documents/Veille/Flutter/vtah_flutter_intro/lib/pages/slide
 file:///Users/thomas/Documents/Veille/Flutter/vtah_flutter_intro/lib/pages/slides/SlidesPage7.dart
 file:///Users/thomas/Documents/Veille/Flutter/vtah_flutter_intro/lib/pages/slides/SlidesPage8.dart
 file:///Users/thomas/Documents/Veille/Flutter/vtah_flutter_intro/lib/pages/slides/SlidesPage9.dart
+file:///Users/thomas/Documents/Veille/Flutter/vtah_flutter_intro/lib/responsive.theme.dart
 file:///Users/thomas/Documents/Veille/Flutter/vtah_flutter_intro/lib/slide.theme.dart
 file:///Users/thomas/Documents/Veille/Flutter/vtah_flutter_intro/lib/theme.dart
 file:///Users/thomas/Documents/Veille/Flutter/vtah_flutter_intro/lib/ui/file/CCTFileBuilder.dart
@@ -94,7 +95,9 @@ file:///Users/thomas/Documents/Veille/Flutter/vtah_flutter_intro/lib/ui/navigati
 file:///Users/thomas/Documents/Veille/Flutter/vtah_flutter_intro/lib/ui/picture/PictureViewer.dart
 file:///Users/thomas/Documents/Veille/Flutter/vtah_flutter_intro/lib/ui/progression/SlideProgressionViewer.dart
 file:///Users/thomas/Documents/Veille/Flutter/vtah_flutter_intro/lib/ui/question/QuestionAnimated.dart
+file:///Users/thomas/Documents/Veille/Flutter/vtah_flutter_intro/lib/ui/responsive/ResponsiveBreakpointsLayout.dart
 file:///Users/thomas/Documents/Veille/Flutter/vtah_flutter_intro/lib/ui/slides/item/SlideCodeItem.dart
+file:///Users/thomas/Documents/Veille/Flutter/vtah_flutter_intro/lib/ui/slides/item/SlideDemoItem.dart
 file:///Users/thomas/Documents/Veille/Flutter/vtah_flutter_intro/lib/ui/slides/item/SlideHyperlinkItem.dart
 file:///Users/thomas/Documents/Veille/Flutter/vtah_flutter_intro/lib/ui/slides/item/SlideListItem.dart
 file:///Users/thomas/Documents/Veille/Flutter/vtah_flutter_intro/lib/ui/slides/item/SlideQuoteItem.dart
@@ -210,7 +213,7 @@ file:///Users/thomas/Library/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_
 file:///Users/thomas/Library/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_bloc-0.21.0/lib/src/multi_repository_provider.dart
 file:///Users/thomas/Library/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_bloc-0.21.0/lib/src/repository_provider.dart
 file:///Users/thomas/Library/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_highlight-0.4.0/lib/flutter_highlight.dart
-file:///Users/thomas/Library/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_highlight-0.4.0/lib/themes/darcula.dart
+file:///Users/thomas/Library/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_highlight-0.4.0/lib/themes/ocean.dart
 file:///Users/thomas/Library/flutter/.pub-cache/hosted/pub.dartlang.org/highlight-0.4.0/lib/highlight.dart
 file:///Users/thomas/Library/flutter/.pub-cache/hosted/pub.dartlang.org/highlight-0.4.0/lib/languages/1c.dart
 file:///Users/thomas/Library/flutter/.pub-cache/hosted/pub.dartlang.org/highlight-0.4.0/lib/languages/abnf.dart
