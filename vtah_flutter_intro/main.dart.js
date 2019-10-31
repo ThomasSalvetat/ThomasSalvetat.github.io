@@ -54270,7 +54270,7 @@ $R:2,
 $S:31}
 D.RG.prototype={
 $2:function(a,b){var u=null,t=[N.J]
-return new S.bC(H.b([new O.X("Widget de type fonctionnel",C.k,u),new O.X("D\xe9pend que des param\xe8tres d'entr\xe9es",C.k,u),new O.X("M\xe9thodes :",C.k,u),new B.a2("StalessWidget > build()",C.n,u),new O.X("Convention :",C.k,u),new B.a2("Named arguments",C.n,u),new B.a2("Key is the first argument",C.n,u),new B.a2("Child/Children is the last argument",C.n,u),new O.X("Cas de build :",C.k,u),new B.a2("\xe0 sa cr\xe9ation",C.n,u),new B.a2("lorsque le parent change sa configuration",C.n,u),new B.a2("lorsque un InheritedWidget dont il d\xe9pend change",C.n,u)],t),H.b([new X.bl(this.a,u),new X.bl(b,u)],t),new K.bK(new E.Hx(u),u),u)},
+return new S.bC(H.b([new O.X("Widget de type fonctionnel",C.k,u),new O.X("D\xe9pend que des param\xe8tres d'entr\xe9es",C.k,u),new O.X("M\xe9thodes :",C.k,u),new B.a2("StatelessWidget > build()",C.n,u),new O.X("Convention :",C.k,u),new B.a2("Named arguments",C.n,u),new B.a2("Key is the first argument",C.n,u),new B.a2("Child/Children is the last argument",C.n,u),new O.X("Cas de build :",C.k,u),new B.a2("\xe0 sa cr\xe9ation",C.n,u),new B.a2("lorsque le parent change sa configuration",C.n,u),new B.a2("lorsqu'un InheritedWidget dont il d\xe9pend change",C.n,u)],t),H.b([new X.bl(this.a,u),new X.bl(b,u)],t),new K.bK(new E.Hx(u),u),u)},
 $C:"$2",
 $R:2,
 $S:5}
