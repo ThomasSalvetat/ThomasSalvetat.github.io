@@ -1,0 +1,58 @@
+@startuml
+!theme blueprint
+skinparam componentStyle rectangle
+skinparam defaultFontName Roboto
+skinparam linetype ortho
+skinparam nodesep 5
+skinparam ranksep 1
+top to bottom direction
+hide circle
+
+title Architecture d'une appplication Flutter
+
+skinparam usecase {
+    BorderColor #red
+     FontSize 0
+    StereotypeFontSize 0
+}
+
+    rectangle "Application" as YourApp {
+        [{ ; }] as N1
+        [{ ; }] as N2
+        [{ ; }] as N3   
+        [{ ; }] as N4
+    }
+
+rectangle "Flutter engine" as Flutter {
+    rectangle "Widgets Rendering" as Widgets
+    rectangle "Platform Channels" as Channels
+    Widgets -[hidden]d- Channels
+}
+
+YourApp <-> Flutter
+
+
+rectangle "Platform" as Platform {
+    rectangle "UI" as L1 {
+        together {
+            [Canvas] as Canvas
+            [Events] as Events
+        } 
+
+        Canvas -[hidden]- Events
+    }
+
+
+    rectangle "API" as L2 {
+        [Location] as Location
+        [Camera] as Camera
+        [Bluetooth] as Bluetooth
+    }
+ 
+    L1 -[hidden]d--- L2
+}
+
+Widgets <-> L1
+Channels <-> L2
+
+@enduml

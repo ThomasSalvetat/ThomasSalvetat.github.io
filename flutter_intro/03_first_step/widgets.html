@@ -1,0 +1,854 @@
+<!DOCTYPE HTML>
+<html lang="fr" class="sidebar-visible no-js mkp ">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Widgets - Introduction à flutter</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/css/custom.css">
+    </head>
+    <body>
+
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "mkp-dark" : "mkp";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('mkp')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../01_intro/01_intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../02_flutter/index.html"><strong aria-hidden="true">2.</strong> Flutter</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../02_flutter/dart.html"><strong aria-hidden="true">2.1.</strong> Dart</a></li><li class="chapter-item expanded "><a href="../02_flutter/historic.html"><strong aria-hidden="true">2.2.</strong> Historique</a></li><li class="chapter-item expanded "><a href="../02_flutter/flutter_architecture.html"><strong aria-hidden="true">2.3.</strong> Flutter</a></li></ol></li><li class="chapter-item expanded "><a href="../03_first_step/index.html"><strong aria-hidden="true">3.</strong> Pour commencer</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../03_first_step/configuration.html"><strong aria-hidden="true">3.1.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="../03_first_step/hello-world.html"><strong aria-hidden="true">3.2.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="../03_first_step/pub.html"><strong aria-hidden="true">3.3.</strong> PUB</a></li><li class="chapter-item expanded "><a href="../03_first_step/first-flutter-app.html"><strong aria-hidden="true">3.4.</strong> Première application flutter</a></li><li class="chapter-item expanded "><a href="../03_first_step/widgets.html" class="active"><strong aria-hidden="true">3.5.</strong> Widgets</a></li><li class="chapter-item expanded "><a href="../03_first_step/stateful-widgets.html"><strong aria-hidden="true">3.6.</strong> Stateful Widgets</a></li><li class="chapter-item expanded "><a href="../03_first_step/exercices.html"><strong aria-hidden="true">3.7.</strong> Exercices</a></li></ol></li><li class="chapter-item expanded "><a href="../04_oem_widgets/index.html"><strong aria-hidden="true">4.</strong> OEM Widgets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../04_oem_widgets/oem-widgets-material.html"><strong aria-hidden="true">4.1.</strong> Material</a></li><li class="chapter-item expanded "><a href="../04_oem_widgets/exercices-material.html"><strong aria-hidden="true">4.2.</strong> Exercice</a></li><li class="chapter-item expanded "><a href="../04_oem_widgets/oem-widgets-cupertino.html"><strong aria-hidden="true">4.3.</strong> Cupertino</a></li><li class="chapter-item expanded "><a href="../04_oem_widgets/exercices-cupertino.html"><strong aria-hidden="true">4.4.</strong> Exercice</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mkp">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mkp-dark">Dark</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                    <h1 class="menu-title">Introduction à flutter</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="widgets"><a class="header" href="#widgets">Widgets</a></h1>
+<p>Tout ce qui est dessiné à l’écran dans une application Flutter est appelé un <strong>Widget</strong>. Techniquement parlant, tous les composants héritent de la classe <strong>Widget</strong>. 
+Construire une interface en Flutter consiste à composer des widgets. Ce faisant on créé un <strong>arbre des widgets</strong> dans lequel il y a des parents et des enfants. </p>
+<h2 id="programmation-déclarative"><a class="header" href="#programmation-déclarative">Programmation déclarative</a></h2>
+<p>De manière traditionnelle, en programmation d’interface utilisateurs, la programmation impérative est plutôt employée (Android/iOS). Celle-ci se traduit par l’instantiation d’une vue suivi de mutations tout au long de son cycle de vie. 
+La programmation déclarative permet d’éviter au développeur de programmer la transition entre les différents états du cycle de vie en ne déclarant que l’état courant. Le framework s’occupe de gérer les transitions entre ces états. </p>
+<pre><code class="language-java">// Imperative style
+b.setColor(red)
+b.clearChildren()
+ViewC c3 = new ViewC(...)
+b.add(c3)
+</code></pre>
+<pre><code class="language-dart">// Declarative style
+return ViewB(
+  color: red,
+  child: ViewC(...),
+)
+</code></pre>
+<p>Plutôt que de muter l’instance de b, Flutter créé de nouvelles instances de widgets. Le framework s’occupe en sous-jacent de muter l’état de la vue grâce aux <strong>RenderObjects</strong>.  Ces derniers persistent entre les différentes frames, et seul l’arbre des widgets est copié. L’arbre des widgets est léger car il s’agit seulement d’une description de l’état de la vue à un instant T.</p>
+<h2 id="exemple-de-widget"><a class="header" href="#exemple-de-widget">Exemple de widget</a></h2>
+<p>Prenons un widget composé d’une colonne contenant deux textes.  La méthode <code>build</code> est appelée régulièrement et, dans le cas présent, rajoute deux feuilles à l’arbre des widgets. </p>
+<pre><code class="language-dart">class MyApp extends StatelessWidget {
+	const MyApp();
+
+	@override
+	Widget build(BuildContext context) {
+		return Column(children: [
+			Text(&quot;Hello&quot;),
+			Text(&quot;Flutter&quot;)	
+		]);
+	}
+} 
+</code></pre>
+<p>Son arbre de widget correspondant sera le suivant :</p>
+<div align="center">
+       <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="53 877 629 506" width="629" height="506">
+  <defs>
+    <filter id="Shadow" filterUnits="userSpaceOnUse" x="-9.9" y="826.4">
+      <feGaussianBlur in="SourceAlpha" result="blur" stdDeviation="1.308"/>
+      <feOffset in="blur" result="offset" dx="0" dy="2"/>
+      <feFlood flood-color="var(--fg)" flood-opacity=".5" result="flood"/>
+      <feComposite in="flood" in2="offset" operator="in" result="color"/>
+      <feMerge>
+        <feMergeNode in="color"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <font-face font-family="Gill Sans" font-size="16" panose-1="2 11 5 2 2 1 4 2 2 3" units-per-em="1000" underline-position="-75.19531" underline-thickness="49.80469" slope="0" x-height="449.70703" cap-height="687.0117" ascent="917.9688" descent="-230.46875" font-weight="400">
+      <font-face-src>
+        <font-face-name name="GillSans"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.19.2\n2021-11-30 10:39:27 +0000</metadata>
+  <g id="widget_tree_sample" fill-opacity="1" stroke="none" stroke-opacity="1" fill="none" stroke-dasharray="none">
+    <title>widget_tree_sample</title>
+    <g id="widget_tree_sample_Calque_1">
+      <title>Calque 1</title>
+      <g id="Graphic_2" filter="url(#Shadow)">
+        <path d="M 221 879 L 361 879 C 365.41828 879 369 882.5817 369 887 L 369 995 C 369 999.4183 365.41828 1003 361 1003 L 221 1003 C 216.58172 1003 213 999.4183 213 995 L 213 887 C 213 882.5817 216.58172 879 221 879 Z" fill="var(--mkp-bof)"/>
+        <path d="M 221 879 L 361 879 C 365.41828 879 369 882.5817 369 887 L 369 995 C 369 999.4183 365.41828 1003 361 1003 L 221 1003 C 216.58172 1003 213 999.4183 213 995 L 213 887 C 213 882.5817 216.58172 879 221 879 Z" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(218 931.5)" fill="var(--bg)">
+          <tspan font-family="Gill Sans" font-size="16" font-weight="400" fill="var(--bg)" x="49.91406" y="15">MyApp</tspan>
+        </text>
+      </g>
+      <g id="Graphic_3" filter="url(#Shadow)">
+        <path d="M 221 1066 L 361 1066 C 365.41828 1066 369 1069.5817 369 1074 L 369 1182 C 369 1186.4183 365.41828 1190 361 1190 L 221 1190 C 216.58172 1190 213 1186.4183 213 1182 L 213 1074 C 213 1069.5817 216.58172 1066 221 1066 Z" fill="var(--mkp-bof)"/>
+        <path d="M 221 1066 L 361 1066 C 365.41828 1066 369 1069.5817 369 1074 L 369 1182 C 369 1186.4183 365.41828 1190 361 1190 L 221 1190 C 216.58172 1190 213 1186.4183 213 1182 L 213 1074 C 213 1069.5817 216.58172 1066 221 1066 Z" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(218 1118.5)" fill="var(--bg)">
+          <tspan font-family="Gill Sans" font-size="16" font-weight="400" fill="var(--bg)" x="47" y="15">Column</tspan>
+        </text>
+      </g>
+      <g id="Graphic_4" filter="url(#Shadow)">
+        <path d="M 65 1253 L 205 1253 C 209.41828 1253 213 1256.5817 213 1261 L 213 1369 C 213 1373.4183 209.41828 1377 205 1377 L 65 1377 C 60.58172 1377 57 1373.4183 57 1369 L 57 1261 C 57 1256.5817 60.58172 1253 65 1253 Z" fill="var(--mkp-bof)"/>
+        <path d="M 65 1253 L 205 1253 C 209.41828 1253 213 1256.5817 213 1261 L 213 1369 C 213 1373.4183 209.41828 1377 205 1377 L 65 1377 C 60.58172 1377 57 1373.4183 57 1369 L 57 1261 C 57 1256.5817 60.58172 1253 65 1253 Z" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(62 1305.5)" fill="var(--bg)">
+          <tspan font-family="Gill Sans" font-size="16" font-weight="400" fill="var(--bg)" x="58.871094" y="15">Text</tspan>
+        </text>
+      </g>
+      <g id="Graphic_5" filter="url(#Shadow)">
+        <path d="M 377 1253 L 517 1253 C 521.4183 1253 525 1256.5817 525 1261 L 525 1369 C 525 1373.4183 521.4183 1377 517 1377 L 377 1377 C 372.5817 1377 369 1373.4183 369 1369 L 369 1261 C 369 1256.5817 372.5817 1253 377 1253 Z" fill="var(--mkp-bof)"/>
+        <path d="M 377 1253 L 517 1253 C 521.4183 1253 525 1256.5817 525 1261 L 525 1369 C 525 1373.4183 521.4183 1377 517 1377 L 377 1377 C 372.5817 1377 369 1373.4183 369 1369 L 369 1261 C 369 1256.5817 372.5817 1253 377 1253 Z" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(374 1305.5)" fill="var(--bg)">
+          <tspan font-family="Gill Sans" font-size="16" font-weight="400" fill="var(--bg)" x="58.871094" y="15">Text</tspan>
+        </text>
+      </g>
+      <g id="Line_6">
+        <line x1="291" y1="1003" x2="291" y2="1066" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_7">
+        <line x1="239.27807" y1="1190" x2="186.72193" y2="1253" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_8">
+        <line x1="342.72193" y1="1190" x2="395.27807" y2="1253" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_10">
+        <text transform="translate(416.35703 931.776)" fill="var(--fg)">
+          <tspan font-family="Gill Sans" font-size="16" font-weight="400" fill="var(--fg)" x="0" y="15">Root widget</tspan>
+        </text>
+      </g>
+      <g id="Graphic_11">
+        <text transform="translate(438.7633 1118.776)" fill="var(--fg)">
+          <tspan font-family="Gill Sans" font-size="16" font-weight="400" fill="var(--fg)" x="0" y="15">Root child</tspan>
+        </text>
+      </g>
+      <g id="Graphic_12">
+        <text transform="translate(568.23966 1305.776)" fill="var(--fg)">
+          <tspan font-family="Gill Sans" font-size="16" font-weight="400" fill="var(--fg)" x="0" y="15">Column children</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
+</div>
+<p>Le paramètre <code>BuildContext context</code> est propagé ainsi à travers les widgets. Il donne des informations sur la position d’une feuille dans l’arbre. </p>
+<h2 id="stateless-widgets"><a class="header" href="#stateless-widgets">Stateless widgets</a></h2>
+<h3 id="text"><a class="header" href="#text">Text</a></h3>
+<p>Un widget qui permet d’afficher du texte.</p>
+<pre><code class="language-dart">const Text(&quot;Hello World !&quot;)
+const Text (&quot;Hello World !&quot;, style: TextStyle(color: Colors.amber, fontSize: 16, wordSpacing: 3))
+</code></pre>
+<h3 id="row"><a class="header" href="#row">Row</a></h3>
+<p>Un widget qui permet de placer des widgets le long d’un axe horizontal selon plusieurs contraintes d’espacement. </p>
+<pre><code class="language-dart">Row(
+	mainAxisAlignment: MainAxisAlignment.center,
+	children: const [
+		Text(&quot;Hello&quot;),
+		Text(&quot;world&quot;),
+		Text(&quot;!&quot;)
+	]
+)
+</code></pre>
+<div align="center" class="wh-100">
+       <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="157 1044 1381 1020" width="1381" height="1020">
+  <defs>
+    <font-face font-family="Gill Sans" font-size="20" panose-1="2 11 5 2 2 1 4 2 2 3" units-per-em="1000" underline-position="-75.19531" underline-thickness="49.80469" slope="0" x-height="449.70703" cap-height="687.0117" ascent="917.9688" descent="-230.46875" font-weight="400">
+      <font-face-src>
+        <font-face-name name="GillSans"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Gill Sans" font-size="20" panose-1="2 11 9 2 3 0 4 2 2 3" units-per-em="1000" underline-position="-75.19531" underline-thickness="49.80469" slope="0" x-height="501.46484" cap-height="681.6406" ascent="922.8516" descent="-234.86328" font-weight="700">
+      <font-face-src>
+        <font-face-name name="GillSans-Bold"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.19.2\n2021-11-30 10:39:27 +0000</metadata>
+  <g id="wiget_row" fill-opacity="1" stroke="none" stroke-opacity="1" fill="none" stroke-dasharray="none">
+    <title>widget_row</title>
+    <g id="wiget_row_Calque_1">
+      <title>Calque 1</title>
+      <g id="Graphic_2">
+        <rect x="158" y="1129" width="942" height="112" fill="var(--bg)"/>
+        <rect x="158" y="1129" width="942" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Group_53">
+        <g id="Graphic_59">
+          <rect x="166.52" y="1951.345" width="444.48" height="112" fill="var(--bg)"/>
+          <rect x="166.52" y="1951.345" width="444.48" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_66">
+          <text transform="translate(1451.663 1995.845)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">min</tspan>
+          </text>
+        </g>
+        <g id="Graphic_54">
+          <text transform="translate(1254.2378 1995.845)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">-</tspan>
+          </text>
+        </g>
+        <g id="Group_55">
+          <g id="Graphic_58">
+            <rect x="166.52" y="1951.345" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="166.52" y="1951.345" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_57">
+            <rect x="317.52" y="1951.345" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="317.52" y="1951.345" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_56">
+            <rect x="468.52" y="1951.345" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="468.52" y="1951.345" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group_34">
+        <g id="Graphic_40">
+          <rect x="166.52" y="1719.08" width="942" height="112" fill="var(--bg)"/>
+          <rect x="166.52" y="1719.08" width="942" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Group_36">
+          <g id="Graphic_39">
+            <rect x="166.52" y="1719.08" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="166.52" y="1719.08" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_38">
+            <rect x="558" y="1718.825" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="558" y="1718.825" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_37">
+            <rect x="966.52" y="1719.08" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="966.52" y="1719.08" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+        <g id="Graphic_65">
+          <text transform="translate(1449.5879 1763.58)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">max</tspan>
+          </text>
+        </g>
+        <g id="Graphic_35">
+          <text transform="translate(1199.8628 1763.58)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">spaceBetween</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_27">
+        <g id="Graphic_33">
+          <rect x="166.52" y="1571.56" width="942" height="112" fill="var(--bg)"/>
+          <rect x="166.52" y="1571.56" width="942" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Group_41">
+          <g id="Graphic_32">
+            <rect x="296" y="1571.305" width="144" height="112.255" fill="var(--mkp-bof)"/>
+            <rect x="296" y="1571.305" width="144" height="112.255" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_31">
+            <rect x="557" y="1571.56" width="144" height="112" fill="var(--mkp-bof)"/>
+            <rect x="557" y="1571.56" width="144" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_30">
+            <rect x="818" y="1571.305" width="144" height="112.255" fill="var(--mkp-bof)"/>
+            <rect x="818" y="1571.305" width="144" height="112.255" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+        <g id="Graphic_28">
+          <text transform="translate(1204.189 1616.06)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">spaceAround</tspan>
+          </text>
+        </g>
+        <g id="Graphic_64">
+          <text transform="translate(1449.5879 1615.9325)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">max</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_18">
+        <g id="Graphic_17">
+          <rect x="166.52" y="1424.04" width="942" height="112" fill="var(--bg)"/>
+          <rect x="166.52" y="1424.04" width="942" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Group_13">
+          <g id="Graphic_16">
+            <rect x="664.52" y="1424.04" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="664.52" y="1424.04" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_15">
+            <rect x="815.52" y="1424.04" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="815.52" y="1424.04" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_14">
+            <rect x="966.52" y="1424.04" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="966.52" y="1424.04" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+        <g id="Graphic_12">
+          <text transform="translate(1242.5825 1468.54)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">end</tspan>
+          </text>
+        </g>
+        <g id="Graphic_63">
+          <text transform="translate(1447.6299 1468.54)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">max</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_20">
+        <g id="Graphic_26">
+          <rect x="166.52" y="1276.52" width="942" height="112" fill="var(--bg)"/>
+          <rect x="166.52" y="1276.52" width="942" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Group_22">
+          <g id="Graphic_25">
+            <rect x="166.52" y="1276.52" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="166.52" y="1276.52" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_24">
+            <rect x="317.52" y="1276.52" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="317.52" y="1276.52" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_23">
+            <rect x="468.52" y="1276.52" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="468.52" y="1276.52" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+        <g id="Graphic_60">
+          <text transform="translate(1447.6299 1173.5)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">max</tspan>
+          </text>
+        </g>
+        <g id="Graphic_21">
+          <text transform="translate(1238.5346 1321.02)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">start</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_19">
+        <g id="Group_9">
+          <g id="Graphic_3">
+            <rect x="407" y="1129" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="407" y="1129" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_7">
+            <rect x="558" y="1129" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="558" y="1129" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_8">
+            <rect x="709" y="1129" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="709" y="1129" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+        <g id="Graphic_10">
+          <text transform="translate(1222.7002 1173.5)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">center</tspan>
+          </text>
+        </g>
+        <g id="Graphic_62">
+          <text transform="translate(1449.5879 1321.02)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">max</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Graphic_52">
+        <text transform="translate(1397 1049)" fill="var(--fg)">
+          <tspan font-family="Gill Sans" font-size="20" font-weight="700" fill="var(--fg)" x="0" y="18">MainAxisSize</tspan>
+        </text>
+      </g>
+      <g id="Graphic_11">
+        <text transform="translate(1148.3496 1049)" fill="var(--fg)">
+          <tspan font-family="Gill Sans" font-size="20" font-weight="700" fill="var(--fg)" x="0" y="18">MainAxisAlignment</tspan>
+        </text>
+      </g>
+      <g id="Graphic_42">
+        <text transform="translate(163 1049)" fill="var(--fg)">
+          <tspan font-family="Gill Sans" font-size="20" font-weight="700" fill="var(--fg)" x="0" y="18">ROW</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
+</div>
+<h3 id="column"><a class="header" href="#column">Column</a></h3>
+<p>Un widget qui permet de placer des widgets le long d’un axe vertical selon plusieurs contraintes d’espacement. </p>
+<pre><code class="language-dart">Column(
+	mainAxisAlignment: MainAxisAlignment.center,
+	children: const [
+		Text(&quot;Hello&quot;),
+		Text(&quot;world&quot;),
+		Text(&quot;!&quot;)
+	]
+)
+</code></pre>
+<div align="center" class="wh-100">
+       <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="-103 1044 1262 1236" width="1262" height="1236">
+  <defs>
+    <font-face font-family="Gill Sans" font-size="20" panose-1="2 11 5 2 2 1 4 2 2 3" units-per-em="1000" underline-position="-75.19531" underline-thickness="49.80469" slope="0" x-height="449.70703" cap-height="687.0117" ascent="917.9688" descent="-230.46875" font-weight="400">
+      <font-face-src>
+        <font-face-name name="GillSans"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Gill Sans" font-size="20" panose-1="2 11 9 2 3 0 4 2 2 3" units-per-em="1000" underline-position="-75.19531" underline-thickness="49.80469" slope="0" x-height="501.46484" cap-height="681.6406" ascent="922.8516" descent="-234.86328" font-weight="700">
+      <font-face-src>
+        <font-face-name name="GillSans-Bold"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.19.2\n2021-11-30 10:39:27 +0000</metadata>
+  <g id="widget_column" fill-opacity="1" stroke="none" stroke-opacity="1" fill="none" stroke-dasharray="none">
+    <title>widget_column</title>
+    <g id="widget_column_Calque_1">
+      <title>Calque 1</title>
+      <g id="Group_53">
+        <g id="Graphic_59">
+          <rect x="1045.9785" y="1142" width="112" height="444.48" fill="var(--bg)"/>
+          <rect x="1045.9785" y="1142" width="112" height="444.48" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Group_55">
+          <g id="Graphic_58">
+            <rect x="1045.9785" y="1142" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="1045.9785" y="1142" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_57">
+            <rect x="1045.9785" y="1293" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="1045.9785" y="1293" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_56">
+            <rect x="1045.9785" y="1444" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="1045.9785" y="1444" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+        <g id="Graphic_66">
+          <text transform="translate(1087.0762 2252)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">min</tspan>
+          </text>
+        </g>
+        <g id="Graphic_54">
+          <text transform="translate(1098.7461 2159)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">-</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_34">
+        <g id="Graphic_40">
+          <rect x="867.3711" y="1142" width="112" height="942" fill="var(--bg)"/>
+          <rect x="867.3711" y="1142" width="112" height="942" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Group_36">
+          <g id="Graphic_39">
+            <rect x="867.3711" y="1142" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="867.3711" y="1142" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_38">
+            <rect x="867.6261" y="1533.48" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="867.6261" y="1533.48" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_37">
+            <rect x="867.3711" y="1942" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="867.3711" y="1942" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+        <g id="Graphic_65">
+          <text transform="translate(906.3936 2252)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">max</tspan>
+          </text>
+        </g>
+        <g id="Graphic_35">
+          <text transform="translate(865.7637 2159)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">spaceBetween</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_27">
+        <g id="Graphic_33">
+          <rect x="686.4824" y="1142" width="112" height="942" fill="var(--bg)"/>
+          <rect x="686.4824" y="1142" width="112" height="942" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Group_41">
+          <g id="Graphic_32">
+            <rect x="686.4824" y="1271.48" width="112.255" height="144" fill="var(--mkp-bof)"/>
+            <rect x="686.4824" y="1271.48" width="112.255" height="144" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_31">
+            <rect x="686.4824" y="1532.48" width="112" height="144" fill="var(--mkp-bof)"/>
+            <rect x="686.4824" y="1532.48" width="112" height="144" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_30">
+            <rect x="686.4824" y="1793.48" width="112.255" height="144" fill="var(--mkp-bof)"/>
+            <rect x="686.4824" y="1793.48" width="112.255" height="144" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+        <g id="Graphic_28">
+          <text transform="translate(689.2012 2159)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">spaceAround</tspan>
+          </text>
+        </g>
+        <g id="Graphic_64">
+          <text transform="translate(725.6324 2252)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">max</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_18">
+        <g id="Graphic_17">
+          <rect x="512.2012" y="1142" width="112" height="942" fill="var(--bg)"/>
+          <rect x="512.2012" y="1142" width="112" height="942" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Group_13">
+          <g id="Graphic_16">
+            <rect x="512.2012" y="1640" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="512.2012" y="1640" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_15">
+            <rect x="512.2012" y="1791" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="512.2012" y="1791" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_14">
+            <rect x="512.2012" y="1942" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="512.2012" y="1942" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+        <g id="Graphic_12">
+          <text transform="translate(553.3135 2159)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">end</tspan>
+          </text>
+        </g>
+        <g id="Graphic_63">
+          <text transform="translate(551.2236 2252)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">max</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_20">
+        <g id="Graphic_26">
+          <rect x="340.20117" y="1142" width="112" height="942" fill="var(--bg)"/>
+          <rect x="340.20117" y="1142" width="112" height="942" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Group_22">
+          <g id="Graphic_25">
+            <rect x="340.20117" y="1142" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="340.20117" y="1142" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_24">
+            <rect x="340.20117" y="1293" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="340.20117" y="1293" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_23">
+            <rect x="340.20117" y="1444" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="340.20117" y="1444" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+        <g id="Graphic_21">
+          <text transform="translate(377.26563 2159)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">start</tspan>
+          </text>
+        </g>
+        <g id="Graphic_62">
+          <text transform="translate(379.22363 2252)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">max</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_19">
+        <g id="Graphic_2">
+          <rect x="168.20117" y="1142" width="112" height="942" fill="var(--bg)"/>
+          <rect x="168.20117" y="1142" width="112" height="942" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Group_9">
+          <g id="Graphic_3">
+            <rect x="168.20117" y="1391" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="168.20117" y="1391" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_7">
+            <rect x="168.20117" y="1542" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="168.20117" y="1542" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_8">
+            <rect x="168.20117" y="1693" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="168.20117" y="1693" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+        <g id="Graphic_10">
+          <text transform="translate(197.36328 2154)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">center</tspan>
+          </text>
+        </g>
+        <g id="Graphic_60">
+          <text transform="translate(207.22363 2252)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">max</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_67">
+        <g id="Graphic_52">
+          <text transform="translate(-32.01367 2252)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="700" fill="var(--fg)" x="0" y="18">MainAxisSize</tspan>
+          </text>
+        </g>
+        <g id="Graphic_11">
+          <text transform="translate(-98 2159)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="700" fill="var(--fg)" x="0" y="18">MainAxisAlignment</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Graphic_42">
+        <text transform="translate(163 1049)" fill="var(--fg)">
+          <tspan font-family="Gill Sans" font-size="20" font-weight="700" fill="var(--fg)" x="0" y="18">COLUMN</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
+</div>
+<h3 id="listview"><a class="header" href="#listview">ListView</a></h3>
+<p>Un widget qui se comporte comme un Column mais avec la gestion du scroll.</p>
+<pre><code class="language-dart">ListView(
+	scrollDirection: Axis.vertical, // default
+	children: const [
+		Text(&quot;Hello&quot;),
+		Text(&quot;world&quot;),
+		Text(&quot;!&quot;)
+	]
+)
+
+// Prefers this way (more efficient)
+ListView.builder(
+	itemCount: 10,
+    itemBuilder: (context, index) {
+        return Text(&quot;$index&quot;)
+    }
+)
+</code></pre>
+<p>Préférer la factory <code>builder</code> car elle permet de gérer de très grandes listes en recyclant les vues. </p>
+<h3 id="container"><a class="header" href="#container">Container</a></h3>
+<p>Un widget qui permet de personnaliser les aspects graphiques tels que la position, les dimensions et le rendu. </p>
+<pre><code class="language-dart">Container(
+	height: 80,
+	width: 260,
+	color: Colors.blueGrey,
+	alignment: Alignment.center,
+	transform: Matrix4.rotationZ(-0.25),
+	child: const Text(&quot;Containers!&quot;, style: TextStyle(color: Colors.white, fontSize: 25))
+)
+</code></pre>
+<p>Pour appliquer un style sur un <strong>Container</strong>, il faut utiliser la classe <strong>BoxDecoration</strong>.</p>
+<pre><code class="language-dart">Container(
+	height: 100,
+	width: 100,
+	decoration: const BoxDecoration(
+		shape: BoxShape.circle,
+		boxShadow: [
+			BoxShadow(
+				color: Colors.grey,
+				spreadRadius: 5,
+				blurRadius: 7,
+				offset: Offset(0, 3)
+			)
+		],
+		gradient: LinearGradient(
+			begin: Alignment.topCenter,
+			end: Alignment.bottomCenter,
+			colors: [
+				Colors.red,
+				Colors.blue
+			]
+		)
+	)
+)
+</code></pre>
+<h3 id="stack--positioned"><a class="header" href="#stack--positioned">Stack &amp; Positioned</a></h3>
+<p>Il peut être nécessaire de placer des widgets l’un au dessus de l’autre (à la manière de la position absolute/relative en css). <strong>Stack</strong> et <strong>Positioned</strong> sont à utiliser dans ce cas de figure. </p>
+<pre><code class="language-dart"> Stack(
+      children: [
+        Container(
+            width: 100,
+            height: 100,
+            decoration: const BoxDecoration(color: Colors.red)),
+        const Text(&quot;Stack&quot;, style: TextStyle(fontSize: 25))
+      ],
+    )
+</code></pre>
+<p>Si le widget <strong>Text</strong> était placé avant le <strong>Container</strong>, il serait placé dessous et donc ne serait pas visible !</p>
+<p>On peut gérer le positionnement à l’intérieur d’une <strong>Stack</strong> grâce à <strong>Positioned</strong>. Dans l’exemple suivant, le texte sera placé en bas à droite par rapport au <strong>Container</strong>.</p>
+<pre><code class="language-dart">Stack(
+      children: [
+        Container(
+            width: 100,
+            height: 100,
+            decoration: const BoxDecoration(color: Colors.red)),
+        const Positioned(
+            bottom: 0,
+            right: 0,
+            child: Text(&quot;Stack&quot;, style: TextStyle(fontSize: 25)))
+      ],
+    )
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../03_first_step/first-flutter-app.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../03_first_step/stateful-widgets.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../03_first_step/first-flutter-app.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../03_first_step/stateful-widgets.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+        </div>
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../ace-theme-ayu-light.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../ace-theme-ayu-dark.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+    </body>
+</html>

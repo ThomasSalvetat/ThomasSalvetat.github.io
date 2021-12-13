@@ -1,0 +1,99 @@
+@startuml
+!theme blueprint
+skinparam componentStyle rectangle
+skinparam defaultFontName Roboto
+top to bottom direction
+
+title Flutter Historic
+
+(2011)  as 2011
+[Dart] as DartA #Crimson
+
+2011 -d.. DartA
+
+(2013)  as 2013
+[Dart] as Dart #ForestGreen
+
+2013 -d.. Dart
+
+(2015) as 2015
+[Angular] as Angular #ForestGreen
+[dart2js] as dart2js #ForestGreen
+[Skia] as skia #ForestGreen
+
+2015 -d.. Angular
+Angular .. dart2js 
+dart2js .. skia 
+
+(2017) as 2017
+
+rectangle Flutter as Flutter2017 {
+    [Flutter Alpha] as FlutterA #Crimson
+}
+
+2017 -d.. FlutterA
+
+(2018) as 2018
+rectangle Dart as Dart2018 {
+    [Dart 2] as Dart2 #ForestGreen
+}
+rectangle Flutter as Flutter2018 {
+    [Flutter Release] as FlutterR #ForestGreen
+}
+
+2018 -d.. FlutterR
+FlutterR .. Dart2
+
+(2019) as 2019
+
+rectangle Dart as Dart2019 {
+    [Dart2native] as Dart2native #ForestGreen
+    [Extensions] as DartExtensions #ForestGreen
+    [Null safety] as DartNullSafetyA #Crimson
+    [FFI] as DartFFIA #Crimson
+}
+
+rectangle Flutter as Flutter2019 {
+    [Flutter Desktop] as FlutterDA #Crimson
+    [Flutter Web] as FlutterWA #Crimson
+}
+
+2019 -d.. Dart2native
+Dart2native .. DartExtensions 
+DartExtensions .. DartNullSafetyA 
+DartNullSafetyA .. DartFFIA 
+DartFFIA .. FlutterDA 
+FlutterDA .. FlutterWA 
+
+(2021) as 2021
+
+rectangle Dart as Dart2021 {
+    [Null safety] as DartNullSafety #ForestGreen
+    [FFI] as DartFFI #ForestGreen
+}
+
+rectangle Flutter as Flutter2021 {
+    [Flutter Web] as FlutterW #ForestGreen
+}
+
+2021 -d.. DartNullSafety
+DartNullSafety .. DartFFI
+DartFFI .. FlutterW
+
+(2022) as 2022
+
+rectangle Flutter as Flutter2022 {
+     [Flutter Desktop ?] as FlutterD #Orange
+}
+
+2022 -d.. FlutterD
+
+
+legend bottom right
+    |=              |= Status         |
+    |<#Crimson>     | Alpha         |
+    |<#ForestGreen> | Release       |
+    |<#Orange>      | Future        |
+endlegend
+
+@enduml

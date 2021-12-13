@@ -1,0 +1,305 @@
+
+/* Globals */
+
+:root {
+    --sidebar-width: 300px;
+    --page-padding: 15px;
+    --content-max-width: 750px;
+    --menu-bar-height: 50px;
+
+    /* Techno */
+    --img-logo-rust : url(../assets/logo-rust.svg);
+    --img-logo-rust-white : url(../assets/logo-rust_white.svg);
+    --img-logo-rust-error : url(../assets/logo-rust_error.svg);
+    --img-logo-toml : url(../assets/logo-toml.svg);
+    --img-logo-bash : url(../assets/logo-bash.svg);
+
+    /* MKP */
+    --mkp-white: #fff;
+    --mkp-bg-dark: #202123;
+    --mkp-text: #28354a;
+    --mkp-bof: #00b0f0;
+
+    --mkp-btn-bg: #edeef0;
+    --mkp-btn-bg-dark: #4f5559;
+    --mkp-btn-text: #3c485a;
+
+    --mkp-footer-bg : hsl(220, 4%, 13%);
+    --mkp-footer-fg : #fefffe;
+
+    --mkp-photo-border: #e1f7ff;
+
+    --mkp-color-yellow: #e9a900;
+    --mkp-color-blue: #5ecdf6;
+    --mkp-color-purple: #8108da;
+    --mkp-color-orange: #f47b08;
+    --mkp-color-red: #f34647;
+    --mkp-color-mobile: #52ba0a;
+
+    --mkp-bg-purple-dark: #1f1f40; 
+    --mkp-bg-purple: #35355b; 
+    --mkp-bg-purple-border: #2a2a53;
+
+    
+    --mkp-bg-prune: #441e43;
+    --mkp-bg-prune-border: #663c63;
+
+    --mkp-bg-blue: #49abeb;
+    --mkp-bg-blue-lite: #f4fcff;
+}
+
+/* Themes */
+
+@media (prefers-color-scheme: dark) {
+    .light.no-js {
+        --img-cover : url(../assets/mkp-cover-dark.svg);
+        --img-part : url(../assets/mkp-part-dark.svg);
+        --img-page : url(../assets/mkp-part.svg);
+        --img-code : url(../assets/mkp-purple.svg);
+        --img-exercice : url(../assets/mkp-exercice.svg);
+    
+        --fg: var(--mkp-white);
+        --bg: var(--mkp-bg-dark);
+    
+        --sidebar-bg: var(--mkp-btn-bg-dark);
+        --sidebar-fg: var(--fg);
+        --sidebar-non-existant: rgba(0,0,0,0.25);
+        --sidebar-active: var(--mkp-bof);
+        --sidebar-spacer: hsla(0,100%,100%,0.5);
+    
+        --scrollbar: rgba(0,0,0,0.25);
+    
+        --icons: var(--fg);
+        --icons-hover: var(--mkp-bof); 
+    
+        --links: var(--mkp-bof);
+    
+        --inline-code-color: #ff7733; 
+    
+        --theme-popup-bg: var(--mkp-btn-bg-dark);  
+        --theme-popup-border: hsla(0,100%,100%,0.25);
+        --theme-hover: hsla(0,100%,100%,0.15); 
+        
+        --quote-bg: var(--mkp-bg-prune);
+        --quote-border: var(--mkp-bg-prune-border);
+    
+        --table-border-color: hsl(200, 7%, 13%);
+        --table-header-bg: hsl(200, 7%, 28%);
+        --table-alternate-bg: hsl(200, 7%, 11%);
+    
+        --searchbar-border-color: #aaa;
+        --searchbar-bg: #b7b7b7;
+        --searchbar-fg: #000;
+        --searchbar-shadow-color: #aaa;
+        --searchresults-header-fg: #666;
+        --searchresults-border-color: #98a3ad;
+        --searchresults-li-bg: #2b2b2f;
+        --search-mark-bg: var(--mkp-bof);
+    }
+}
+
+/* MonkeyPatch */
+.mkp {
+    --img-cover : url(../assets/mkp-cover.svg);
+    --img-cover-mkp : url(../assets/mkp-cover-mkp.svg);
+    --img-part : url(../assets/mkp-part.svg);
+    --img-page-top : url(../assets/mkp-page-top.svg);
+    --img-page-bottom : url(../assets/mkp-page-bottom.svg);
+    --img-code : url(../assets/mkp-page-top.svg);
+    --img-exercice : url(../assets/mkp-exercice.svg);
+
+    --fg: var(--mkp-text);
+    --bg: var(--mkp-white, white);
+
+    --sidebar-bg: var(--mkp-btn-bg);
+    --sidebar-fg: var(--mkp-btn-text);
+    --sidebar-non-existant: rgba(0,0,0,0.25);
+    --sidebar-active: var(--mkp-bof);
+    --sidebar-spacer: hsla(0,100%,100%,0.5);
+
+    --scrollbar: rgba(0,0,0,0.25);
+
+    --icons: hsla(216, 20%, 29%, 0.66);
+    --icons-hover: var(--mkp-btn-text); 
+
+    --links: var(--mkp-bof);
+
+    --inline-code-color: #b21e00; 
+
+    --theme-popup-bg: #fff;  
+    --theme-popup-border: rgba(0,0,0,0.25);
+    --theme-hover: var(--mkp-btn-bg); 
+
+    
+    --quote-bg: var(--mkp-bg-blue-lite);
+    --quote-border: var(--mkp-bof);
+
+    --table-border-color: hsl(0, 0%, 95%);
+    --table-header-bg: hsl(0, 0%, 80%); 
+    --table-alternate-bg: hsl(0, 0%, 97%);
+
+    --searchbar-border-color: #aaa;  /* default */
+    --searchbar-bg: #fafafa;  /* default */
+    --searchbar-fg: #000;  /* default */
+    --searchbar-shadow-color: #aaa;  /* default */
+    --searchresults-header-fg: #666;  /* default */
+    --searchresults-border-color: #888;  /* default */
+    --searchresults-li-bg: #e4f2fe;  /* default */
+    --search-mark-bg: var(--mkp-bof);
+}
+
+.mkp-dark {
+    --fg: var(--mkp-white);
+    --bg: var(--mkp-bg-dark);
+
+    --sidebar-bg: var(--mkp-btn-bg-dark);
+    --sidebar-fg: var(--fg);
+    --sidebar-non-existant: rgba(0,0,0,0.25);
+    --sidebar-active: var(--mkp-bof);
+    --sidebar-spacer: hsla(0,100%,100%,0.5);
+
+    --scrollbar: rgba(0,0,0,0.25);
+
+    --icons: var(--fg);
+    --icons-hover: var(--mkp-bof); 
+
+    --links: var(--mkp-bof);
+
+    --inline-code-color: #ff7733; 
+
+    --theme-popup-bg: var(--mkp-btn-bg-dark);  
+    --theme-popup-border: hsla(0,100%,100%,0.25);
+    --theme-hover: hsla(0,100%,100%,0.15); 
+    
+    --quote-bg: var(--mkp-bg-prune);
+    --quote-border: var(--mkp-bg-prune-border);
+
+    --table-border-color: hsl(200, 7%, 13%);
+    --table-header-bg: hsl(200, 7%, 28%);
+    --table-alternate-bg: hsl(200, 7%, 11%);
+
+    --searchbar-border-color: #aaa;
+    --searchbar-bg: #b7b7b7;
+    --searchbar-fg: #000;
+    --searchbar-shadow-color: #aaa;
+    --searchresults-header-fg: #666;
+    --searchresults-border-color: #98a3ad;
+    --searchresults-li-bg: #2b2b2f;
+    --search-mark-bg: var(--mkp-bof);
+}
+
+.mkp blockquote, .mkp-dark blockquote {
+    border: .1em solid var(--quote-border);
+    border-radius: 0.25em;
+}
+
+.mkp code, .mkp-dark code {
+    border-radius: 0.25em;
+    padding: 0.125em 0.25em;
+    margin: 0.1em auto;
+}
+
+.mkp details, .mkp-dark details {
+    border-radius: 0.25em;
+    background-color: var(--quote-bg);
+    border: none;
+    padding: .2em;
+}
+.mkp details[open], .mkp-dark details[open] {
+    border-color: var(--quote-border)
+}
+.mkp details summary,.mkp-dark details summary {
+    cursor: pointer;
+    margin: .2em 0;
+}
+
+.mkp code.result.hljs {
+    background-color: var(--mkp-footer-bg);
+    color: var(--mkp-footer-fg);
+}
+
+.mkp-dark code {
+    border: thin solid hsla(0,100%,100%,0.25);
+}
+.mkp code {
+    border: thin solid rgba(0,0,0,0.25);
+}
+
+pre code.does-not-compile {
+    box-shadow: 0 0 0 .1em #800000;
+}
+
+.mkp .menu-title, .mkp-dark .menu-title {
+    color: var(--fg);
+}
+
+.print #menu-bar, .print #menu-bar.sticky, .print #menu-bar.bordered {
+    position: relative !important;
+    top: unset !important;
+}
+
+#menu-bar, #menu-bar-hover-placeholder {
+    background: var(--bg);
+}
+.print .page {
+    margin-top: 0;
+}
+
+h1 code {
+    background-color: transparent;
+    border: none;
+}
+
+.mkp blockquote, 
+.mkp-dark blockquote,
+.mkp details, 
+.mkp-dark details {
+    background-image: var(--img-code);
+    background-size: cover;
+    background-position: top right;
+}
+
+
+/* Symbols */
+span[class^=symbol]::after {
+    content: '';
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+span.symbol-crate::after {
+    background-image: url(../assets/symbol-crate.svg);
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-backface-visibility: hidden;
+}
+span.symbol-stdlib::after {
+    background-image: url(../assets/symbol-stdlib2.svg);
+}
+span.symbol-exercice::after {
+    background-image: url(../assets/symbol-exercice.svg);
+}
+span.symbol-idea::after {
+    background-image: url(../assets/symbol-idea.svg);
+}
+span.symbol-test::after {
+    background-image: url(../assets/symbol-test.svg);
+}
+span.symbol-tool::after {
+    background-image: url(../assets/symbol-tool.svg);
+}
+span.symbol-very-important::after {
+    background-image: url(../assets/symbol-very-important.svg);
+}
+span.symbol-warning::after {
+    background-image: url(../assets/symbol-warning.svg);
+}
+span.symbol-crab::after {
+    background-image: url(../assets/symbol-crab.svg);
+}
+
+/* .print .break-after {
+    outline: 0.01em dashed magenta;
+} */

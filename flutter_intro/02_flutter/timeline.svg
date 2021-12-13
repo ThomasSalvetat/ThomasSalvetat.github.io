@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="892px" preserveAspectRatio="none" style="width:1088px;height:892px;background:#003153;" version="1.1" viewBox="0 0 1088 892" width="1088px" zoomAndPan="magnify"><defs/><g><rect fill="#003153" height="35.7813" style="stroke:#003153;stroke-width:0.0;" width="156" x="461.5" y="10"/><text fill="#D9D3D0" font-family="Roboto" font-size="22" font-weight="bold" lengthAdjust="spacing" textLength="146" x="466.5" y="35.4102">Flutter Historic</text><!--MD5=[0967fdd65461895a7aedec22030d63a2]
+cluster Flutter2017--><rect fill="#003153" height="88" style="stroke:#D9D3D0;stroke-width:1.0;" width="132" x="305" y="171.7813"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="52" x="345" y="187.8564">Flutter</text><!--MD5=[bc41ca1077d294a0f8d346c96a8198e4]
+cluster Dart2018--><rect fill="#003153" height="88" style="stroke:#D9D3D0;stroke-width:1.0;" width="90" x="488" y="283.7813"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="34" x="516" y="299.8564">Dart</text><!--MD5=[7efc6a9728b845c265960ec46fbf529a]
+cluster Flutter2018--><rect fill="#003153" height="88" style="stroke:#D9D3D0;stroke-width:1.0;" width="144" x="461" y="171.7813"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="52" x="507" y="187.8564">Flutter</text><!--MD5=[624c19f201617df5ac919a91049057f5]
+cluster Dart2019--><rect fill="#003153" height="408" style="stroke:#D9D3D0;stroke-width:1.0;" width="126" x="629" y="171.7813"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="34" x="675" y="187.8564">Dart</text><!--MD5=[66ae93b32c10728c479defa76802b12f]
+cluster Flutter2019--><rect fill="#003153" height="184" style="stroke:#D9D3D0;stroke-width:1.0;" width="148" x="618" y="603.7813"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="52" x="666" y="619.8564">Flutter</text><!--MD5=[20ea5ad65b97865b14bf9f48f77716cc]
+cluster Dart2021--><rect fill="#003153" height="200" style="stroke:#D9D3D0;stroke-width:1.0;" width="118" x="782" y="171.7813"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="34" x="824" y="187.8564">Dart</text><!--MD5=[a26bb7af13973452274d7e1264b163d8]
+cluster Flutter2021--><rect fill="#003153" height="88" style="stroke:#D9D3D0;stroke-width:1.0;" width="124" x="779" y="395.7813"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="52" x="815" y="411.8564">Flutter</text><!--MD5=[874206a85d9ce25395a38497c902e7cb]
+cluster Flutter2022--><rect fill="#003153" height="88" style="stroke:#D9D3D0;stroke-width:1.0;" width="158" x="924" y="171.7813"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="52" x="977" y="187.8564">Flutter</text><!--MD5=[272f6092fc6073d3ce9e77a6793d98d0]
+entity FlutterA--><rect fill="#DC143C" height="36.4063" style="stroke:#D9D3D0;stroke-width:1.0;" width="100" x="321" y="207.7813"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="80" x="331" y="230.7695">Flutter Alpha</text><!--MD5=[ce4d210be827aeadd6c06cd2617951f0]
+entity Dart2--><rect fill="#228B22" height="36.4063" style="stroke:#D9D3D0;stroke-width:1.0;" width="58" x="504" y="319.7813"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="38" x="514" y="342.7695">Dart 2</text><!--MD5=[4ca74274defd6bd7d6536189307e2da0]
+entity FlutterR--><rect fill="#228B22" height="36.4063" style="stroke:#D9D3D0;stroke-width:1.0;" width="112" x="477" y="207.7813"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="92" x="487" y="230.7695">Flutter Release</text><!--MD5=[3ce7077660031a6537d023e32044731f]
+entity Dart2native--><rect fill="#228B22" height="36.4063" style="stroke:#D9D3D0;stroke-width:1.0;" width="93" x="645.5" y="207.7813"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="73" x="655.5" y="230.7695">Dart2native</text><!--MD5=[33d5f80183ce852b211bf28d885a4031]
+entity DartExtensions--><rect fill="#228B22" height="36.4063" style="stroke:#D9D3D0;stroke-width:1.0;" width="88" x="648" y="319.7813"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="68" x="658" y="342.7695">Extensions</text><!--MD5=[fd157a1962e85ddebd2a4e7e84a8e41b]
+entity DartNullSafetyA--><rect fill="#DC143C" height="36.4063" style="stroke:#D9D3D0;stroke-width:1.0;" width="86" x="649" y="431.7813"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="66" x="659" y="454.7695">Null safety</text><!--MD5=[0400944068b2b6b2c0936723434ce17c]
+entity DartFFIA--><rect fill="#DC143C" height="36.4063" style="stroke:#D9D3D0;stroke-width:1.0;" width="40" x="672" y="527.7813"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="20" x="682" y="550.7695">FFI</text><!--MD5=[78b4c305151a2ca7cd1dc743b22eb885]
+entity FlutterDA--><rect fill="#DC143C" height="36.4063" style="stroke:#D9D3D0;stroke-width:1.0;" width="115" x="634.5" y="639.7813"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="95" x="644.5" y="662.7695">Flutter Desktop</text><!--MD5=[68046f4fb721dd599cb16322f4e04a50]
+entity FlutterWA--><rect fill="#DC143C" height="36.4063" style="stroke:#D9D3D0;stroke-width:1.0;" width="91" x="646.5" y="735.7813"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="71" x="656.5" y="758.7695">Flutter Web</text><!--MD5=[2ba580b4e156c07be2e9e22a0e054442]
+entity DartNullSafety--><rect fill="#228B22" height="36.4063" style="stroke:#D9D3D0;stroke-width:1.0;" width="86" x="798" y="207.7813"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="66" x="808" y="230.7695">Null safety</text><!--MD5=[59ce10033c53c6c8458534103ea3aa0e]
+entity DartFFI--><rect fill="#228B22" height="36.4063" style="stroke:#D9D3D0;stroke-width:1.0;" width="40" x="821" y="319.7813"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="20" x="831" y="342.7695">FFI</text><!--MD5=[2aa534bd0d8b2e8d54548bb222668262]
+entity FlutterW--><rect fill="#228B22" height="36.4063" style="stroke:#D9D3D0;stroke-width:1.0;" width="91" x="795.5" y="431.7813"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="71" x="805.5" y="454.7695">Flutter Web</text><!--MD5=[24e7c60880ae1531a950a933f1c23071]
+entity FlutterD--><rect fill="#FFA500" height="36.4063" style="stroke:#D9D3D0;stroke-width:1.0;" width="125" x="940.5" y="207.7813"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="105" x="950.5" y="230.7695">Flutter Desktop ?</text><ellipse cx="45.1524" cy="72.397" fill="#003153" rx="34.1524" ry="14.6158" style="stroke:#D9D3D0;stroke-width:1.0;"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="32" x="28.0403" y="75.5969">2011</text><!--MD5=[019f1530db7216317f52a330c3030bd2]
+entity DartA--><rect fill="#DC143C" height="36.4063" style="stroke:#D9D3D0;stroke-width:1.0;" width="47" x="21.5" y="207.7813"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="27" x="31.5" y="230.7695">Dart</text><ellipse cx="148.1524" cy="72.397" fill="#003153" rx="34.1524" ry="14.6158" style="stroke:#D9D3D0;stroke-width:1.0;"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="32" x="131.0403" y="75.5969">2013</text><!--MD5=[239dd5fa1106d451edbe3495e59af59b]
+entity Dart--><rect fill="#228B22" height="36.4063" style="stroke:#D9D3D0;stroke-width:1.0;" width="47" x="124.5" y="207.7813"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="27" x="134.5" y="230.7695">Dart</text><ellipse cx="251.1524" cy="72.397" fill="#003153" rx="34.1524" ry="14.6158" style="stroke:#D9D3D0;stroke-width:1.0;"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="32" x="234.0403" y="75.5969">2015</text><!--MD5=[a540e78612a372e5cadf164e954960e5]
+entity Angular--><rect fill="#228B22" height="36.4063" style="stroke:#D9D3D0;stroke-width:1.0;" width="69" x="216.5" y="207.7813"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="49" x="226.5" y="230.7695">Angular</text><!--MD5=[abbc2e8ce06420a2d31e3ba033e1d595]
+entity dart2js--><rect fill="#228B22" height="36.4063" style="stroke:#D9D3D0;stroke-width:1.0;" width="64" x="219" y="319.7813"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="44" x="229" y="342.7695">dart2js</text><!--MD5=[3bc143aedf7a9a001aeaa2316c53851d]
+entity skia--><rect fill="#228B22" height="36.4063" style="stroke:#D9D3D0;stroke-width:1.0;" width="46" x="228" y="431.7813"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="26" x="238" y="454.7695">Skia</text><ellipse cx="371.1524" cy="72.397" fill="#003153" rx="34.1524" ry="14.6158" style="stroke:#D9D3D0;stroke-width:1.0;"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="32" x="354.0403" y="75.5969">2017</text><ellipse cx="533.1524" cy="72.397" fill="#003153" rx="34.1524" ry="14.6158" style="stroke:#D9D3D0;stroke-width:1.0;"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="32" x="516.0403" y="75.5969">2018</text><ellipse cx="692.1524" cy="72.397" fill="#003153" rx="34.1524" ry="14.6158" style="stroke:#D9D3D0;stroke-width:1.0;"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="32" x="675.0403" y="75.5969">2019</text><ellipse cx="841.1524" cy="72.397" fill="#003153" rx="34.1524" ry="14.6158" style="stroke:#D9D3D0;stroke-width:1.0;"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="32" x="824.0403" y="75.5969">2021</text><ellipse cx="1003.1524" cy="72.397" fill="#003153" rx="34.1524" ry="14.6158" style="stroke:#D9D3D0;stroke-width:1.0;"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="32" x="986.0403" y="75.5969">2022</text><!--MD5=[57206686f1b39408dfa8e211e2088ce9]
+link 2011 to DartA--><path d="M45,86.9913 C45,114.6712 45,177.1613 45,207.5512 " fill="none" id="2011-DartA" style="stroke:#D9D3D0;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[3ac35eccfc6a6f930aca8ab2b28458d0]
+link 2013 to Dart--><path d="M148,86.9913 C148,114.6712 148,177.1613 148,207.5512 " fill="none" id="2013-Dart" style="stroke:#D9D3D0;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[d3dfb7d11f790137c645c21d8741a376]
+link 2015 to Angular--><path d="M251,86.9913 C251,114.6712 251,177.1613 251,207.5512 " fill="none" id="2015-Angular" style="stroke:#D9D3D0;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[e31b8490a023d73707fd3acbbfaa2e7f]
+link Angular to dart2js--><path d="M251,243.9713 C251,264.6313 251,299.1013 251,319.7113 " fill="none" id="Angular-dart2js" style="stroke:#D9D3D0;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[4f7ddfe1f42e77301fd6111fd5973759]
+link dart2js to skia--><path d="M251,355.9713 C251,376.6313 251,411.1013 251,431.7113 " fill="none" id="dart2js-skia" style="stroke:#D9D3D0;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[28baa1e0b59dcc462e7fc7b1727bf0ca]
+link 2017 to FlutterA--><path d="M371,86.9913 C371,114.6712 371,177.1613 371,207.5512 " fill="none" id="2017-FlutterA" style="stroke:#D9D3D0;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[82dbaadc4922e9aab9b0b0500b4c03eb]
+link 2018 to FlutterR--><path d="M533,86.9913 C533,114.6712 533,177.1613 533,207.5512 " fill="none" id="2018-FlutterR" style="stroke:#D9D3D0;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[2b569453a902513f8a15495cb95735f0]
+link FlutterR to Dart2--><path d="M533,243.9713 C533,264.6313 533,299.1013 533,319.7113 " fill="none" id="FlutterR-Dart2" style="stroke:#D9D3D0;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[0e5d62ef9e31b43d2573f7ab8c049a2a]
+link 2019 to Dart2native--><path d="M692,86.9913 C692,114.6712 692,177.1613 692,207.5512 " fill="none" id="2019-Dart2native" style="stroke:#D9D3D0;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[4031d0827b0b2fae070f54661867a538]
+link Dart2native to DartExtensions--><path d="M692,243.9713 C692,264.6313 692,299.1013 692,319.7113 " fill="none" id="Dart2native-DartExtensions" style="stroke:#D9D3D0;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[d6e7118f32e1ae13175d99f3829b4d32]
+link DartExtensions to DartNullSafetyA--><path d="M692,355.9713 C692,376.6313 692,411.1013 692,431.7113 " fill="none" id="DartExtensions-DartNullSafetyA" style="stroke:#D9D3D0;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[3e7e02f71868f57baf8bdbf33f137336]
+link DartNullSafetyA to DartFFIA--><path d="M692,468.0213 C692,484.9813 692,510.7313 692,527.6513 " fill="none" id="DartNullSafetyA-DartFFIA" style="stroke:#D9D3D0;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[d4247d80639516d2b78a37f0953f6126]
+link DartFFIA to FlutterDA--><path d="M692,563.9713 C692,584.6313 692,619.1012 692,639.7113 " fill="none" id="DartFFIA-FlutterDA" style="stroke:#D9D3D0;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[1d92edd2f37c9d649e2545dc08a44586]
+link FlutterDA to FlutterWA--><path d="M692,676.0213 C692,692.9813 692,718.7313 692,735.6513 " fill="none" id="FlutterDA-FlutterWA" style="stroke:#D9D3D0;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[4d536dfa390dfd9578ed9cb6c4b1b752]
+link 2021 to DartNullSafety--><path d="M841,86.9913 C841,114.6712 841,177.1613 841,207.5512 " fill="none" id="2021-DartNullSafety" style="stroke:#D9D3D0;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[cce9c7b59d151e4db2babfa9225b8dc3]
+link DartNullSafety to DartFFI--><path d="M841,243.9713 C841,264.6313 841,299.1013 841,319.7113 " fill="none" id="DartNullSafety-DartFFI" style="stroke:#D9D3D0;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[bb1d36f23735907a788493b94043a25c]
+link DartFFI to FlutterW--><path d="M841,355.9713 C841,376.6313 841,411.1013 841,431.7113 " fill="none" id="DartFFI-FlutterW" style="stroke:#D9D3D0;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[a050027623b9138f4d25c44815a72d59]
+link 2022 to FlutterD--><path d="M1003,86.9913 C1003,114.6712 1003,177.1613 1003,207.5512 " fill="none" id="2022-FlutterD" style="stroke:#D9D3D0;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><rect fill="#003153" height="81.625" rx="7.5" ry="7.5" style="stroke:#D9D3D0;stroke-width:1.0;" width="126" x="943" y="797.7813"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="0" x="991" y="818.7695"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="42" x="994" y="818.7695">Status</text><rect fill="#DC143C" height="16.4063" style="stroke:none;stroke-width:1.0;" width="42" x="949" y="822.1875"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="0" x="964" y="835.1758"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="36" x="994" y="835.1758">Alpha</text><rect fill="#228B22" height="16.4063" style="stroke:none;stroke-width:1.0;" width="42" x="949" y="838.5938"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="0" x="952" y="851.582"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="48" x="994" y="851.582">Release</text><rect fill="#FFA500" height="16.4063" style="stroke:none;stroke-width:1.0;" width="42" x="949" y="855"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="0" x="967" y="867.9883"/><text fill="#D9D3D0" font-family="Roboto" font-size="14" lengthAdjust="spacing" textLength="41" x="994" y="867.9883">Future</text><line style="stroke:#D9D3D0;stroke-width:1.0;" x1="949" x2="1063" y1="805.7813" y2="805.7813"/><line style="stroke:#D9D3D0;stroke-width:1.0;" x1="949" x2="1063" y1="822.1875" y2="822.1875"/><line style="stroke:#D9D3D0;stroke-width:1.0;" x1="949" x2="1063" y1="838.5938" y2="838.5938"/><line style="stroke:#D9D3D0;stroke-width:1.0;" x1="949" x2="1063" y1="855" y2="855"/><line style="stroke:#D9D3D0;stroke-width:1.0;" x1="949" x2="1063" y1="871.4063" y2="871.4063"/><line style="stroke:#D9D3D0;stroke-width:1.0;" x1="949" x2="949" y1="805.7813" y2="871.4063"/><line style="stroke:#D9D3D0;stroke-width:1.0;" x1="991" x2="991" y1="805.7813" y2="871.4063"/><line style="stroke:#D9D3D0;stroke-width:1.0;" x1="1063" x2="1063" y1="805.7813" y2="871.4063"/><!--MD5=[1c0ec81c7005211e717f315f5fad6cfb]
+@startuml
+!theme blueprint
+skinparam componentStyle rectangle
+skinparam defaultFontName Roboto
+top to bottom direction
+
+title Flutter Historic
+
+(2011)  as 2011
+[Dart] as DartA #Crimson
+
+2011 -d.. DartA
+
+(2013)  as 2013
+[Dart] as Dart #ForestGreen
+
+2013 -d.. Dart
+
+(2015) as 2015
+[Angular] as Angular #ForestGreen
+[dart2js] as dart2js #ForestGreen
+[Skia] as skia #ForestGreen
+
+2015 -d.. Angular
+Angular .. dart2js 
+dart2js .. skia 
+
+(2017) as 2017
+
+rectangle Flutter as Flutter2017 {
+    [Flutter Alpha] as FlutterA #Crimson
+}
+
+2017 -d.. FlutterA
+
+(2018) as 2018
+rectangle Dart as Dart2018 {
+    [Dart 2] as Dart2 #ForestGreen
+}
+rectangle Flutter as Flutter2018 {
+    [Flutter Release] as FlutterR #ForestGreen
+}
+
+2018 -d.. FlutterR
+FlutterR .. Dart2
+
+(2019) as 2019
+
+rectangle Dart as Dart2019 {
+    [Dart2native] as Dart2native #ForestGreen
+    [Extensions] as DartExtensions #ForestGreen
+    [Null safety] as DartNullSafetyA #Crimson
+    [FFI] as DartFFIA #Crimson
+}
+
+rectangle Flutter as Flutter2019 {
+    [Flutter Desktop] as FlutterDA #Crimson
+    [Flutter Web] as FlutterWA #Crimson
+}
+
+2019 -d.. Dart2native
+Dart2native .. DartExtensions 
+DartExtensions .. DartNullSafetyA 
+DartNullSafetyA .. DartFFIA 
+DartFFIA .. FlutterDA 
+FlutterDA .. FlutterWA 
+
+(2021) as 2021
+
+rectangle Dart as Dart2021 {
+    [Null safety] as DartNullSafety #ForestGreen
+    [FFI] as DartFFI #ForestGreen
+}
+
+rectangle Flutter as Flutter2021 {
+    [Flutter Web] as FlutterW #ForestGreen
+}
+
+2021 -d.. DartNullSafety
+DartNullSafety .. DartFFI
+DartFFI .. FlutterW
+
+(2022) as 2022
+
+rectangle Flutter as Flutter2022 {
+     [Flutter Desktop ?] as FlutterD #Orange
+}
+
+2022 -d.. FlutterD
+
+
+legend bottom right
+    |=              |= Status         |
+    |<#Crimson>     | Alpha         |
+    |<#ForestGreen> | Release       |
+    |<#Orange>      | Future        |
+endlegend
+
+@enduml
+
+@startuml
+
+
+
+
+
+<style>
+  root {
+    BackgroundColor #003153
+    FontColor #D9D3D0
+    FontName Verdana
+    HyperLinkColor #D9D3D0
+    LineColor #D9D3D0
+    LineThickness 1
+    Margin 5
+  }
+  caption {
+    LineThickness 0
+  }
+  footer {
+    LineThickness 0
+  }
+  header {
+    LineThickness 0
+  }
+  node {
+    MaximumWidth 300
+  }
+  title {
+    FontSize 22
+    LineThickness 0
+  }
+</style>
+
+skinparam ArrowLollipopColor #D9D3D0
+skinparam BackgroundColor #003153
+skinparam DefaultFontName Verdana
+skinparam DefaultMonospacedFontName Courier
+skinparam LifelineStrategy nosolid
+skinparam ParticipantPadding 10
+skinparam SequenceLifeLineBorderColor #D9D3D0
+skinparam Shadowing false
+skinparam UseBetaStyle true
+
+skinparam Activity {
+  BackgroundColor #003153
+  BarColor #D9D3D0
+  BorderColor #D9D3D0
+  FontColor #D9D3D0
+  FontName Verdana
+}
+skinparam Boundary {
+  FontColor #D9D3D0
+}
+skinparam Box {
+  Padding 5
+}
+skinparam CircledCharacter {
+  FontColor #D9D3D0
+  FontName Courier
+  Radius 9
+}
+skinparam Class {
+  BackgroundColor #003153
+  BorderColor #D9D3D0
+  FontColor #D9D3D0
+  FontName Verdana
+}
+skinparam ClassAttribute {
+  FontColor #D9D3D0
+  FontName Verdana
+}
+skinparam ClassStereotype {
+  FontColor #D9D3D0
+  FontName Verdana
+}
+skinparam Footer {
+  FontColor #D9D3D0
+  FontName Verdana
+}
+skinparam Header {
+  FontColor #D9D3D0
+  FontName Verdana
+}
+skinparam Hyperlink {
+  Color #D9D3D0
+}
+skinparam IconPackage {
+  Color #D9D3D0
+  BackgroundColor #003153
+}
+skinparam IconPrivate {
+  Color #D9D3D0
+  BackgroundColor #003153
+}
+skinparam IconProtected {
+  Color #D9D3D0
+  BackgroundColor #003153
+}
+skinparam IconPublic {
+  Color #D9D3D0
+  BackgroundColor #003153
+}
+skinparam Note {
+  FontColor #D9D3D0
+  FontName Verdana
+}
+skinparam Package {
+  BorderColor #D9D3D0
+  FontColor #D9D3D0
+  FontName Verdana
+}
+skinparam State {
+  BackgroundColor #003153
+  BorderColor #D9D3D0
+}
+skinparam StereotypeA {
+  BackgroundColor #003153
+  BorderColor #D9D3D0
+}
+skinparam StereotypeC {
+  BackgroundColor #003153
+  BorderColor #D9D3D0
+}
+skinparam StereotypeE {
+  BackgroundColor #003153
+  BorderColor #D9D3D0
+}
+skinparam StereotypeI {
+  BackgroundColor #003153
+  BorderColor #D9D3D0
+}
+skinparam StereotypeN {
+  BackgroundColor #003153
+  BorderColor #D9D3D0
+}
+skinparam UseCaseStereoType {
+  FontColor #D9D3D0
+  FontName Verdana
+}
+skinparam componentStyle rectangle
+skinparam defaultFontName Roboto
+top to bottom direction
+
+title Flutter Historic
+
+(2011)  as 2011
+[Dart] as DartA #Crimson
+
+2011 -d.. DartA
+
+(2013)  as 2013
+[Dart] as Dart #ForestGreen
+
+2013 -d.. Dart
+
+(2015) as 2015
+[Angular] as Angular #ForestGreen
+[dart2js] as dart2js #ForestGreen
+[Skia] as skia #ForestGreen
+
+2015 -d.. Angular
+Angular .. dart2js 
+dart2js .. skia 
+
+(2017) as 2017
+
+rectangle Flutter as Flutter2017 {
+    [Flutter Alpha] as FlutterA #Crimson
+}
+
+2017 -d.. FlutterA
+
+(2018) as 2018
+rectangle Dart as Dart2018 {
+    [Dart 2] as Dart2 #ForestGreen
+}
+rectangle Flutter as Flutter2018 {
+    [Flutter Release] as FlutterR #ForestGreen
+}
+
+2018 -d.. FlutterR
+FlutterR .. Dart2
+
+(2019) as 2019
+
+rectangle Dart as Dart2019 {
+    [Dart2native] as Dart2native #ForestGreen
+    [Extensions] as DartExtensions #ForestGreen
+    [Null safety] as DartNullSafetyA #Crimson
+    [FFI] as DartFFIA #Crimson
+}
+
+rectangle Flutter as Flutter2019 {
+    [Flutter Desktop] as FlutterDA #Crimson
+    [Flutter Web] as FlutterWA #Crimson
+}
+
+2019 -d.. Dart2native
+Dart2native .. DartExtensions 
+DartExtensions .. DartNullSafetyA 
+DartNullSafetyA .. DartFFIA 
+DartFFIA .. FlutterDA 
+FlutterDA .. FlutterWA 
+
+(2021) as 2021
+
+rectangle Dart as Dart2021 {
+    [Null safety] as DartNullSafety #ForestGreen
+    [FFI] as DartFFI #ForestGreen
+}
+
+rectangle Flutter as Flutter2021 {
+    [Flutter Web] as FlutterW #ForestGreen
+}
+
+2021 -d.. DartNullSafety
+DartNullSafety .. DartFFI
+DartFFI .. FlutterW
+
+(2022) as 2022
+
+rectangle Flutter as Flutter2022 {
+     [Flutter Desktop ?] as FlutterD #Orange
+}
+
+2022 -d.. FlutterD
+
+
+legend bottom right
+    |=              |= Status         |
+    |<#Crimson>     | Alpha         |
+    |<#ForestGreen> | Release       |
+    |<#Orange>      | Future        |
+endlegend
+
+@enduml
+
+PlantUML version 1.2021.7(Sun May 23 14:40:07 CEST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: fr
+Country: FR
+--></g></svg>

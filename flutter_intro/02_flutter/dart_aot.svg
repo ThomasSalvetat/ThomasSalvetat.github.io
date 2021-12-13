@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="288px" preserveAspectRatio="none" style="width:314px;height:288px;background:#003153;" version="1.1" viewBox="0 0 314 288" width="314px" zoomAndPan="magnify"><defs/><g><!--MD5=[3ec720286a5e90822a1690aa2b902a9d]
+cluster Binary--><rect fill="#003153" height="112" style="stroke:#D9D3D0;stroke-width:1.0;" width="296" x="12" y="170"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="51" x="134.5" y="186.0752">Binary</text><!--MD5=[03870bf48fdafdf8a3c6589134509b8b]
+entity Android--><ellipse cx="249" cy="236" fill="#003153" rx="8" ry="8" style="stroke:#D9D3D0;stroke-width:1.0;"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="70" x="214" y="267.0752">.apk, .aab</text><!--MD5=[02bfabf74e2d60e62cbfa5f3615b5fca]
+entity Ios--><ellipse cx="144" cy="236" fill="#003153" rx="8" ry="8" style="stroke:#D9D3D0;stroke-width:1.0;"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="26" x="131" y="267.0752">.ipa</text><!--MD5=[5949fba844c239063e365cf8f1edeb91]
+entity Windows--><ellipse cx="55" cy="236" fill="#003153" rx="8" ry="8" style="stroke:#D9D3D0;stroke-width:1.0;"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="29" x="40.5" y="267.0752">.exe</text><!--MD5=[239dd5fa1106d451edbe3495e59af59b]
+entity Dart--><ellipse cx="144" cy="19" fill="#003153" rx="8" ry="8" style="stroke:#D9D3D0;stroke-width:1.0;"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="84" x="102" y="50.0752">Dart Source</text><!--MD5=[32c7a4573188e39190bf96fd35b9bc97]
+entity AOT--><rect fill="#003153" height="37.0146" style="stroke:#D9D3D0;stroke-width:1.0;" width="136" x="76" y="109"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="116" x="86" y="133.0752">AOT compilation</text><!--MD5=[197727e291817b8695c9c0dff75322a5]
+link Dart to AOT--><path d="M144,28 C144,43.84 144,79.67 144,103.47 " fill="none" id="Dart-to-AOT" style="stroke:#D9D3D0;stroke-width:1.0;"/><polygon fill="#D9D3D0" points="144,108.64,148,99.64,144,103.64,140,99.64,144,108.64" style="stroke:#D9D3D0;stroke-width:1.0;"/><!--MD5=[b8504a53ea960944976f20e128b52012]
+link AOT to Android--><path d="M170.09,146.25 C176.52,151.07 183.22,156.49 189,162 C209.23,181.28 229.11,207.23 240.14,222.43 " fill="none" id="AOT-to-Android" style="stroke:#D9D3D0;stroke-width:1.0;"/><polygon fill="#D9D3D0" points="243.27,226.79,241.2842,217.1434,240.3598,222.7242,234.779,221.7998,243.27,226.79" style="stroke:#D9D3D0;stroke-width:1.0;"/><!--MD5=[6a1441f7fed145460ccc7ec6bb9c2fb0]
+link AOT to Ios--><path d="M144,146.09 C144,167.29 144,202.45 144,221.59 " fill="none" id="AOT-to-Ios" style="stroke:#D9D3D0;stroke-width:1.0;"/><polygon fill="#D9D3D0" points="144,226.98,148,217.98,144,221.98,140,217.98,144,226.98" style="stroke:#D9D3D0;stroke-width:1.0;"/><!--MD5=[90f1d49c2be99b83c0e7440d37afc1d5]
+link AOT to Windows--><path d="M117.52,146.16 C111.39,150.9 105.16,156.31 100,162 C83.11,180.63 68.92,206.46 61.22,221.87 " fill="none" id="AOT-to-Windows" style="stroke:#D9D3D0;stroke-width:1.0;"/><polygon fill="#D9D3D0" points="58.86,226.67,66.4305,220.3703,61.0732,222.1865,59.2569,216.8291,58.86,226.67" style="stroke:#D9D3D0;stroke-width:1.0;"/><!--MD5=[b5273e70cd3c9ebdddb5a8e20bd156b1]
+@startuml
+!theme blueprint
+skinparam componentStyle rectangle
+() "Dart Source" as Dart
+
+[AOT compilation] as AOT
+
+rectangle Binary {
+    () ".apk, .aab" as Android
+    () ".ipa" as Ios
+    () ".exe" as Windows
+}
+
+Dart - -> AOT
+AOT - -> Android
+AOT - -> Ios
+AOT - -> Windows
+
+
+@enduml
+
+@startuml
+
+
+
+
+
+<style>
+  root {
+    BackgroundColor #003153
+    FontColor #D9D3D0
+    FontName Verdana
+    HyperLinkColor #D9D3D0
+    LineColor #D9D3D0
+    LineThickness 1
+    Margin 5
+  }
+  caption {
+    LineThickness 0
+  }
+  footer {
+    LineThickness 0
+  }
+  header {
+    LineThickness 0
+  }
+  node {
+    MaximumWidth 300
+  }
+  title {
+    FontSize 22
+    LineThickness 0
+  }
+</style>
+
+skinparam ArrowLollipopColor #D9D3D0
+skinparam BackgroundColor #003153
+skinparam DefaultFontName Verdana
+skinparam DefaultMonospacedFontName Courier
+skinparam LifelineStrategy nosolid
+skinparam ParticipantPadding 10
+skinparam SequenceLifeLineBorderColor #D9D3D0
+skinparam Shadowing false
+skinparam UseBetaStyle true
+
+skinparam Activity {
+  BackgroundColor #003153
+  BarColor #D9D3D0
+  BorderColor #D9D3D0
+  FontColor #D9D3D0
+  FontName Verdana
+}
+skinparam Boundary {
+  FontColor #D9D3D0
+}
+skinparam Box {
+  Padding 5
+}
+skinparam CircledCharacter {
+  FontColor #D9D3D0
+  FontName Courier
+  Radius 9
+}
+skinparam Class {
+  BackgroundColor #003153
+  BorderColor #D9D3D0
+  FontColor #D9D3D0
+  FontName Verdana
+}
+skinparam ClassAttribute {
+  FontColor #D9D3D0
+  FontName Verdana
+}
+skinparam ClassStereotype {
+  FontColor #D9D3D0
+  FontName Verdana
+}
+skinparam Footer {
+  FontColor #D9D3D0
+  FontName Verdana
+}
+skinparam Header {
+  FontColor #D9D3D0
+  FontName Verdana
+}
+skinparam Hyperlink {
+  Color #D9D3D0
+}
+skinparam IconPackage {
+  Color #D9D3D0
+  BackgroundColor #003153
+}
+skinparam IconPrivate {
+  Color #D9D3D0
+  BackgroundColor #003153
+}
+skinparam IconProtected {
+  Color #D9D3D0
+  BackgroundColor #003153
+}
+skinparam IconPublic {
+  Color #D9D3D0
+  BackgroundColor #003153
+}
+skinparam Note {
+  FontColor #D9D3D0
+  FontName Verdana
+}
+skinparam Package {
+  BorderColor #D9D3D0
+  FontColor #D9D3D0
+  FontName Verdana
+}
+skinparam State {
+  BackgroundColor #003153
+  BorderColor #D9D3D0
+}
+skinparam StereotypeA {
+  BackgroundColor #003153
+  BorderColor #D9D3D0
+}
+skinparam StereotypeC {
+  BackgroundColor #003153
+  BorderColor #D9D3D0
+}
+skinparam StereotypeE {
+  BackgroundColor #003153
+  BorderColor #D9D3D0
+}
+skinparam StereotypeI {
+  BackgroundColor #003153
+  BorderColor #D9D3D0
+}
+skinparam StereotypeN {
+  BackgroundColor #003153
+  BorderColor #D9D3D0
+}
+skinparam UseCaseStereoType {
+  FontColor #D9D3D0
+  FontName Verdana
+}
+skinparam componentStyle rectangle
+() "Dart Source" as Dart
+
+[AOT compilation] as AOT
+
+rectangle Binary {
+    () ".apk, .aab" as Android
+    () ".ipa" as Ios
+    () ".exe" as Windows
+}
+
+Dart - -> AOT
+AOT - -> Android
+AOT - -> Ios
+AOT - -> Windows
+
+
+@enduml
+
+PlantUML version 1.2021.7(Sun May 23 14:40:07 CEST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: fr
+Country: FR
+--></g></svg>

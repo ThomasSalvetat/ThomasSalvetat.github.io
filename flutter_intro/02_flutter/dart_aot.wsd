@@ -1,0 +1,23 @@
+@startuml
+!theme blueprint
+skinparam componentStyle rectangle
+skinparam defaultFontName Roboto
+title Dart AOT
+
+(Dart Source)  as Dart
+
+[AOT compilation] as AOT
+
+rectangle Binary {
+    () ".apk, .aab" as Android
+    () ".ipa" as Ios
+    () ".exe" as Windows
+}
+
+Dart --> AOT
+AOT --> Android
+AOT --> Ios
+AOT --> Windows
+
+
+@enduml 

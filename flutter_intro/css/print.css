@@ -1,0 +1,260 @@
+
+#menu-bar.sticky, #menu-bar.bordered {
+    position: relative !important;
+    top: unset !important;
+}
+
+#page-wrapper.page-wrapper {
+    transform: none;
+    margin-left: 0px;
+    overflow-y: initial;
+}
+
+#content {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+.content main {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: none;
+}
+
+.content ol {
+    padding-left: 1.5ch;
+}
+
+.page {
+    overflow-y: initial;
+    padding: 0;
+    margin-top: 0;
+}
+
+code {
+    background-color: var(--mkp-bg-blue-lite);
+    border-radius: 5px;
+
+    /* Force background to be printed in Chrome */
+    -webkit-print-color-adjust: exact;
+}
+
+pre > .buttons {
+    z-index: 2;
+}
+
+a, a:visited, a:active, a:hover {
+    color: #4183c4;
+    text-decoration: none;
+}
+
+.menu-title {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image:  var(--img-logo-rust-white), var(--img-cover-mkp), var(--img-cover);
+    background-position: 5% 5%, bottom right, bottom center;
+    background-size: 25vh, 75vh, cover;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-color: var(--mkp-bg-purple);
+    color: var(--mkp-white) !important;
+    font-size: 400%;
+    font-weight: bold;
+    page-break-before: avoid;
+    page-break-after: always;
+    margin: 0;
+}
+
+.content main > .page-center {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    box-sizing: border-box;
+    background-image: var(--img-page-top), var(--img-page-bottom);
+    background-size: contain, contain;
+    background-repeat: no-repeat, no-repeat;
+    background-position: top center, bottom center;
+    background-color: var(--mkp-bg-blue-lite);
+    max-width: 100vw;
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.content main > .page-center > * {
+    width: var(--content-max-width);
+    margin: 0.5em auto;
+}
+
+#content h1 {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100vh;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    max-width: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: var(--img-part);
+    background-position: bottom center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: var(--mkp-bg-blue);
+    color: var(--mkp-white);
+    font-size: 300%;
+    page-break-before: always;
+    page-break-after: always;
+}
+#content h1 a {
+    display: inline-block;
+    color: inherit;
+    margin: 0;
+}
+#content h1 a::before {
+    display: none;
+}
+#content h1 a code {
+    border: none;
+}
+
+.content h1:target::before, 
+.content h2:target::before, 
+.content h3:target::before, 
+.content h4:target::before, 
+.content h5:target::before, 
+.content h6:target::before {
+    content: '';
+}
+
+.content h2, 
+.content h3, 
+.content h4, 
+.content h5, 
+.content h6 {
+    padding: .25em 0;
+}
+
+
+pre, code {
+    page-break-inside: avoid;
+    white-space: pre-wrap;
+}
+
+p > code {
+    white-space: nowrap;
+}
+
+.mkp pre code, .mkp-dark pre code {
+    padding: 0.5em;
+}
+
+.content main > * {
+    max-width: var(--content-max-width);
+    margin: 0.5em auto;
+}
+
+.content h2 {
+    margin: 1em auto;
+    /* page-break-before: always; */
+}
+
+.content h3 {
+    margin: 1em auto;
+}
+
+.content details {
+    display: none;
+}
+
+.content blockquote {
+    page-break-inside: avoid;
+}
+
+.fa {
+    display: none !important;
+}
+
+
+.content a, .content a:link, .content a:hover, .content a:link:hover {
+    color: inherit;
+    text-decoration:none;
+}
+
+.content a[href^="http"]::after {
+    content: '[' attr(href) ']';
+    margin-left: .5ch;
+    font-size: 75%;
+    text-decoration: underline;
+    color: var(--mkp-bof);
+}
+
+.break-after {
+    page-break-after: always;
+}
+
+ol > li,  ol > li > ol {
+    break-inside: avoid;
+}
+ol > li > p {
+    margin: 0;
+}
+
+pre code.language-rust, pre code.language-shell, pre code.language-toml {
+    position: relative;
+}
+pre code::after {
+    position: absolute;
+    content: '';
+    width: 1.5em;
+    height: 1.5em;
+    top: 0.1em;
+    right: 0.1em;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+pre code.language-rust::after {
+    background-image: var(--img-logo-rust);
+}
+pre code.language-rust.does-not-compile::after {
+    background-image: var(--img-logo-rust-error);
+}
+pre code.language-toml::after {
+    background-image: var(--img-logo-toml);
+}
+pre code.language-shell::after {
+    background-image: var(--img-logo-bash);
+}
+
+#menu-bar-hover-placeholder {
+    display: none;
+}
+
+
+/* Custom */
+
+#jour-1 + ol, #jour-3 + ol {
+    column-count: 3;
+}
+
+#Éléments-de-la-formation, #Éléments-de-la-formation + ul  {
+    display: none;
+}
+
+#caractérisques-de-rust + p > img, 
+#communautés-rust + p > img {
+    max-width: 33vw !important;
+}
+
+#exercice-1--gcd + p > img {
+    max-width: 33vw !important;
+}
+
+#span-classsymbol-toolspan-les-base-de-cargo + p  {
+    float: right;
+}

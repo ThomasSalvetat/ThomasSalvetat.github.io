@@ -1,0 +1,2645 @@
+<!DOCTYPE HTML>
+<html lang="fr" class="sidebar-visible no-js mkp print">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Introduction à flutter</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/css/custom.css">
+    </head>
+    <body>
+
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "mkp-dark" : "mkp";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('mkp')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <h1 class="menu-title">Introduction à flutter</h1>
+
+                </div>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<h2 id="présentation"><a class="header" href="#présentation">Présentation</a></h2>
+<h2 id="plan-ébauche"><a class="header" href="#plan-ébauche">Plan (ébauche)</a></h2>
+<ol>
+<li>D'où vient Flutter ?</li>
+<li>Le SDK flutter et l'environnement</li>
+<li>widget (layouts et widgets de base)</li>
+<li>material/cupertino</li>
+<li>les widgets avancés</li>
+<li>Rive</li>
+<li>la gestion d’état</li>
+<li>les channels</li>
+<li>gRPC (pas vraiment lié à flutter, mais faisant partie de l’écosystème google ça peut être intéressant)</li>
+<li>flutter web et flutter desktop</li>
+<li>L’environnement de test</li>
+<li>les limites de flutter</li>
+</ol>
+<h2 id="planning"><a class="header" href="#planning">Planning</a></h2>
+<p> 
+% TODO Date</p>
+<h3 id="1er-jour"><a class="header" href="#1er-jour">1er jour</a></h3>
+<h3 id="2ème-jour"><a class="header" href="#2ème-jour">2ème jour</a></h3>
+<h3 id="3ème-jour"><a class="header" href="#3ème-jour">3ème jour</a></h3>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="flutter"><a class="header" href="#flutter">Flutter</a></h1>
+<p>L'objectif ici sera de découvrir Flutter.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="dart"><a class="header" href="#dart">Dart</a></h2>
+<h4 id="un-langage-multi-plateforme"><a class="header" href="#un-langage-multi-plateforme">Un langage multi-plateforme</a></h4>
+<p align="center">
+    <img src="02_flutter/dart_logo.png"
+        width="50%"
+        style="margin: 0 auto;"
+        alt="Dart"/>
+</p>
+<p>Initialement créé par les équipes de <strong>Google</strong>, Dart est un langage objet censé remplacer javascript. C'est un langage <strong>optimisé</strong> pour du traitement <strong>client</strong> et doté d'un ramasse-miette (garbage collector), conçu pour être accessible par des développeurs familiarisés avec la <strong>Programmation Orientée Objet</strong> comme Java, Javascript ou C#.</p>
+<p>Le principal avantage du langage Dart, c'est avant tout sa plateforme sur laquelle il est exécuté. </p>
+<p>Il existe trois modes de compilation.</p>
+<ul>
+<li>Stand-alone : exécuter du code Dart interprété par la <strong>Dart Virtual Machine</strong> ou <strong>DVM</strong> (à la manière de la Java Virtual Machine). Pour utiliser ce mode, il faut configurer son environnement via le Software Development Kit (SDK). Le SDK comprend :
+<ul>
+<li><em>pub</em> : un gestionnaire de dépendances</li>
+<li><em>dart2js</em> : un transpilateur vers du code javascript</li>
+<li><em>dartdoc</em> : un générateur de documentation Dart</li>
+<li><em>dartfmt</em> : un formateur de code qui respecte les conventions officielles de code</li>
+</ul>
+</li>
+</ul>
+<p align="center">
+    <img src="02_flutter/dart_sdk.svg"
+        width="50%"
+        style="margin: 0 auto;"
+        alt="Dart SDK"/>
+</p>
+<ul>
+<li>AOT (Ahead Of Time) : compilation d'un code haut niveau vers un code machine binaire. La DVM n’est alors pas nécessaire.
+<ul>
+<li>Flutter: iOS, android
+<ul>
+<li><em>dart2native</em> : windows, macOS, linux</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p align="center">
+    <img src="02_flutter/dart_aot.svg"
+        width="50%"
+        style="margin: 0 auto;"
+        alt="Dart AOT"/>
+</p>
+<ul>
+<li>Web : grâce à <em>dart2js</em>, du code Dart peut être transpilé en code javascript afin d’être exécuté dans un environnement web.</li>
+</ul>
+<h4 id="un-langage-flexible"><a class="header" href="#un-langage-flexible">Un langage flexible</a></h4>
+<p>Une des principales forces du langage Dart, c’est, d’une part sa capacité à cibler des plateformes diverses (partie déploiement), mais également à s’intégrer dans le contexte d'un environnement de développement « moderne ». </p>
+<p align="center">
+    <img src="02_flutter/dart_platform.png"
+        width="50%"
+        style="margin: 0 auto;"
+        alt="Dart platform"/>
+</p>
+<h5 id="flutter-1"><a class="header" href="#flutter-1">Flutter</a></h5>
+<p>Le mode <strong>Just In Time (JIT)</strong>  permet d’effectuer une compilation à la volée et cela pendant que le programme est en cours d’exécution.
+En combinant le mode JIT et la DVM, on est capable de changer dynamiquement du code et de l’exécuter à la volée. 
+Il est alors possible d’exécuter et de débugger du code, et cela quelle que soit l’architecture ciblée.</p>
+<h5 id="web"><a class="header" href="#web">Web</a></h5>
+<p>Le compilateur de développement Dart nommé le <strong>dartdevc</strong> permet d’exécuter et de débugger des applications web Dart sur Google Chrome. </p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="un-peu-dhistoire"><a class="header" href="#un-peu-dhistoire">Un peu d'histoire</a></h1>
+<p align="center">
+    <img src="02_flutter/timeline.svg"
+        width="100%"
+        style="margin: 0 auto;"
+        alt="Timeline"/>
+</p>
+<p>Dart fut créé par <strong>Lars Bak</strong> et <strong>Kasper Lund</strong> en 2011, tous deux ingénieurs travaillant chez Google. Le langage reçu un accueil mitigé de la part de la communauté web. 
+Google proposa d’inclure la Dart Virtual Machine dans chrome et par là même, de supprimer à terme le javascript.</p>
+<p>Comme on pouvait s’y attendre, la communauté perçue Dart comme un langage imposé par Google et pouvant nuire à l’aspect libre et communautaire du web. </p>
+<p>Entre autres, cela allait conduire à une fragmentation de l’écosystème.</p>
+<p>La première version de Dart voit le jour en 2013.</p>
+<p>Jusqu’en 2015, Google utilise Dart pour ses projets internes et l’adoption du langage par la communauté reste faible. En parallèle, les équipes de Google travaillent sur la deuxième version d’Angular complètement écrite en Dart et l’utilisent sur des projets internes aujourd’hui toujours en production comme Google Ads, Google Absence, Google Fiber, Google Play Console ...</p>
+<p>En 2015, les équipes de développement de Dart sortent alors la version 1.9 du langage qui apporte le support de la transpilation vers javascript ainsi que la première version d’Angular Dart. La version typescript d’Angular sortira un an plus tard et l’adoption par la communauté fut un succès. </p>
+<p>En parallèle, lors d’un <strong>Dart Developer Submit</strong>, <strong>Éric Seidel</strong> de chez Google présente <sup><a href="02_flutter/historic.html#video">1</a></sup> <strong>Sky</strong> une ébauche du moteur graphique aujourd’hui connu sous le nom de <strong>Skia</strong> <sup><a href="02_flutter/historic.html#skia">2</a></sup> (utilisé sous Android, Google Chrome, Firefox, Fuchsia <sup><a href="02_flutter/historic.html#fuchsia">3</a></sup>). 
+Éric présente une démonstration codée en Dart qui tourne sur un mobile android ou iOS en 120 fps. Il présente la notion de widget et de hot-reload. </p>
+<p>C’est la première apparition de <strong>Flutter</strong>. </p>
+<p>En 2017, sort la première version alpha de Flutter. Google fait intervenir les équipes de développement de Chromium sur le projet. Un des prérequis pour cette équipe, est de procéder à une mise à jour majeure du langage : <strong>Dart 2.0</strong>. Ce dernier apporte un système de typage renforcé, nécessaire pour pouvoir compiler dart vers un environnement natif. </p>
+<p>La version définitive de Flutter sort en 2018. L’engouement autour de ce dernier est réel. </p>
+<p>La communauté de développeur Flutter est issue d’un écosystème assez varié : Kotlin / Swift / Javascript / Typescript. Le langage ayant assez peu évolué depuis sa première version (en dehors des aspects techniques), et la communauté grandissante, des demandes d’évolution du langage sont fréquentes. </p>
+<p>En 2019, Dart supporte désormais les <strong>extensions</strong> issues de Kotlin, et de nombreuses fonctionnalités expérimentales font leurs apparitions comme <strong>Null Safety</strong>, <strong>Dart FFI</strong> (Dart Foreign Function Interface) et <strong>gRPC</strong> (Google Remote Procedure Call).</p>
+<p>À cela s’ajoute l’apparition de <strong>dart2native</strong> permettant de générer des exécutables sur des plateformes desktop. 
+Google annonce alors l’arrivée de <strong>Flutter Desktop</strong> et <strong>Flutter Web</strong>. </p>
+<p>Nécessitant un travail titanesque, les fonctionnalités de <strong>Null Safety</strong> et <strong>Dart FFI</strong> sont disponibles en version définitive courant 2021.</p>
+<hr />
+<small>
+<p><a name="video">1</a>: <a href="https://www.youtube.com/watch?v=PnIWl33YMwA">Lien de la présentation</a></p>
+<p><a name="skia">2</a>: <a href="https://skia.org/">Skia</a></p>
+<p><a name="fuchsia">3</a>: <a href="https://fuchsia.dev/">Fuchsia, le nouvel OS créé par Google</a></p>
+</small>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="flutter-2"><a class="header" href="#flutter-2">Flutter</a></h1>
+<h2 id="comment-fonctionne-flutter-"><a class="header" href="#comment-fonctionne-flutter-">Comment fonctionne Flutter ?</a></h2>
+<p>Flutter est un kit de développement logiciel destiné à réaliser des interfaces.</p>
+<p>Dans un premier temps, représentons basiquement le fonctionnement d’une application native iOS/Android. </p>
+<p align="center">
+   <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="-286 685 421 317" width="421" height="317">
+  <defs>
+    <filter id="Shadow" filterUnits="userSpaceOnUse" x="-328.1" y="653.3">
+      <feGaussianBlur in="SourceAlpha" result="blur" stdDeviation="1.308"/>
+      <feOffset in="blur" result="offset" dx="0" dy="2"/>
+      <feFlood flood-color="var(--fg)" flood-opacity=".5" result="flood"/>
+      <feComposite in="flood" in2="offset" operator="in"/>
+    </filter>
+    <font-face font-family="Gill Sans" font-size="20" panose-1="2 11 5 2 2 1 4 2 2 3" units-per-em="1000" underline-position="-75.19531" underline-thickness="49.80469" slope="0" x-height="449.70703" cap-height="687.0117" ascent="917.9688" descent="-230.46875" font-weight="400">
+      <font-face-src>
+        <font-face-name name="GillSans"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Gill Sans" font-size="9" panose-1="2 11 5 2 2 1 4 2 2 3" units-per-em="1000" underline-position="-75.19531" underline-thickness="49.80469" slope="0" x-height="449.70703" cap-height="687.0117" ascent="917.9688" descent="-230.46875" font-weight="400">
+      <font-face-src>
+        <font-face-name name="GillSans"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="var(--fg)">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker_2" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-9 -4 10 8" markerWidth="10" markerHeight="8" color="var(--fg)">
+      <g>
+        <path d="M -8 0 L 0 3 L 0 -3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <font-face font-family="Helvetica Neue" font-size="16" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.19.2\n2021-11-30 10:39:27 +0000</metadata>
+  <g id="architecture_native" fill-opacity="1" stroke="none" stroke-opacity="1" fill="none" stroke-dasharray="none">
+    <title>architecture_native</title>
+    <g id="architecture_native_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_4_shadow" filter="url(#Shadow)">
+        <path d="M -221.6 823.8 L -229.6 811.8 L -221.6 811.8 Z" fill="var(--mkp-bof)"/>
+      </g>
+      <g id="Graphic_5_shadow" filter="url(#Shadow)">
+        <rect x="-263.5" y="813.55" width="40" height="60" fill="var(--bg)"/>
+        <rect x="-263.5" y="813.55" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_7_shadow" filter="url(#Shadow)">
+        <path d="M -222 753 L -230 741 L -222 741 Z" fill="var(--mkp-bof)"/>
+      </g>
+      <g id="Graphic_8_shadow" filter="url(#Shadow)">
+        <rect x="-263.5" y="742.5" width="40" height="60" fill="var(--bg)"/>
+        <rect x="-263.5" y="742.5" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_10_shadow" filter="url(#Shadow)">
+        <path d="M -174.6 824 L -182.6 812 L -174.6 812 Z" fill="var(--mkp-bof)"/>
+      </g>
+      <g id="Graphic_11_shadow" filter="url(#Shadow)">
+        <rect x="-216.25788" y="813.55" width="40" height="60" fill="var(--bg)"/>
+        <rect x="-216.25788" y="813.55" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_13_shadow" filter="url(#Shadow)">
+        <path d="M -174.6 753 L -182.6 741 L -174.6 741 Z" fill="var(--mkp-bof)"/>
+      </g>
+      <g id="Graphic_14_shadow" filter="url(#Shadow)">
+        <rect x="-216.25788" y="742.5" width="40" height="60" fill="var(--bg)"/>
+        <rect x="-216.25788" y="742.5" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_16_shadow" filter="url(#Shadow)">
+        <path d="M -221.68424 753.6 L -229.68424 741.6 L -221.68424 741.6 Z" fill="var(--mkp-bof)"/>
+        <path d="M -221.68424 753.6 L -229.68424 741.6 L -221.68424 741.6 Z" stroke="var(--mkp-bof)" stroke-linecap="round" stroke-linejoin="round" stroke-width=".25"/>
+      </g>
+      <g id="Graphic_17_shadow" filter="url(#Shadow)">
+        <rect x="-263.5" y="742.5" width="40" height="60" fill="var(--bg)"/>
+        <rect x="-263.5" y="742.5" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_18_shadow" filter="url(#Shadow)">
+        <path d="M -265.7 725 L -174 725 C -165.16344 725 -158 732.16344 -158 741 L -158 900 C -158 908.8366 -165.16344 916 -174 916 L -265.7 916 C -274.53656 916 -281.7 908.8366 -281.7 900 L -281.7 741 C -281.7 732.16344 -274.53656 725 -265.7 725 Z" fill="var(--mkp-bof)"/>
+        <path d="M -265.7 725 L -174 725 C -165.16344 725 -158 732.16344 -158 741 L -158 900 C -158 908.8366 -165.16344 916 -174 916 L -265.7 916 C -274.53656 916 -281.7 908.8366 -281.7 900 L -281.7 741 C -281.7 732.16344 -274.53656 725 -265.7 725 Z" stroke="var(--mkp-bg-blue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_21_shadow" filter="url(#Shadow)">
+        <rect x="-20" y="859" width="50" height="16" fill="var(--bg)"/>
+      </g>
+      <g id="Graphic_22_shadow" filter="url(#Shadow)">
+        <rect x="-20" y="836" width="50" height="16.412659" fill="var(--bg)"/>
+      </g>
+      <g id="Graphic_23_shadow" filter="url(#Shadow)">
+        <rect x="37" y="836" width="50" height="16.412659" fill="var(--bg)"/>
+      </g>
+      <g id="Graphic_25_shadow" filter="url(#Shadow)">
+        <rect x="50" y="776.5873" width="50" height="16.412659" fill="var(--bg)"/>
+      </g>
+      <g id="Graphic_26_shadow" filter="url(#Shadow)">
+        <rect x="50" y="753.5873" width="50" height="16.412659" fill="var(--bg)"/>
+      </g>
+      <g id="Graphic_27_shadow" filter="url(#Shadow)">
+        <rect x="-20" y="753.5873" width="50" height="39.41266" fill="var(--bg)"/>
+      </g>
+      <g id="Graphic_28_shadow" filter="url(#Shadow)">
+        <path d="M -37.427547 725 L 114.57245 725 C 123.40901 725 130.57245 732.16344 130.57245 741 L 130.57245 900 C 130.57245 908.8366 123.40901 916 114.57245 916 L -37.427547 916 C -46.2641 916 -53.427547 908.8366 -53.427547 900 L -53.427547 741 C -53.427547 732.16344 -46.2641 725 -37.427547 725 Z" fill="var(--mkp-bof)"/>
+        <path d="M -37.427547 725 L 114.57245 725 C 123.40901 725 130.57245 732.16344 130.57245 741 L 130.57245 900 C 130.57245 908.8366 123.40901 916 114.57245 916 L -37.427547 916 C -46.2641 916 -53.427547 908.8366 -53.427547 900 L -53.427547 741 C -53.427547 732.16344 -46.2641 725 -37.427547 725 Z" stroke="var(--mkp-bg-blue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Group_2">
+        <g id="Graphic_18">
+          <title>Bézier</title>
+          <path d="M -265.7 725 L -174 725 C -165.16344 725 -158 732.16344 -158 741 L -158 900 C -158 908.8366 -165.16344 916 -174 916 L -265.7 916 C -274.53656 916 -281.7 908.8366 -281.7 900 L -281.7 741 C -281.7 732.16344 -274.53656 725 -265.7 725 Z" fill="var(--mkp-bof)"/>
+          <path d="M -265.7 725 L -174 725 C -165.16344 725 -158 732.16344 -158 741 L -158 900 C -158 908.8366 -165.16344 916 -174 916 L -265.7 916 C -274.53656 916 -281.7 908.8366 -281.7 900 L -281.7 741 C -281.7 732.16344 -274.53656 725 -265.7 725 Z" stroke="var(--mkp-bg-blue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(-276.7 888)" fill="var(--bg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--bg)" x="11.107811" y="18">Application</tspan>
+          </text>
+        </g>
+        <g id="Group_15">
+          <g id="Graphic_17">
+            <title>{;}</title>
+            <rect x="-263.5" y="742.5" width="40" height="60" fill="var(--bg)"/>
+            <rect x="-263.5" y="742.5" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <text transform="translate(-258.5 761)" fill="#a8d1e7">
+              <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="#a8d1e7" x="6.049805" y="18">{;}</tspan>
+            </text>
+          </g>
+          <g id="Graphic_16">
+            <path d="M -221.68424 753.6 L -229.68424 741.6 L -221.68424 741.6 Z" fill="var(--mkp-bof)"/>
+            <path d="M -221.68424 753.6 L -229.68424 741.6 L -221.68424 741.6 Z" stroke="var(--mkp-bof)" stroke-linecap="round" stroke-linejoin="round" stroke-width=".25"/>
+          </g>
+        </g>
+        <g id="Group_12">
+          <g id="Graphic_14">
+            <title>{;}</title>
+            <rect x="-216.25788" y="742.5" width="40" height="60" fill="var(--bg)"/>
+            <rect x="-216.25788" y="742.5" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <text transform="translate(-211.25788 761)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="6.049805" y="18">{;}</tspan>
+            </text>
+          </g>
+          <g id="Graphic_13">
+            <path d="M -174.6 753 L -182.6 741 L -174.6 741 Z" fill="var(--mkp-bof)"/>
+          </g>
+        </g>
+        <g id="Group_9">
+          <g id="Graphic_11">
+            <title>{;}</title>
+            <rect x="-216.25788" y="813.55" width="40" height="60" fill="var(--bg)"/>
+            <rect x="-216.25788" y="813.55" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <text transform="translate(-211.25788 832.05)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="6.049805" y="18">{;}</tspan>
+            </text>
+          </g>
+          <g id="Graphic_10">
+            <path d="M -174.6 824 L -182.6 812 L -174.6 812 Z" fill="var(--mkp-bof)"/>
+          </g>
+        </g>
+        <g id="Group_6">
+          <g id="Graphic_8">
+            <title>{;}</title>
+            <rect x="-263.5" y="742.5" width="40" height="60" fill="var(--bg)"/>
+            <rect x="-263.5" y="742.5" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <text transform="translate(-258.5 761)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="6.049805" y="18">{;}</tspan>
+            </text>
+          </g>
+          <g id="Graphic_7">
+            <path d="M -222 753 L -230 741 L -222 741 Z" fill="var(--mkp-bof)"/>
+          </g>
+        </g>
+        <g id="Group_3">
+          <g id="Graphic_5">
+            <title>{;}</title>
+            <rect x="-263.5" y="813.55" width="40" height="60" fill="var(--bg)"/>
+            <rect x="-263.5" y="813.55" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <text transform="translate(-258.5 832.05)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="6.049805" y="18">{;}</tspan>
+            </text>
+          </g>
+          <g id="Graphic_4">
+            <path d="M -221.6 823.8 L -229.6 811.8 L -221.6 811.8 Z" fill="var(--mkp-bof)"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group_19">
+        <title>Groupe</title>
+        <g id="Graphic_28">
+          <path d="M -37.427547 725 L 114.57245 725 C 123.40901 725 130.57245 732.16344 130.57245 741 L 130.57245 900 C 130.57245 908.8366 123.40901 916 114.57245 916 L -37.427547 916 C -46.2641 916 -53.427547 908.8366 -53.427547 900 L -53.427547 741 C -53.427547 732.16344 -46.2641 725 -37.427547 725 Z" fill="var(--mkp-bof)"/>
+          <path d="M -37.427547 725 L 114.57245 725 C 123.40901 725 130.57245 732.16344 130.57245 741 L 130.57245 900 C 130.57245 908.8366 123.40901 916 114.57245 916 L -37.427547 916 C -46.2641 916 -53.427547 908.8366 -53.427547 900 L -53.427547 741 C -53.427547 732.16344 -46.2641 725 -37.427547 725 Z" stroke="var(--mkp-bg-blue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(-48.427547 888)" fill="var(--bg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--bg)" x="42.942383" y="18">Plateforme</tspan>
+          </text>
+        </g>
+        <g id="Group_24">
+          <title>Groupe</title>
+          <g id="Graphic_27">
+            <rect x="-20" y="753.5873" width="50" height="39.41266" fill="var(--bg)"/>
+            <text transform="translate(-15 763.2937)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="9.281738" y="8"> OEM </tspan>
+              <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="4.7246094" y="18">Widgets</tspan>
+            </text>
+          </g>
+          <g id="Graphic_26">
+            <rect x="50" y="753.5873" width="50" height="16.412659" fill="var(--bg)"/>
+            <text transform="translate(55 756.7937)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="7.088867" y="8">Canvas</tspan>
+            </text>
+          </g>
+          <g id="Graphic_25">
+            <rect x="50" y="776.5873" width="50" height="16.412659" fill="var(--bg)"/>
+            <text transform="translate(55 779.7937)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="8.233643" y="8">Events</tspan>
+            </text>
+          </g>
+        </g>
+        <g id="Group_20">
+          <title>Groupe</title>
+          <g id="Graphic_23">
+            <rect x="37" y="836" width="50" height="16.412659" fill="var(--bg)"/>
+            <text transform="translate(42 839.2063)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="5.566162" y="8">Camera</tspan>
+            </text>
+          </g>
+          <g id="Graphic_22">
+            <rect x="-20" y="836" width="50" height="16.412659" fill="var(--bg)"/>
+            <text transform="translate(-15 839.2063)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="4.20166" y="8">Location</tspan>
+            </text>
+          </g>
+          <g id="Graphic_21">
+            <title>Rectangle</title>
+            <rect x="-20" y="859" width="50" height="16" fill="var(--bg)"/>
+            <text transform="translate(-15 862)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="1.8615723" y="8">Bluetooth</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+      <g id="Line_29">
+        <line x1="-165.35796" y1="772.6219" x2="-29.899923" y2="773.156" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_30">
+        <line x1="-165.35793" y1="843.6508" x2="-29.899947" y2="844.0925" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_31">
+        <text transform="translate(-236.26577 978.1382)" fill="var(--fg)">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="var(--fg)" x="0" y="15">Architecture d’une application native</tspan>
+        </text>
+      </g>
+      <g id="Line_32">
+        <line x1="-106.21377" y1="686" x2="-106.21377" y2="973.1382" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10.0,3.0,2.0,3.0" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>
+</p>
+<p>Nous pouvons distinguer deux parties, l’application compilée en binaire pour une plateforme cible qui interagit avec des composants et API fournis par le système d’exploitation. 
+Une application multiplateforme ne peut, par définition, pas utiliser directement les composants natifs. </p>
+<p>Une façon de résoudre ce problème aujourd’hui bien connue, est d’utiliser un <strong>bridge</strong> (pont) à la manière de <strong>React Native</strong>. </p>
+<p align="center">
+      <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="-376 978 575 317" width="575" height="317">
+  <defs>
+    <filter id="Shadow" filterUnits="userSpaceOnUse" x="-433.5" y="946.3">
+      <feGaussianBlur in="SourceAlpha" result="blur" stdDeviation="1.308"/>
+      <feOffset in="blur" result="offset" dx="0" dy="2"/>
+      <feFlood flood-color="var(--fg)" flood-opacity=".5" result="flood"/>
+      <feComposite in="flood" in2="offset" operator="in"/>
+    </filter>
+    <font-face font-family="Gill Sans" font-size="20" panose-1="2 11 5 2 2 1 4 2 2 3" units-per-em="1000" underline-position="-75.19531" underline-thickness="49.80469" slope="0" x-height="449.70703" cap-height="687.0117" ascent="917.9688" descent="-230.46875" font-weight="400">
+      <font-face-src>
+        <font-face-name name="GillSans"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Gill Sans" font-size="9" panose-1="2 11 5 2 2 1 4 2 2 3" units-per-em="1000" underline-position="-75.19531" underline-thickness="49.80469" slope="0" x-height="449.70703" cap-height="687.0117" ascent="917.9688" descent="-230.46875" font-weight="400">
+      <font-face-src>
+        <font-face-name name="GillSans"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="var(--fg)">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker_2" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-9 -4 10 8" markerWidth="10" markerHeight="8" color="var(--fg)">
+      <g>
+        <path d="M -8 0 L 0 3 L 0 -3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <font-face font-family="Helvetica Neue" font-size="16" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Gill Sans" font-size="16" panose-1="2 11 5 2 2 1 4 2 2 3" units-per-em="1000" underline-position="-75.19531" underline-thickness="49.80469" slope="0" x-height="449.70703" cap-height="687.0117" ascent="917.9688" descent="-230.46875" font-weight="400">
+      <font-face-src>
+        <font-face-name name="GillSans"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.19.2\n2021-11-30 10:39:27 +0000</metadata>
+  <g id="architecture_react_native" fill-opacity="1" stroke="none" stroke-opacity="1" fill="none" stroke-dasharray="none">
+    <title>architecture_react_native</title>
+    <g id="architecture_react_native_Layer_2">
+      <title>Layer 2</title>
+      <g id="Graphic_257_shadow" filter="url(#Shadow)">
+        <path d="M -311.6 1123.8 L -319.6 1111.8 L -311.6 1111.8 Z" fill="var(--mkp-bof)"/>
+      </g>
+      <g id="Graphic_258_shadow" filter="url(#Shadow)">
+        <rect x="-353.5" y="1113.55" width="40" height="60" fill="var(--bg)"/>
+        <rect x="-353.5" y="1113.55" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_260_shadow" filter="url(#Shadow)">
+        <path d="M -312 1053 L -320 1041 L -312 1041 Z" fill="var(--mkp-bof)"/>
+      </g>
+      <g id="Graphic_261_shadow" filter="url(#Shadow)">
+        <rect x="-353.5" y="1042.5" width="40" height="60" fill="var(--bg)"/>
+        <rect x="-353.5" y="1042.5" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_263_shadow" filter="url(#Shadow)">
+        <path d="M -264.6 1124 L -272.6 1112 L -264.6 1112 Z" fill="var(--mkp-bof)"/>
+      </g>
+      <g id="Graphic_264_shadow" filter="url(#Shadow)">
+        <rect x="-306.25788" y="1113.55" width="40" height="60" fill="var(--bg)"/>
+        <rect x="-306.25788" y="1113.55" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_266_shadow" filter="url(#Shadow)">
+        <path d="M -264.6 1053 L -272.6 1041 L -264.6 1041 Z" fill="var(--mkp-bof)"/>
+      </g>
+      <g id="Graphic_267_shadow" filter="url(#Shadow)">
+        <rect x="-306.25788" y="1042.5" width="40" height="60" fill="var(--bg)"/>
+        <rect x="-306.25788" y="1042.5" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_269_shadow" filter="url(#Shadow)">
+        <path d="M -311.68424 1053.6 L -319.68424 1041.6 L -311.68424 1041.6 Z" fill="var(--mkp-bof)"/>
+        <path d="M -311.68424 1053.6 L -319.68424 1041.6 L -311.68424 1041.6 Z" stroke="var(--mkp-bof)" stroke-linecap="round" stroke-linejoin="round" stroke-width=".25"/>
+      </g>
+      <g id="Graphic_270_shadow" filter="url(#Shadow)">
+        <rect x="-353.5" y="1042.5" width="40" height="60" fill="var(--bg)"/>
+        <rect x="-353.5" y="1042.5" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_271_shadow" filter="url(#Shadow)">
+        <path d="M -355.7 1025 L -264 1025 C -255.16344 1025 -248 1032.1634 -248 1041 L -248 1200 C -248 1208.8366 -255.16344 1216 -264 1216 L -355.7 1216 C -364.53656 1216 -371.7 1208.8366 -371.7 1200 L -371.7 1041 C -371.7 1032.1634 -364.53656 1025 -355.7 1025 Z" fill="var(--mkp-bof)"/>
+        <path d="M -355.7 1025 L -264 1025 C -255.16344 1025 -248 1032.1634 -248 1041 L -248 1200 C -248 1208.8366 -255.16344 1216 -264 1216 L -355.7 1216 C -364.53656 1216 -371.7 1208.8366 -371.7 1200 L -371.7 1041 C -371.7 1032.1634 -364.53656 1025 -355.7 1025 Z" stroke="var(--mkp-bg-blue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_228_shadow" filter="url(#Shadow)">
+        <rect x="44.427547" y="1159" width="50" height="16" fill="var(--bg)"/>
+      </g>
+      <g id="Graphic_229_shadow" filter="url(#Shadow)">
+        <rect x="44.427547" y="1136" width="50" height="16.412659" fill="var(--bg)"/>
+      </g>
+      <g id="Graphic_230_shadow" filter="url(#Shadow)">
+        <rect x="101.42755" y="1136" width="50" height="16.412659" fill="var(--bg)"/>
+      </g>
+      <g id="Graphic_232_shadow" filter="url(#Shadow)">
+        <rect x="114.42755" y="1076.5873" width="50" height="16.412659" fill="var(--bg)"/>
+      </g>
+      <g id="Graphic_233_shadow" filter="url(#Shadow)">
+        <rect x="114.42755" y="1053.5873" width="50" height="16.412659" fill="var(--bg)"/>
+      </g>
+      <g id="Graphic_234_shadow" filter="url(#Shadow)">
+        <rect x="44.427547" y="1053.5873" width="50" height="39.41266" fill="var(--bg)"/>
+      </g>
+      <g id="Graphic_235_shadow" filter="url(#Shadow)">
+        <path d="M 27 1025 L 179 1025 C 187.83656 1025 195 1032.1634 195 1041 L 195 1200 C 195 1208.8366 187.83656 1216 179 1216 L 27 1216 C 18.163444 1216 11 1208.8366 11 1200 L 11 1041 C 11 1032.1634 18.163444 1025 27 1025 Z" fill="var(--mkp-bof)"/>
+        <path d="M 27 1025 L 179 1025 C 187.83656 1025 195 1032.1634 195 1041 L 195 1200 C 195 1208.8366 187.83656 1216 179 1216 L 27 1216 C 18.163444 1216 11 1208.8366 11 1200 L 11 1041 C 11 1032.1634 18.163444 1025 27 1025 Z" stroke="var(--mkp-bg-blue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_253_shadow" filter="url(#Shadow)">
+        <rect x="-185" y="988" width="64" height="265" fill="var(--mkp-bof)"/>
+        <rect x="-185" y="988" width="64" height="265" stroke="var(--mkp-bg-blue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Group_255">
+        <g id="Graphic_271">
+          <title>Bézier</title>
+          <path d="M -355.7 1025 L -264 1025 C -255.16344 1025 -248 1032.1634 -248 1041 L -248 1200 C -248 1208.8366 -255.16344 1216 -264 1216 L -355.7 1216 C -364.53656 1216 -371.7 1208.8366 -371.7 1200 L -371.7 1041 C -371.7 1032.1634 -364.53656 1025 -355.7 1025 Z" fill="var(--mkp-bof)"/>
+          <path d="M -355.7 1025 L -264 1025 C -255.16344 1025 -248 1032.1634 -248 1041 L -248 1200 C -248 1208.8366 -255.16344 1216 -264 1216 L -355.7 1216 C -364.53656 1216 -371.7 1208.8366 -371.7 1200 L -371.7 1041 C -371.7 1032.1634 -364.53656 1025 -355.7 1025 Z" stroke="var(--mkp-bg-blue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(-366.7 1188)" fill="var(--bg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--bg)" x="11.107811" y="18">Application</tspan>
+          </text>
+        </g>
+        <g id="Group_268">
+          <g id="Graphic_270">
+            <title>{;}</title>
+            <rect x="-353.5" y="1042.5" width="40" height="60" fill="var(--bg)"/>
+            <rect x="-353.5" y="1042.5" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <text transform="translate(-348.5 1061)" fill="#a8d1e7">
+              <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="#a8d1e7" x="6.049805" y="18">{;}</tspan>
+            </text>
+          </g>
+          <g id="Graphic_269">
+            <path d="M -311.68424 1053.6 L -319.68424 1041.6 L -311.68424 1041.6 Z" fill="var(--mkp-bof)"/>
+            <path d="M -311.68424 1053.6 L -319.68424 1041.6 L -311.68424 1041.6 Z" stroke="var(--mkp-bof)" stroke-linecap="round" stroke-linejoin="round" stroke-width=".25"/>
+          </g>
+        </g>
+        <g id="Group_265">
+          <g id="Graphic_267">
+            <title>{;}</title>
+            <rect x="-306.25788" y="1042.5" width="40" height="60" fill="var(--bg)"/>
+            <rect x="-306.25788" y="1042.5" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <text transform="translate(-301.25788 1061)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="6.049805" y="18">{;}</tspan>
+            </text>
+          </g>
+          <g id="Graphic_266">
+            <path d="M -264.6 1053 L -272.6 1041 L -264.6 1041 Z" fill="var(--mkp-bof)"/>
+          </g>
+        </g>
+        <g id="Group_262">
+          <g id="Graphic_264">
+            <title>{;}</title>
+            <rect x="-306.25788" y="1113.55" width="40" height="60" fill="var(--bg)"/>
+            <rect x="-306.25788" y="1113.55" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <text transform="translate(-301.25788 1132.05)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="6.049805" y="18">{;}</tspan>
+            </text>
+          </g>
+          <g id="Graphic_263">
+            <path d="M -264.6 1124 L -272.6 1112 L -264.6 1112 Z" fill="var(--mkp-bof)"/>
+          </g>
+        </g>
+        <g id="Group_259">
+          <g id="Graphic_261">
+            <title>{;}</title>
+            <rect x="-353.5" y="1042.5" width="40" height="60" fill="var(--bg)"/>
+            <rect x="-353.5" y="1042.5" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <text transform="translate(-348.5 1061)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="6.049805" y="18">{;}</tspan>
+            </text>
+          </g>
+          <g id="Graphic_260">
+            <path d="M -312 1053 L -320 1041 L -312 1041 Z" fill="var(--mkp-bof)"/>
+          </g>
+        </g>
+        <g id="Group_256">
+          <g id="Graphic_258">
+            <title>{;}</title>
+            <rect x="-353.5" y="1113.55" width="40" height="60" fill="var(--bg)"/>
+            <rect x="-353.5" y="1113.55" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <text transform="translate(-348.5 1132.05)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="6.049805" y="18">{;}</tspan>
+            </text>
+          </g>
+          <g id="Graphic_257">
+            <path d="M -311.6 1123.8 L -319.6 1111.8 L -311.6 1111.8 Z" fill="var(--mkp-bof)"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group_226">
+        <title>Groupe</title>
+        <g id="Graphic_235">
+          <path d="M 27 1025 L 179 1025 C 187.83656 1025 195 1032.1634 195 1041 L 195 1200 C 195 1208.8366 187.83656 1216 179 1216 L 27 1216 C 18.163444 1216 11 1208.8366 11 1200 L 11 1041 C 11 1032.1634 18.163444 1025 27 1025 Z" fill="var(--mkp-bof)"/>
+          <path d="M 27 1025 L 179 1025 C 187.83656 1025 195 1032.1634 195 1041 L 195 1200 C 195 1208.8366 187.83656 1216 179 1216 L 27 1216 C 18.163444 1216 11 1208.8366 11 1200 L 11 1041 C 11 1032.1634 18.163444 1025 27 1025 Z" stroke="var(--mkp-bg-blue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(16 1188)" fill="var(--bg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--bg)" x="42.942383" y="18">Plateforme</tspan>
+          </text>
+        </g>
+        <g id="Group_231">
+          <title>Groupe</title>
+          <g id="Graphic_234">
+            <rect x="44.427547" y="1053.5873" width="50" height="39.41266" fill="var(--bg)"/>
+            <text transform="translate(49.427547 1063.2937)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="9.281738" y="8"> OEM </tspan>
+              <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="4.7246094" y="18">Widgets</tspan>
+            </text>
+          </g>
+          <g id="Graphic_233">
+            <rect x="114.42755" y="1053.5873" width="50" height="16.412659" fill="var(--bg)"/>
+            <text transform="translate(119.42755 1056.7937)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="7.088867" y="8">Canvas</tspan>
+            </text>
+          </g>
+          <g id="Graphic_232">
+            <rect x="114.42755" y="1076.5873" width="50" height="16.412659" fill="var(--bg)"/>
+            <text transform="translate(119.42755 1079.7937)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="8.233643" y="8">Events</tspan>
+            </text>
+          </g>
+        </g>
+        <g id="Group_227">
+          <title>Groupe</title>
+          <g id="Graphic_230">
+            <rect x="101.42755" y="1136" width="50" height="16.412659" fill="var(--bg)"/>
+            <text transform="translate(106.42755 1139.2063)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="5.566162" y="8">Camera</tspan>
+            </text>
+          </g>
+          <g id="Graphic_229">
+            <title>Rectangle</title>
+            <rect x="44.427547" y="1136" width="50" height="16.412659" fill="var(--bg)"/>
+            <text transform="translate(49.427547 1139.2063)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="4.20166" y="8">Location</tspan>
+            </text>
+          </g>
+          <g id="Graphic_228">
+            <rect x="44.427547" y="1159" width="50" height="16" fill="var(--bg)"/>
+            <text transform="translate(49.427547 1162)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="1.8615723" y="8">Bluetooth</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+      <g id="Line_236">
+        <path d="M -111.1 1120.5 L -36.86424 1120.5 L -36.86424 1073.2937 L 34.527547 1073.2937" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_238">
+        <text transform="translate(-224.204 1271)" fill="var(--fg)">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="var(--fg)" x="0" y="15">Architecture d’une application react native</tspan>
+        </text>
+      </g>
+      <g id="Line_242">
+        <line x1="-55.5" y1="978.8618" x2="-55.5" y2="1266" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10.0,3.0,2.0,3.0" stroke-width="1"/>
+      </g>
+      <g id="Graphic_253">
+        <rect x="-185" y="988" width="64" height="265" fill="var(--mkp-bof)"/>
+        <rect x="-185" y="988" width="64" height="265" stroke="var(--mkp-bg-blue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <clipPath id="clip_path">
+          <rect x="0" y="0" width="64" height="265" fill="var(--mkp-bof)"/>
+        </clipPath>
+        <text clip-path="url(#clip_path)" transform="translate(-185 988)" fill="var(--bg)">
+          <tspan font-family="Gill Sans" font-size="16" font-weight="400" fill="var(--bg)" x="27.496094" y="90">B</tspan>
+          <tspan font-family="Gill Sans" font-size="16" font-weight="400" fill="var(--bg)" x="27.16797" y="109">R</tspan>
+          <tspan font-family="Gill Sans" font-size="16" font-weight="400" fill="var(--bg)" x="30" y="128">I</tspan>
+          <tspan font-family="Gill Sans" font-size="16" font-weight="400" fill="var(--bg)" x="26" y="147">D</tspan>
+          <tspan font-family="Gill Sans" font-size="16" font-weight="400" fill="var(--bg)" x="26.078125" y="166">G</tspan>
+          <tspan font-family="Gill Sans" font-size="16" font-weight="400" fill="var(--bg)" x="28" y="185">E</tspan>
+        </text>
+      </g>
+      <g id="Line_254">
+        <path d="M -110.0905 1120.5 L -36.925124 1120.5 L -36.925124 1144.2063 L 34.527547 1144.2063" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_272">
+        <line x1="-238.1" y1="1120.5" x2="-194.9" y2="1120.5" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>
+</p>
+<p>Le <strong>bridge</strong> expose une abstraction des composants et API commune aux différentes plateformes. On manipule ainsi des composants génériques qui sont traduits par le <strong>bridge</strong> en composants natifs. Ainsi, il suffit d’une base de code pour cibler plusieurs plateformes. </p>
+<p>Cette solution a cependant quelques inconvénients, comme la nécessité d’être exécuté au <strong>runtime</strong> et par la-même d’affecter la performance de l’application. </p>
+<p>Flutter a choisi une approche radicalement différente afin d’optimiser les performances. </p>
+<p align="center">
+       <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="-471 978 670 317" width="670" height="317">
+  <defs>
+    <filter id="Shadow" filterUnits="userSpaceOnUse" x="-538" y="946.3">
+      <feGaussianBlur in="SourceAlpha" result="blur" stdDeviation="1.308"/>
+      <feOffset in="blur" result="offset" dx="0" dy="2"/>
+      <feFlood flood-color="var(--fg)" flood-opacity=".5" result="flood"/>
+      <feComposite in="flood" in2="offset" operator="in"/>
+    </filter>
+    <font-face font-family="Gill Sans" font-size="20" panose-1="2 11 5 2 2 1 4 2 2 3" units-per-em="1000" underline-position="-75.19531" underline-thickness="49.80469" slope="0" x-height="449.70703" cap-height="687.0117" ascent="917.9688" descent="-230.46875" font-weight="400">
+      <font-face-src>
+        <font-face-name name="GillSans"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Gill Sans" font-size="9" panose-1="2 11 5 2 2 1 4 2 2 3" units-per-em="1000" underline-position="-75.19531" underline-thickness="49.80469" slope="0" x-height="449.70703" cap-height="687.0117" ascent="917.9688" descent="-230.46875" font-weight="400">
+      <font-face-src>
+        <font-face-name name="GillSans"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Helvetica Neue" font-size="16" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="var(--fg)">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker_2" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-9 -4 10 8" markerWidth="10" markerHeight="8" color="var(--fg)">
+      <g>
+        <path d="M -8 0 L 0 3 L 0 -3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.19.2\n2021-11-30 10:39:27 +0000</metadata>
+  <g id="architecture_flutter" fill-opacity="1" stroke="none" stroke-opacity="1" fill="none" stroke-dasharray="none">
+    <title>architecture_flutter</title>
+    <g id="architecture_flutter_Layer_2">
+      <title>Layer 2</title>
+      <g id="Graphic_273_shadow" filter="url(#Shadow)">
+        <path d="M -406.9 1125.7309 L -414.9 1113.7309 L -406.9 1113.7309 Z" fill="var(--mkp-bof)"/>
+      </g>
+      <g id="Graphic_274_shadow" filter="url(#Shadow)">
+        <rect x="-448.8" y="1115.4809" width="40" height="60" fill="var(--bg)"/>
+        <rect x="-448.8" y="1115.4809" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_276_shadow" filter="url(#Shadow)">
+        <path d="M -407.3 1054.9309 L -415.3 1042.9309 L -407.3 1042.9309 Z" fill="var(--mkp-bof)"/>
+      </g>
+      <g id="Graphic_277_shadow" filter="url(#Shadow)">
+        <rect x="-448.8" y="1044.4309" width="40" height="60" fill="var(--bg)"/>
+        <rect x="-448.8" y="1044.4309" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_279_shadow" filter="url(#Shadow)">
+        <path d="M -359.9 1125.7309 L -367.9 1113.7309 L -359.9 1113.7309 Z" fill="var(--mkp-bof)"/>
+      </g>
+      <g id="Graphic_280_shadow" filter="url(#Shadow)">
+        <rect x="-401.5579" y="1115.2809" width="40" height="60" fill="var(--bg)"/>
+        <rect x="-401.5579" y="1115.2809" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_282_shadow" filter="url(#Shadow)">
+        <path d="M -359.9 1054.9309 L -367.9 1042.9309 L -359.9 1042.9309 Z" fill="var(--mkp-bof)"/>
+      </g>
+      <g id="Graphic_283_shadow" filter="url(#Shadow)">
+        <rect x="-401.5579" y="1044.4309" width="40" height="60" fill="var(--bg)"/>
+        <rect x="-401.5579" y="1044.4309" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_285_shadow" filter="url(#Shadow)">
+        <path d="M -406.98424 1055.5309 L -414.98424 1043.5309 L -406.98424 1043.5309 Z" fill="var(--mkp-bof)"/>
+        <path d="M -406.98424 1055.5309 L -414.98424 1043.5309 L -406.98424 1043.5309 Z" stroke="var(--mkp-bof)" stroke-linecap="round" stroke-linejoin="round" stroke-width=".25"/>
+      </g>
+      <g id="Graphic_286_shadow" filter="url(#Shadow)">
+        <rect x="-448.8" y="1044.4309" width="40" height="60" fill="var(--bg)"/>
+        <rect x="-448.8" y="1044.4309" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_287_shadow" filter="url(#Shadow)">
+        <path d="M -451 1026.9309 L -359.3 1026.9309 C -350.46344 1026.9309 -343.3 1034.0943 -343.3 1042.9309 L -343.3 1201.9309 C -343.3 1210.7675 -350.46344 1217.9309 -359.3 1217.9309 L -451 1217.9309 C -459.83656 1217.9309 -467 1210.7675 -467 1201.9309 L -467 1042.9309 C -467 1034.0943 -459.83656 1026.9309 -451 1026.9309 Z" fill="var(--mkp-bof)"/>
+        <path d="M -451 1026.9309 L -359.3 1026.9309 C -350.46344 1026.9309 -343.3 1034.0943 -343.3 1042.9309 L -343.3 1201.9309 C -343.3 1210.7675 -350.46344 1217.9309 -359.3 1217.9309 L -451 1217.9309 C -459.83656 1217.9309 -467 1210.7675 -467 1201.9309 L -467 1042.9309 C -467 1034.0943 -459.83656 1026.9309 -451 1026.9309 Z" stroke="var(--mkp-bg-blue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_228_shadow" filter="url(#Shadow)">
+        <rect x="44.427547" y="1159" width="50" height="16" fill="var(--bg)"/>
+      </g>
+      <g id="Graphic_229_shadow" filter="url(#Shadow)">
+        <rect x="44.427547" y="1136" width="50" height="16.412659" fill="var(--bg)"/>
+      </g>
+      <g id="Graphic_230_shadow" filter="url(#Shadow)">
+        <rect x="101.42755" y="1136" width="50" height="16.412659" fill="var(--bg)"/>
+      </g>
+      <g id="Graphic_232_shadow" filter="url(#Shadow)">
+        <rect x="44.427547" y="1087" width="50" height="16.412659" fill="var(--bg)"/>
+      </g>
+      <g id="Graphic_233_shadow" filter="url(#Shadow)">
+        <rect x="44.427547" y="1064" width="50" height="16.412659" fill="var(--bg)"/>
+      </g>
+      <g id="Graphic_235_shadow" filter="url(#Shadow)">
+        <path d="M 27 1025 L 179 1025 C 187.83656 1025 195 1032.1634 195 1041 L 195 1200 C 195 1208.8366 187.83656 1216 179 1216 L 27 1216 C 18.163444 1216 11 1208.8366 11 1200 L 11 1041 C 11 1032.1634 18.163444 1025 27 1025 Z" fill="var(--mkp-bof)"/>
+        <path d="M 27 1025 L 179 1025 C 187.83656 1025 195 1032.1634 195 1041 L 195 1200 C 195 1208.8366 187.83656 1216 179 1216 L 27 1216 C 18.163444 1216 11 1208.8366 11 1200 L 11 1041 C 11 1032.1634 18.163444 1025 27 1025 Z" stroke="var(--mkp-bg-blue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_265_shadow" filter="url(#Shadow)">
+        <rect x="-264.6" y="1117" width="51.2" height="53.612565" fill="var(--bg)"/>
+      </g>
+      <g id="Graphic_263_shadow" filter="url(#Shadow)">
+        <rect x="-264.6" y="1043" width="51.2" height="53.612565" fill="var(--bg)"/>
+      </g>
+      <g id="Graphic_264_shadow" filter="url(#Shadow)">
+        <rect x="-287" y="994" width="96" height="256" fill="var(--mkp-bof)"/>
+        <rect x="-287" y="994" width="96" height="256" stroke="var(--mkp-bg-blue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Group_271">
+        <g id="Graphic_287">
+          <title>Bézier</title>
+          <path d="M -451 1026.9309 L -359.3 1026.9309 C -350.46344 1026.9309 -343.3 1034.0943 -343.3 1042.9309 L -343.3 1201.9309 C -343.3 1210.7675 -350.46344 1217.9309 -359.3 1217.9309 L -451 1217.9309 C -459.83656 1217.9309 -467 1210.7675 -467 1201.9309 L -467 1042.9309 C -467 1034.0943 -459.83656 1026.9309 -451 1026.9309 Z" fill="var(--mkp-bof)"/>
+          <path d="M -451 1026.9309 L -359.3 1026.9309 C -350.46344 1026.9309 -343.3 1034.0943 -343.3 1042.9309 L -343.3 1201.9309 C -343.3 1210.7675 -350.46344 1217.9309 -359.3 1217.9309 L -451 1217.9309 C -459.83656 1217.9309 -467 1210.7675 -467 1201.9309 L -467 1042.9309 C -467 1034.0943 -459.83656 1026.9309 -451 1026.9309 Z" stroke="var(--mkp-bg-blue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(-462 1189.9309)" fill="var(--bg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--bg)" x="11.107811" y="18">Application</tspan>
+          </text>
+        </g>
+        <g id="Group_284">
+          <g id="Graphic_286">
+            <title>{;}</title>
+            <rect x="-448.8" y="1044.4309" width="40" height="60" fill="var(--bg)"/>
+            <rect x="-448.8" y="1044.4309" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <text transform="translate(-443.8 1062.9309)" fill="var(--mkp-bof)">
+              <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--mkp-bof)" x="6.049805" y="18">{;}</tspan>
+            </text>
+          </g>
+          <g id="Graphic_285">
+            <path d="M -406.98424 1055.5309 L -414.98424 1043.5309 L -406.98424 1043.5309 Z" fill="var(--mkp-bof)"/>
+            <path d="M -406.98424 1055.5309 L -414.98424 1043.5309 L -406.98424 1043.5309 Z" stroke="var(--mkp-bof)" stroke-linecap="round" stroke-linejoin="round" stroke-width=".25"/>
+          </g>
+        </g>
+        <g id="Group_281">
+          <g id="Graphic_283">
+            <title>{;}</title>
+            <rect x="-401.5579" y="1044.4309" width="40" height="60" fill="var(--bg)"/>
+            <rect x="-401.5579" y="1044.4309" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <text transform="translate(-396.5579 1062.9309)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="6.049805" y="18">{;}</tspan>
+            </text>
+          </g>
+          <g id="Graphic_282">
+            <path d="M -359.9 1054.9309 L -367.9 1042.9309 L -359.9 1042.9309 Z" fill="var(--mkp-bof)"/>
+          </g>
+        </g>
+        <g id="Group_278">
+          <g id="Graphic_280">
+            <title>{;}</title>
+            <rect x="-401.5579" y="1115.2809" width="40" height="60" fill="var(--bg)"/>
+            <rect x="-401.5579" y="1115.2809" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <text transform="translate(-396.5579 1133.7809)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="6.049805" y="18">{;}</tspan>
+            </text>
+          </g>
+          <g id="Graphic_279">
+            <path d="M -359.9 1125.7309 L -367.9 1113.7309 L -359.9 1113.7309 Z" fill="var(--mkp-bof)"/>
+          </g>
+        </g>
+        <g id="Group_275">
+          <g id="Graphic_277">
+            <title>{;}</title>
+            <rect x="-448.8" y="1044.4309" width="40" height="60" fill="var(--bg)"/>
+            <rect x="-448.8" y="1044.4309" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <text transform="translate(-443.8 1062.9309)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="6.049805" y="18">{;}</tspan>
+            </text>
+          </g>
+          <g id="Graphic_276">
+            <path d="M -407.3 1054.9309 L -415.3 1042.9309 L -407.3 1042.9309 Z" fill="var(--mkp-bof)"/>
+          </g>
+        </g>
+        <g id="Group_272">
+          <g id="Graphic_274">
+            <title>{;}</title>
+            <rect x="-448.8" y="1115.4809" width="40" height="60" fill="var(--bg)"/>
+            <rect x="-448.8" y="1115.4809" width="40" height="60" stroke="var(--bg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <text transform="translate(-443.8 1133.9809)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="6.049805" y="18">{;}</tspan>
+            </text>
+          </g>
+          <g id="Graphic_273">
+            <path d="M -406.9 1125.7309 L -414.9 1113.7309 L -406.9 1113.7309 Z" fill="var(--mkp-bof)"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group_226">
+        <title>Groupe</title>
+        <g id="Graphic_235">
+          <path d="M 27 1025 L 179 1025 C 187.83656 1025 195 1032.1634 195 1041 L 195 1200 C 195 1208.8366 187.83656 1216 179 1216 L 27 1216 C 18.163444 1216 11 1208.8366 11 1200 L 11 1041 C 11 1032.1634 18.163444 1025 27 1025 Z" fill="var(--mkp-bof)"/>
+          <path d="M 27 1025 L 179 1025 C 187.83656 1025 195 1032.1634 195 1041 L 195 1200 C 195 1208.8366 187.83656 1216 179 1216 L 27 1216 C 18.163444 1216 11 1208.8366 11 1200 L 11 1041 C 11 1032.1634 18.163444 1025 27 1025 Z" stroke="var(--mkp-bg-blue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(16 1188)" fill="var(--bg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--bg)" x="42.942383" y="18">Plateforme</tspan>
+          </text>
+        </g>
+        <g id="Group_231">
+          <title>Groupe</title>
+          <g id="Graphic_233">
+            <rect x="44.427547" y="1064" width="50" height="16.412659" fill="var(--bg)"/>
+            <text transform="translate(49.427547 1067.2063)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="7.088867" y="8">Canvas</tspan>
+            </text>
+          </g>
+          <g id="Graphic_232">
+            <rect x="44.427547" y="1087" width="50" height="16.412659" fill="var(--bg)"/>
+            <text transform="translate(49.427547 1090.2063)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="8.233643" y="8">Events</tspan>
+            </text>
+          </g>
+        </g>
+        <g id="Group_227">
+          <title>Groupe</title>
+          <g id="Graphic_230">
+            <rect x="101.42755" y="1136" width="50" height="16.412659" fill="var(--bg)"/>
+            <text transform="translate(106.42755 1139.2063)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="5.566162" y="8">Camera</tspan>
+            </text>
+          </g>
+          <g id="Graphic_229">
+            <rect x="44.427547" y="1136" width="50" height="16.412659" fill="var(--bg)"/>
+            <text transform="translate(49.427547 1139.2063)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="4.20166" y="8">Location</tspan>
+            </text>
+          </g>
+          <g id="Graphic_228">
+            <rect x="44.427547" y="1159" width="50" height="16" fill="var(--bg)"/>
+            <text transform="translate(49.427547 1162)" fill="var(--fg)">
+              <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="1.8615723" y="8">Bluetooth</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+      <g id="Group_255">
+        <title>Groupe</title>
+        <g id="Graphic_264">
+          <rect x="-287" y="994" width="96" height="256" fill="var(--mkp-bof)"/>
+          <rect x="-287" y="994" width="96" height="256" stroke="var(--mkp-bg-blue)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(-282 1199)" fill="var(--bg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--bg)" x="15.705078" y="18">Flutter </tspan>
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--bg)" x="16.95996" y="41">engine</tspan>
+          </text>
+        </g>
+        <g id="Graphic_263">
+          <rect x="-264.6" y="1043" width="51.2" height="53.612565" fill="var(--bg)"/>
+          <text transform="translate(-259.6 1059.8063)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="5.32461" y="8">Widgets </tspan>
+            <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="2.0880375" y="18">Rendering</tspan>
+          </text>
+        </g>
+        <g id="Graphic_265">
+          <rect x="-264.6" y="1117" width="51.2" height="53.612565" fill="var(--bg)"/>
+          <text transform="translate(-259.6 1133.8063)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="5.085108" y="8">Platform </tspan>
+            <tspan font-family="Gill Sans" font-size="9" font-weight="400" fill="var(--fg)" x="3.87002" y="18">Channels</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Graphic_238">
+        <text transform="translate(-203.308 1271)" fill="var(--fg)">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="var(--fg)" x="0" y="15">Architecture d’une application flutter</tspan>
+        </text>
+      </g>
+      <g id="Line_242">
+        <line x1="-90.5" y1="978.8618" x2="-90.5" y2="1266" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10.0,3.0,2.0,3.0" stroke-width="1"/>
+      </g>
+      <g id="Line_269">
+        <line x1="-203.5" y1="1143.8523" x2="34.527555" y2="1144.161" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_270">
+        <line x1="-203.5003" y1="1070.0825" x2="34.527846" y2="1071.9348" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_288">
+        <line x1="-333.40003" y1="1122.2448" x2="-296.89997" y2="1122.1502" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>
+</p>
+<p>Plutôt que de traduire des composants multiplateformes en composants natifs, Flutter redessine tous les composants grâce au moteur SKIA. Un peu à la manière d’un moteur de jeu-vidéo comme Unity, cela va permettre de porter plus facilement l’application sur plusieurs plateformes. Il n’y a presque plus de dépendances aux composants natifs. 
+« Presque » car cela ne concerne que les composants natifs graphiques. Il faut bien interagir également avec les API systèmes (géolocalisation, caméra…). C’est rendu possible grâce aux <strong>Platform Channels</strong>. </p>
+<h2 id="pourquoi-dart-"><a class="header" href="#pourquoi-dart-">Pourquoi Dart ?</a></h2>
+<ol>
+<li><strong>Programmation orientée objet :</strong> elle est connue et appropriée pour les patterns de programmation de composants graphiques</li>
+<li><strong>Performances :</strong> Dart possède un allocateur de mémoire performant et optimisé pour les données ayant un court cycle de vie</li>
+<li><strong>Productivité :</strong> Dart est un langage qualifié de « haut niveau » et simple à appréhender</li>
+<li><strong>Google :</strong> Dart et Flutter sont développés par Google, ce qui laisse à ce dernier toute la liberté qu’il souhaite pour faire évoluer le framework</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pour-commencer"><a class="header" href="#pour-commencer">Pour commencer</a></h1>
+<p>Nous allons réaliser notre première application Flutter.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="configuration"><a class="header" href="#configuration">Configuration</a></h1>
+<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
+<h3 id="sdk-flutter"><a class="header" href="#sdk-flutter">SDK Flutter</a></h3>
+<ol>
+<li>Installer le SDK Flutter
+Il comprend également le SDK Dart. Se référer à la documentation Flutter pour procéder à l’installation :</li>
+</ol>
+<ul>
+<li><a href="https://flutter.dev/docs/get-started/install/macos">MacOS</a> </li>
+<li><a href="https://flutter.dev/docs/get-started/install/windows">Windows</a></li>
+<li><a href="https://flutter.dev/docs/get-started/install/linux">Linux</a> </li>
+</ul>
+<ol start="2">
+<li>Exécuter la commande suivante pour vérifier l’état de l’installation de l’environnement de développement.</li>
+</ol>
+<pre><code class="language-bash">flutter doctor
+</code></pre>
+<p>La commande flutter doctor va lister les status de tous les composants présents sur le système d’exploitation comme les outils de développement Android et iOS, mais également les IDE comme Xcode, VSCode et IntelliJ. </p>
+<h3 id="toolchains"><a class="header" href="#toolchains">Toolchains</a></h3>
+<ol>
+<li>Installer les toolchains si nécessaire</li>
+</ol>
+<p>Si la toolchain android ou iOS n’est pas bien configurée, suivre les indications données par la commande <em>flutter doctor</em>(veuillez-vous référer à la documentation d’installation).</p>
+<h3 id="choix-de-lide"><a class="header" href="#choix-de-lide">Choix de l’IDE</a></h3>
+<p>Il est possible de développer une application Flutter avec 3 IDE au choix :</p>
+<details>
+<summary>VSCode</summary>
+<p>Si vous êtes familiarisé avec cet éditeur, l’environnement Flutter y est pleinement intégré. </p>
+<ol>
+<li>Configurer VSCode pour Flutter</li>
+</ol>
+<p>Se référer à la <a href="https://flutter.dev/docs/get-started/editor?tab=vscode">documentation</a>.</p>
+</details>
+<details>
+<summary>Android Studio/ IntelliJ</summary>
+<p>Au contraire, si vous préférez la suite IntelliJ, l’environnement Flutter est également disponible.</p>
+<ol>
+<li>Configurer Android Studio / IntelliJ pour Flutter</li>
+</ol>
+<p>Se référer à la <a href="https://flutter.dev/docs/get-started/editor?tab=androidstudio">documentation</a>.</p>
+</details>
+<details>
+<summary>Emacs</summary>
+<p>Pour les plus téméraires, il est possible d’utiliser Emacs.</p>
+<ol>
+<li>Configurer Emacs pour Flutter</li>
+</ol>
+<p>Se référer à la <a href="https://flutter.dev/docs/get-started/editor?tab=emacs">documentation</a>.</p>
+</details>
+<hr />
+<div style="break-before: page; page-break-before: always;"></div><h1 id="le-traditionnel-hello-world"><a class="header" href="#le-traditionnel-hello-world">Le traditionnel Hello World</a></h1>
+<ol>
+<li>Créer un projet dart à l’aide de la commande <code>dart create -t console-simple hello-world</code>.</li>
+</ol>
+<p>Cela va générer un dossier avec la structure suivante :</p>
+<pre><code class="language-bash">hello-world               
+├─ bin                    
+│  └─ hello_world.dart # Fichier source / point d'entrée principal de l'application    
+├─ CHANGELOG.md           
+├─ README.md              
+├─ analysis_options.yaml # Configuration de l'analyse statique dart
+├─ pubspec.lock # Fichier de verrouillage de résolution des dépendances           
+└─ pubspec.yaml # Fichier de configuration de l'application dart           
+</code></pre>
+<p>Prenons le fichier <code>hello_world.dart</code>. Il contient une fonction appelée <strong>main</strong> prenant une liste d’arguments en paramètre. Cette fonction est le point d’entrée de l’application. </p>
+<pre><code class="language-dart">// hello_world.dart
+void main(List&lt;String&gt; arguments) {
+    print('Hello world!');
+}
+</code></pre>
+<p>Dans le fichier <code>pubspec.yaml</code>, on renseigne les métadonnées nécessaires à l'application dart.</p>
+<pre><code class="language-yaml">name: hello_world
+description: A simple command-line application.
+version: 1.0.0
+# homepage: https://www.example.com
+
+environment:
+  sdk: '&gt;=2.14.1 &lt;3.0.0'
+
+
+# dependencies:
+#   path: ^1.8.0
+
+dev_dependencies:
+  lints: ^1.0.0
+</code></pre>
+<ol start="2">
+<li>Exécuter le programme avec la commande <code>dart run</code></li>
+</ol>
+<details>
+<summary>Solution</summary>
+<pre><code class="language-shell">hello-world % dart run
+Hello world!
+</code></pre>
+</details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pub"><a class="header" href="#pub">PUB</a></h1>
+<p><strong>PUB</strong> est le gestionnaire de paquet officiel de l’écosystème dart.</p>
+<p>Il est fourni par défaut avec le SDK Dart / Flutter. </p>
+<h2 id="configuration-1"><a class="header" href="#configuration-1">Configuration</a></h2>
+<p>Tout projet Dart doit avoir un fichier **pubspec.yaml **. On y définit l’ensemble des métadonnées nécessaires au fonctionnement du programme Dart. 
+Voici la liste des champs possibles de manière exhaustive : <a href="https://dart.dev/tools/pub/pubspec">Pubspec</a>.</p>
+<pre><code class="language-yaml">name: hello_world
+description: A simple command-line application.
+version: 1.0.0
+# homepage: https://www.example.com
+
+environment:
+  sdk: '&gt;=2.14.1 &lt;3.0.0'
+
+
+dependencies:
+  path: ^1.8.0
+
+dev_dependencies:
+  lints: ^1.0.0
+</code></pre>
+<h2 id="cli"><a class="header" href="#cli">CLI</a></h2>
+<p>Il est possible d’utiliser <strong>pub</strong> en ligne de commande. 
+Il faut distinguer une dépendance flutter d’une dépendance dart.</p>
+<pre><code class="language-bash">dart pub &lt;command&gt; 
+flutter pub &lt;command&gt;
+</code></pre>
+<small>
+<p>Pour ajouter une dépendance : <code>pub add &lt;dep&gt;</code></p>
+<p>Pour supprimer une dépendance : <code>pub remove &lt;dep&gt;</code></p>
+<p>Pour installer les dépendances définies dans un fichier <em>pubspec</em> : <code>pub get</code></p>
+<p>Pour mettre à jour les dépendances : <code>pub upgrade</code></p>
+<p>Pour lister les dépendances obsolètes : <code>pub outdated</code></p>
+<p>Pour lister les dépendances : <code>pub deps</code></p>
+</small>
+<p>Ne pas hésiter à se référer à la <a href="https://dart.dev/tools/pub/cmd">documentation officielle</a>.</p>
+<h2 id="bibliothèque-en-ligne"><a class="header" href="#bibliothèque-en-ligne">Bibliothèque en ligne</a></h2>
+<p>Les bibliothèques disponibles pour l’écosystème dart sont disponibles sur <a href="https://pub.dev" title="pub.dev">pub.dev</a>.</p>
+<p><img src="03_first_step/./assets/pub-dev.png" alt="Exemple d'utilisation de pub-dev" /></p>
+<p><strong>Aide au choix de bibliothèques sur pub.dev</strong></p>
+<ol>
+<li>La bibliothèque est taguée « Flutter Favorite » </li>
+<li>Les plateformes cherchées sont supportées</li>
+<li>Compatible « Null Safety »</li>
+<li>Likes + Popularity</li>
+<li>License d’utilisation</li>
+</ol>
+<p><strong>Quelques licenses open-sources</strong></p>
+<p>Source: <a href="https://www.journaldunet.com/solutions/dsi/1141398-comment-se-reperer-dans-la-jungle-des-licences-open-source">Journal du net</a></p>
+<table><thead><tr><th>Nom</th><th>Type</th><th>Avantages</th><th>Contraintes</th></tr></thead><tbody>
+<tr><td>GNU General Public License (GPL)</td><td>Copyleft</td><td>C'est la plus populaire et la plus connue par les développeurs</td><td>Licence contaminante : tout logiciel embarquant du code GNU GPL devient GNU GPL</td></tr>
+<tr><td>MIT</td><td>Non copyleft</td><td>Licence très permissive</td><td>S'applique plus particulièrement aux petits programmes</td></tr>
+<tr><td>BSD</td><td>Non copyleft</td><td>License permissive, avec un minimum de restrictions</td><td>Ne pas utiliser la licence BSD originale qui contenait une clause de publicité aujourd'hui retirée</td></tr>
+<tr><td>Apache</td><td>Non copyleft</td><td>Initialement destinée aux packages Apache, elle est aujourd'hui très populaire. Elle est permissive</td><td>N'est pas compatible avec la GNU GPL 2</td></tr>
+</tbody></table>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="première-application-flutter"><a class="header" href="#première-application-flutter">Première application Flutter</a></h1>
+<ol>
+<li>Créer un projet dart à l’aide de la commande <code>flutter create flutter_hello_world</code>.</li>
+</ol>
+<details>
+```
+<summary>Solution</summary>
+```
+<pre><code class="language-shell">exercices % flutter create flutter_hello_world
+Creating project flutter_hello_world...
+  flutter_hello_world/test/widget_test.dart (created)
+  flutter_hello_world/pubspec.yaml (created)
+  flutter_hello_world/README.md (created)
+  flutter_hello_world/lib/main.dart (created)
+  flutter_hello_world/windows/runner/flutter_window.cpp (created)
+  flutter_hello_world/windows/runner/utils.h (created)
+  flutter_hello_world/windows/runner/utils.cpp (created)
+  flutter_hello_world/windows/runner/runner.exe.manifest (created)
+  flutter_hello_world/windows/runner/CMakeLists.txt (created)
+  flutter_hello_world/windows/runner/win32_window.h (created)
+  flutter_hello_world/windows/runner/Runner.rc (created)
+  flutter_hello_world/windows/runner/win32_window.cpp (created)
+  flutter_hello_world/windows/runner/resources/app_icon.ico (created)
+  flutter_hello_world/windows/runner/main.cpp (created)
+  flutter_hello_world/windows/runner/resource.h (created)
+  flutter_hello_world/windows/runner/flutter_window.h (created)
+  flutter_hello_world/windows/flutter/CMakeLists.txt (created)
+  flutter_hello_world/windows/.gitignore (created)
+  flutter_hello_world/windows/CMakeLists.txt (created)
+  flutter_hello_world/ios/Runner.xcworkspace/contents.xcworkspacedata (created)
+  flutter_hello_world/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.pli
+  st (created)
+  flutter_hello_world/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcse
+  ttings (created)
+  flutter_hello_world/ios/Runner/Info.plist (created)
+  flutter_hello_world/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImag
+  e@2x.png (created)
+  flutter_hello_world/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImag
+  e@3x.png (created)
+  flutter_hello_world/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md
+  (created)
+  flutter_hello_world/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.j
+  son (created)
+  flutter_hello_world/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImag
+  e.png (created)
+  flutter_hello_world/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x
+  76@2x.png (created)
+  flutter_hello_world/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x
+  29@1x.png (created)
+  flutter_hello_world/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x
+  40@1x.png (created)
+  flutter_hello_world/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x
+  20@1x.png (created)
+  flutter_hello_world/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-102
+  4x1024@1x.png (created)
+  flutter_hello_world/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.
+  5x83.5@2x.png (created)
+  flutter_hello_world/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x
+  20@3x.png (created)
+  flutter_hello_world/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.jso
+  n (created)
+  flutter_hello_world/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x
+  20@2x.png (created)
+  flutter_hello_world/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x
+  29@3x.png (created)
+  flutter_hello_world/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x
+  40@2x.png (created)
+  flutter_hello_world/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x
+  60@3x.png (created)
+  flutter_hello_world/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x
+  60@2x.png (created)
+  flutter_hello_world/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x
+  76@1x.png (created)
+  flutter_hello_world/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x
+  40@3x.png (created)
+  flutter_hello_world/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x
+  29@2x.png (created)
+  flutter_hello_world/ios/Runner/Base.lproj/LaunchScreen.storyboard (created)
+  flutter_hello_world/ios/Runner/Base.lproj/Main.storyboard (created)
+  flutter_hello_world/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworksp
+  acedata (created)
+  flutter_hello_world/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEW
+  orkspaceChecks.plist (created)
+  flutter_hello_world/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/Work
+  spaceSettings.xcsettings (created)
+  flutter_hello_world/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcschem
+  e (created)
+  flutter_hello_world/ios/Flutter/Debug.xcconfig (created)
+  flutter_hello_world/ios/Flutter/Release.xcconfig (created)
+  flutter_hello_world/ios/Flutter/AppFrameworkInfo.plist (created)
+  flutter_hello_world/ios/.gitignore (created)
+  flutter_hello_world/flutter_hello_world.iml (created)
+  flutter_hello_world/.gitignore (created)
+  flutter_hello_world/web/favicon.png (created)
+  flutter_hello_world/web/index.html (created)
+  flutter_hello_world/web/manifest.json (created)
+  flutter_hello_world/web/icons/Icon-maskable-512.png (created)
+  flutter_hello_world/web/icons/Icon-192.png (created)
+  flutter_hello_world/web/icons/Icon-maskable-192.png (created)
+  flutter_hello_world/web/icons/Icon-512.png (created)
+  flutter_hello_world/.metadata (created)
+  flutter_hello_world/macos/Runner.xcworkspace/contents.xcworkspacedata
+  (created)
+  flutter_hello_world/macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.p
+  list (created)
+  flutter_hello_world/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_1
+  6.png (created)
+  flutter_hello_world/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_1
+  024.png (created)
+  flutter_hello_world/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_2
+  56.png (created)
+  flutter_hello_world/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_6
+  4.png (created)
+  flutter_hello_world/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_5
+  12.png (created)
+  flutter_hello_world/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_1
+  28.png (created)
+  flutter_hello_world/macos/Runner/Assets.xcassets/AppIcon.appiconset/Contents.j
+  son (created)
+  flutter_hello_world/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_3
+  2.png (created)
+  flutter_hello_world/macos/Runner/DebugProfile.entitlements (created)
+  flutter_hello_world/macos/Runner/Base.lproj/MainMenu.xib (created)
+  flutter_hello_world/macos/Runner/MainFlutterWindow.swift (created)
+  flutter_hello_world/macos/Runner/Configs/Debug.xcconfig (created)
+  flutter_hello_world/macos/Runner/Configs/Release.xcconfig (created)
+  flutter_hello_world/macos/Runner/Configs/Warnings.xcconfig (created)
+  flutter_hello_world/macos/Runner/Configs/AppInfo.xcconfig (created)
+  flutter_hello_world/macos/Runner/AppDelegate.swift (created)
+  flutter_hello_world/macos/Runner/Info.plist (created)
+  flutter_hello_world/macos/Runner/Release.entitlements (created)
+  flutter_hello_world/macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/ID
+  EWorkspaceChecks.plist (created)
+  flutter_hello_world/macos/Runner.xcodeproj/project.pbxproj (created)
+  flutter_hello_world/macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcsch
+  eme (created)
+  flutter_hello_world/macos/Flutter/Flutter-Debug.xcconfig (created)
+  flutter_hello_world/macos/Flutter/Flutter-Release.xcconfig (created)
+  flutter_hello_world/macos/.gitignore (created)
+  flutter_hello_world/android/app/src/profile/AndroidManifest.xml (created)
+  flutter_hello_world/android/app/src/main/res/mipmap-mdpi/ic_launcher.png
+  (created)
+  flutter_hello_world/android/app/src/main/res/mipmap-hdpi/ic_launcher.png
+  (created)
+  flutter_hello_world/android/app/src/main/res/drawable/launch_background.xml
+  (created)
+  flutter_hello_world/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
+  (created)
+  flutter_hello_world/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png
+  (created)
+  flutter_hello_world/android/app/src/main/res/values-night/styles.xml (created)
+  flutter_hello_world/android/app/src/main/res/values/styles.xml (created)
+  flutter_hello_world/android/app/src/main/res/drawable-v21/launch_background.xm
+  l (created)
+  flutter_hello_world/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png
+  (created)
+  flutter_hello_world/android/app/src/main/AndroidManifest.xml (created)
+  flutter_hello_world/android/app/src/debug/AndroidManifest.xml (created)
+  flutter_hello_world/android/gradle/wrapper/gradle-wrapper.properties (created)
+  flutter_hello_world/android/gradle.properties (created)
+  flutter_hello_world/android/.gitignore (created)
+  flutter_hello_world/android/settings.gradle (created)
+  flutter_hello_world/android/app/build.gradle (created)
+  flutter_hello_world/android/app/src/main/kotlin/com/example/flutter_hello_worl
+  d/MainActivity.kt (created)
+  flutter_hello_world/android/build.gradle (created)
+  flutter_hello_world/android/flutter_hello_world_android.iml (created)
+  flutter_hello_world/ios/Runner/Runner-Bridging-Header.h (created)
+  flutter_hello_world/ios/Runner/AppDelegate.swift (created)
+  flutter_hello_world/ios/Runner.xcodeproj/project.pbxproj (created)
+  flutter_hello_world/analysis_options.yaml (created)
+  flutter_hello_world/.idea/runConfigurations/main_dart.xml (created)
+  flutter_hello_world/.idea/libraries/Dart_SDK.xml (created)
+  flutter_hello_world/.idea/libraries/KotlinJavaRuntime.xml (created)
+  flutter_hello_world/.idea/modules.xml (created)
+  flutter_hello_world/.idea/workspace.xml (created)
+  flutter_hello_world/linux/main.cc (created)
+  flutter_hello_world/linux/my_application.h (created)
+  flutter_hello_world/linux/my_application.cc (created)
+  flutter_hello_world/linux/flutter/CMakeLists.txt (created)
+  flutter_hello_world/linux/.gitignore (created)
+  flutter_hello_world/linux/CMakeLists.txt (created)
+Running &quot;flutter pub get&quot; in flutter_hello_world...              1 162ms
+Wrote 128 files.
+
+All done!
+In order to run your application, type:
+
+  $ cd flutter_hello_world
+  $ flutter run
+
+Your application code is in flutter_hello_world/lib/main.dart.
+</code></pre>
+</details>
+<p>Désormais, examinons la structure du projet. </p>
+<pre><code class="language-bash">flutter_hello_world/
+┣ .dart_tool/
+┣ .idea/
+┣ android/  # Android project
+┣ ios/      # iOS project
+┣ lib/      # Flutter sources
+┣ test/     # Test folder
+┣ .gitignore
+┣ .metadata
+┣ .packages
+┣ README.md
+┣ analysis_options.yaml
+┣ flutter_hello_world.iml
+┣ pubspec.lock
+┗ pubspec.yaml
+</code></pre>
+<p>Par rapport à un projet dart, on observe l’ajout de deux dossiers supplémentaires <strong>ios</strong>,<strong>android</strong>, chacun contenant respectivement les sources d’un véritable projet iOS/Android. 
+Les sources spécifiques à chaque plateforme sont accessibles et peuvent être éditées (configuration du splashcreen, icônes, permissions, …).</p>
+<ol start="2">
+<li>Ouvrir le fichier <code>main.dart</code> situé dans le dossier <code>lib</code></li>
+</ol>
+<pre><code class="language-dart">import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+</code></pre>
+<p>Comme tout programme dart, la méthode <code>main</code> est déclarée. 
+Celle-ci appelle la méthode <code>runApp</code> provenant du package <strong>flutter/material.dart</strong> et servant à afficher à l’écran le widget passé en paramètre.</p>
+<ol start="3">
+<li>Exécuter l’application sur la plateforme de son choix à l’aide de la commande <code>flutter run</code> ou à l’aide de l’IDE</li>
+</ol>
+<p><img src="03_first_step/././assets/first-flutter-app_04.png" alt="Exécuter l'application via VSCode" /></p>
+<ol start="4">
+<li>Supprimer tout le contenu du fichier <code>main.dart</code> et le remplacer par le contenu suivant :</li>
+</ol>
+<pre><code class="language-dart">// Copyright 2018 The Flutter team. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+import 'package:flutter/material.dart';
+
+void main() =&gt; runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return // TODO
+  }
+}
+</code></pre>
+<ol start="5">
+<li>Dans la méthode <code>build()</code>, retourner un widget <code>Text(&quot;Hello world!&quot;)</code> et exécuter l’application.</li>
+</ol>
+<details>
+<summary>Solution</summary>
+<p>🔥 🔥 🔥 PANIC !
+L’application flutter plante. C'est totalement normal, nous n'avons pas défini de contexte dans l'arbre des widgets à l'application.</p>
+<p align="center">
+    <img src="03_first_step/./assets/first-flutter-app_07.png"
+        width="50%"
+        style="margin: 0 auto;"
+        alt="Plantage de l'application flutter"/>
+</p>
+</details>
+<ol start="6">
+<li>Suivons le message d'erreur, rajoutons un <code>WidgetApp</code> en tant que parent de notre <code>Text</code>. </li>
+</ol>
+<details>
+<summary>Astuce</summary>
+<p>Ne pas hésiter à s'aider de l'aide contextuelle de l'IDE, il existe un raccourcis très pratique pour <strong>wrapper</strong> des widgets.</p>
+<p align="center">
+    <img src="03_first_step/./assets/first-flutter-app_08.png"
+        width="50%"
+        style="margin: 0 auto;"
+        alt="Widget wrapping shorcut"/>
+</p>
+</details>
+<details>
+<summary>Solution</summary>
+<pre><code class="language-dart">  @override
+  Widget build(BuildContext context) {
+    return WidgetsApp(
+        color: Colors.white, builder: (_, __) =&gt; Text(&quot;Hello world!&quot;));
+  }
+</code></pre>
+</details>
+<p><note>Par la suite, on n'utilisera jamais le WidgetApp directement.</note></p>
+<ol start="7">
+<li>Centrons le texte à l'aide du widget <code>Center</code></li>
+</ol>
+<details>
+<summary>Solution</summary>
+<p>Ne pas hésiter à s'aider de l'aide contextuelle de l'IDE, il existe un raccourcis très pratique pour <strong>wrapper</strong> des widgets.</p>
+<pre><code class="language-dart">  @override
+  Widget build(BuildContext context) {
+    return WidgetsApp(
+        color: Colors.black,
+        builder: (_, __) =&gt; Center(child: Text(&quot;Hello world!&quot;)));
+  }
+</code></pre>
+</details>
+<ol start="8">
+<li>Exercice complet</li>
+</ol>
+<details>
+<summary>Solution complète</summary>
+<pre><code class="language-dart">// Copyright 2018 The Flutter team. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+import 'package:flutter/material.dart';
+
+void main() =&gt; runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return WidgetsApp(
+        color: Colors.black,
+        builder: (_, __) =&gt; Center(child: Text(&quot;Hello world!&quot;)));
+  }
+}
+</code></pre>
+</details><div style="break-before: page; page-break-before: always;"></div><h1 id="widgets"><a class="header" href="#widgets">Widgets</a></h1>
+<p>Tout ce qui est dessiné à l’écran dans une application Flutter est appelé un <strong>Widget</strong>. Techniquement parlant, tous les composants héritent de la classe <strong>Widget</strong>. 
+Construire une interface en Flutter consiste à composer des widgets. Ce faisant on créé un <strong>arbre des widgets</strong> dans lequel il y a des parents et des enfants. </p>
+<h2 id="programmation-déclarative"><a class="header" href="#programmation-déclarative">Programmation déclarative</a></h2>
+<p>De manière traditionnelle, en programmation d’interface utilisateurs, la programmation impérative est plutôt employée (Android/iOS). Celle-ci se traduit par l’instantiation d’une vue suivi de mutations tout au long de son cycle de vie. 
+La programmation déclarative permet d’éviter au développeur de programmer la transition entre les différents états du cycle de vie en ne déclarant que l’état courant. Le framework s’occupe de gérer les transitions entre ces états. </p>
+<pre><code class="language-java">// Imperative style
+b.setColor(red)
+b.clearChildren()
+ViewC c3 = new ViewC(...)
+b.add(c3)
+</code></pre>
+<pre><code class="language-dart">// Declarative style
+return ViewB(
+  color: red,
+  child: ViewC(...),
+)
+</code></pre>
+<p>Plutôt que de muter l’instance de b, Flutter créé de nouvelles instances de widgets. Le framework s’occupe en sous-jacent de muter l’état de la vue grâce aux <strong>RenderObjects</strong>.  Ces derniers persistent entre les différentes frames, et seul l’arbre des widgets est copié. L’arbre des widgets est léger car il s’agit seulement d’une description de l’état de la vue à un instant T.</p>
+<h2 id="exemple-de-widget"><a class="header" href="#exemple-de-widget">Exemple de widget</a></h2>
+<p>Prenons un widget composé d’une colonne contenant deux textes.  La méthode <code>build</code> est appelée régulièrement et, dans le cas présent, rajoute deux feuilles à l’arbre des widgets. </p>
+<pre><code class="language-dart">class MyApp extends StatelessWidget {
+	const MyApp();
+
+	@override
+	Widget build(BuildContext context) {
+		return Column(children: [
+			Text(&quot;Hello&quot;),
+			Text(&quot;Flutter&quot;)	
+		]);
+	}
+} 
+</code></pre>
+<p>Son arbre de widget correspondant sera le suivant :</p>
+<div align="center">
+       <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="53 877 629 506" width="629" height="506">
+  <defs>
+    <filter id="Shadow" filterUnits="userSpaceOnUse" x="-9.9" y="826.4">
+      <feGaussianBlur in="SourceAlpha" result="blur" stdDeviation="1.308"/>
+      <feOffset in="blur" result="offset" dx="0" dy="2"/>
+      <feFlood flood-color="var(--fg)" flood-opacity=".5" result="flood"/>
+      <feComposite in="flood" in2="offset" operator="in" result="color"/>
+      <feMerge>
+        <feMergeNode in="color"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <font-face font-family="Gill Sans" font-size="16" panose-1="2 11 5 2 2 1 4 2 2 3" units-per-em="1000" underline-position="-75.19531" underline-thickness="49.80469" slope="0" x-height="449.70703" cap-height="687.0117" ascent="917.9688" descent="-230.46875" font-weight="400">
+      <font-face-src>
+        <font-face-name name="GillSans"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.19.2\n2021-11-30 10:39:27 +0000</metadata>
+  <g id="widget_tree_sample" fill-opacity="1" stroke="none" stroke-opacity="1" fill="none" stroke-dasharray="none">
+    <title>widget_tree_sample</title>
+    <g id="widget_tree_sample_Calque_1">
+      <title>Calque 1</title>
+      <g id="Graphic_2" filter="url(#Shadow)">
+        <path d="M 221 879 L 361 879 C 365.41828 879 369 882.5817 369 887 L 369 995 C 369 999.4183 365.41828 1003 361 1003 L 221 1003 C 216.58172 1003 213 999.4183 213 995 L 213 887 C 213 882.5817 216.58172 879 221 879 Z" fill="var(--mkp-bof)"/>
+        <path d="M 221 879 L 361 879 C 365.41828 879 369 882.5817 369 887 L 369 995 C 369 999.4183 365.41828 1003 361 1003 L 221 1003 C 216.58172 1003 213 999.4183 213 995 L 213 887 C 213 882.5817 216.58172 879 221 879 Z" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(218 931.5)" fill="var(--bg)">
+          <tspan font-family="Gill Sans" font-size="16" font-weight="400" fill="var(--bg)" x="49.91406" y="15">MyApp</tspan>
+        </text>
+      </g>
+      <g id="Graphic_3" filter="url(#Shadow)">
+        <path d="M 221 1066 L 361 1066 C 365.41828 1066 369 1069.5817 369 1074 L 369 1182 C 369 1186.4183 365.41828 1190 361 1190 L 221 1190 C 216.58172 1190 213 1186.4183 213 1182 L 213 1074 C 213 1069.5817 216.58172 1066 221 1066 Z" fill="var(--mkp-bof)"/>
+        <path d="M 221 1066 L 361 1066 C 365.41828 1066 369 1069.5817 369 1074 L 369 1182 C 369 1186.4183 365.41828 1190 361 1190 L 221 1190 C 216.58172 1190 213 1186.4183 213 1182 L 213 1074 C 213 1069.5817 216.58172 1066 221 1066 Z" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(218 1118.5)" fill="var(--bg)">
+          <tspan font-family="Gill Sans" font-size="16" font-weight="400" fill="var(--bg)" x="47" y="15">Column</tspan>
+        </text>
+      </g>
+      <g id="Graphic_4" filter="url(#Shadow)">
+        <path d="M 65 1253 L 205 1253 C 209.41828 1253 213 1256.5817 213 1261 L 213 1369 C 213 1373.4183 209.41828 1377 205 1377 L 65 1377 C 60.58172 1377 57 1373.4183 57 1369 L 57 1261 C 57 1256.5817 60.58172 1253 65 1253 Z" fill="var(--mkp-bof)"/>
+        <path d="M 65 1253 L 205 1253 C 209.41828 1253 213 1256.5817 213 1261 L 213 1369 C 213 1373.4183 209.41828 1377 205 1377 L 65 1377 C 60.58172 1377 57 1373.4183 57 1369 L 57 1261 C 57 1256.5817 60.58172 1253 65 1253 Z" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(62 1305.5)" fill="var(--bg)">
+          <tspan font-family="Gill Sans" font-size="16" font-weight="400" fill="var(--bg)" x="58.871094" y="15">Text</tspan>
+        </text>
+      </g>
+      <g id="Graphic_5" filter="url(#Shadow)">
+        <path d="M 377 1253 L 517 1253 C 521.4183 1253 525 1256.5817 525 1261 L 525 1369 C 525 1373.4183 521.4183 1377 517 1377 L 377 1377 C 372.5817 1377 369 1373.4183 369 1369 L 369 1261 C 369 1256.5817 372.5817 1253 377 1253 Z" fill="var(--mkp-bof)"/>
+        <path d="M 377 1253 L 517 1253 C 521.4183 1253 525 1256.5817 525 1261 L 525 1369 C 525 1373.4183 521.4183 1377 517 1377 L 377 1377 C 372.5817 1377 369 1373.4183 369 1369 L 369 1261 C 369 1256.5817 372.5817 1253 377 1253 Z" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(374 1305.5)" fill="var(--bg)">
+          <tspan font-family="Gill Sans" font-size="16" font-weight="400" fill="var(--bg)" x="58.871094" y="15">Text</tspan>
+        </text>
+      </g>
+      <g id="Line_6">
+        <line x1="291" y1="1003" x2="291" y2="1066" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_7">
+        <line x1="239.27807" y1="1190" x2="186.72193" y2="1253" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_8">
+        <line x1="342.72193" y1="1190" x2="395.27807" y2="1253" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_10">
+        <text transform="translate(416.35703 931.776)" fill="var(--fg)">
+          <tspan font-family="Gill Sans" font-size="16" font-weight="400" fill="var(--fg)" x="0" y="15">Root widget</tspan>
+        </text>
+      </g>
+      <g id="Graphic_11">
+        <text transform="translate(438.7633 1118.776)" fill="var(--fg)">
+          <tspan font-family="Gill Sans" font-size="16" font-weight="400" fill="var(--fg)" x="0" y="15">Root child</tspan>
+        </text>
+      </g>
+      <g id="Graphic_12">
+        <text transform="translate(568.23966 1305.776)" fill="var(--fg)">
+          <tspan font-family="Gill Sans" font-size="16" font-weight="400" fill="var(--fg)" x="0" y="15">Column children</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
+</div>
+<p>Le paramètre <code>BuildContext context</code> est propagé ainsi à travers les widgets. Il donne des informations sur la position d’une feuille dans l’arbre. </p>
+<h2 id="stateless-widgets"><a class="header" href="#stateless-widgets">Stateless widgets</a></h2>
+<h3 id="text"><a class="header" href="#text">Text</a></h3>
+<p>Un widget qui permet d’afficher du texte.</p>
+<pre><code class="language-dart">const Text(&quot;Hello World !&quot;)
+const Text (&quot;Hello World !&quot;, style: TextStyle(color: Colors.amber, fontSize: 16, wordSpacing: 3))
+</code></pre>
+<h3 id="row"><a class="header" href="#row">Row</a></h3>
+<p>Un widget qui permet de placer des widgets le long d’un axe horizontal selon plusieurs contraintes d’espacement. </p>
+<pre><code class="language-dart">Row(
+	mainAxisAlignment: MainAxisAlignment.center,
+	children: const [
+		Text(&quot;Hello&quot;),
+		Text(&quot;world&quot;),
+		Text(&quot;!&quot;)
+	]
+)
+</code></pre>
+<div align="center" class="wh-100">
+       <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="157 1044 1381 1020" width="1381" height="1020">
+  <defs>
+    <font-face font-family="Gill Sans" font-size="20" panose-1="2 11 5 2 2 1 4 2 2 3" units-per-em="1000" underline-position="-75.19531" underline-thickness="49.80469" slope="0" x-height="449.70703" cap-height="687.0117" ascent="917.9688" descent="-230.46875" font-weight="400">
+      <font-face-src>
+        <font-face-name name="GillSans"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Gill Sans" font-size="20" panose-1="2 11 9 2 3 0 4 2 2 3" units-per-em="1000" underline-position="-75.19531" underline-thickness="49.80469" slope="0" x-height="501.46484" cap-height="681.6406" ascent="922.8516" descent="-234.86328" font-weight="700">
+      <font-face-src>
+        <font-face-name name="GillSans-Bold"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.19.2\n2021-11-30 10:39:27 +0000</metadata>
+  <g id="wiget_row" fill-opacity="1" stroke="none" stroke-opacity="1" fill="none" stroke-dasharray="none">
+    <title>widget_row</title>
+    <g id="wiget_row_Calque_1">
+      <title>Calque 1</title>
+      <g id="Graphic_2">
+        <rect x="158" y="1129" width="942" height="112" fill="var(--bg)"/>
+        <rect x="158" y="1129" width="942" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Group_53">
+        <g id="Graphic_59">
+          <rect x="166.52" y="1951.345" width="444.48" height="112" fill="var(--bg)"/>
+          <rect x="166.52" y="1951.345" width="444.48" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_66">
+          <text transform="translate(1451.663 1995.845)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">min</tspan>
+          </text>
+        </g>
+        <g id="Graphic_54">
+          <text transform="translate(1254.2378 1995.845)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">-</tspan>
+          </text>
+        </g>
+        <g id="Group_55">
+          <g id="Graphic_58">
+            <rect x="166.52" y="1951.345" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="166.52" y="1951.345" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_57">
+            <rect x="317.52" y="1951.345" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="317.52" y="1951.345" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_56">
+            <rect x="468.52" y="1951.345" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="468.52" y="1951.345" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group_34">
+        <g id="Graphic_40">
+          <rect x="166.52" y="1719.08" width="942" height="112" fill="var(--bg)"/>
+          <rect x="166.52" y="1719.08" width="942" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Group_36">
+          <g id="Graphic_39">
+            <rect x="166.52" y="1719.08" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="166.52" y="1719.08" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_38">
+            <rect x="558" y="1718.825" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="558" y="1718.825" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_37">
+            <rect x="966.52" y="1719.08" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="966.52" y="1719.08" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+        <g id="Graphic_65">
+          <text transform="translate(1449.5879 1763.58)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">max</tspan>
+          </text>
+        </g>
+        <g id="Graphic_35">
+          <text transform="translate(1199.8628 1763.58)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">spaceBetween</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_27">
+        <g id="Graphic_33">
+          <rect x="166.52" y="1571.56" width="942" height="112" fill="var(--bg)"/>
+          <rect x="166.52" y="1571.56" width="942" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Group_41">
+          <g id="Graphic_32">
+            <rect x="296" y="1571.305" width="144" height="112.255" fill="var(--mkp-bof)"/>
+            <rect x="296" y="1571.305" width="144" height="112.255" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_31">
+            <rect x="557" y="1571.56" width="144" height="112" fill="var(--mkp-bof)"/>
+            <rect x="557" y="1571.56" width="144" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_30">
+            <rect x="818" y="1571.305" width="144" height="112.255" fill="var(--mkp-bof)"/>
+            <rect x="818" y="1571.305" width="144" height="112.255" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+        <g id="Graphic_28">
+          <text transform="translate(1204.189 1616.06)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">spaceAround</tspan>
+          </text>
+        </g>
+        <g id="Graphic_64">
+          <text transform="translate(1449.5879 1615.9325)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">max</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_18">
+        <g id="Graphic_17">
+          <rect x="166.52" y="1424.04" width="942" height="112" fill="var(--bg)"/>
+          <rect x="166.52" y="1424.04" width="942" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Group_13">
+          <g id="Graphic_16">
+            <rect x="664.52" y="1424.04" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="664.52" y="1424.04" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_15">
+            <rect x="815.52" y="1424.04" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="815.52" y="1424.04" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_14">
+            <rect x="966.52" y="1424.04" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="966.52" y="1424.04" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+        <g id="Graphic_12">
+          <text transform="translate(1242.5825 1468.54)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">end</tspan>
+          </text>
+        </g>
+        <g id="Graphic_63">
+          <text transform="translate(1447.6299 1468.54)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">max</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_20">
+        <g id="Graphic_26">
+          <rect x="166.52" y="1276.52" width="942" height="112" fill="var(--bg)"/>
+          <rect x="166.52" y="1276.52" width="942" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Group_22">
+          <g id="Graphic_25">
+            <rect x="166.52" y="1276.52" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="166.52" y="1276.52" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_24">
+            <rect x="317.52" y="1276.52" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="317.52" y="1276.52" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_23">
+            <rect x="468.52" y="1276.52" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="468.52" y="1276.52" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+        <g id="Graphic_60">
+          <text transform="translate(1447.6299 1173.5)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">max</tspan>
+          </text>
+        </g>
+        <g id="Graphic_21">
+          <text transform="translate(1238.5346 1321.02)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">start</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_19">
+        <g id="Group_9">
+          <g id="Graphic_3">
+            <rect x="407" y="1129" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="407" y="1129" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_7">
+            <rect x="558" y="1129" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="558" y="1129" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_8">
+            <rect x="709" y="1129" width="142" height="112" fill="var(--mkp-bof)"/>
+            <rect x="709" y="1129" width="142" height="112" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+        <g id="Graphic_10">
+          <text transform="translate(1222.7002 1173.5)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">center</tspan>
+          </text>
+        </g>
+        <g id="Graphic_62">
+          <text transform="translate(1449.5879 1321.02)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">max</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Graphic_52">
+        <text transform="translate(1397 1049)" fill="var(--fg)">
+          <tspan font-family="Gill Sans" font-size="20" font-weight="700" fill="var(--fg)" x="0" y="18">MainAxisSize</tspan>
+        </text>
+      </g>
+      <g id="Graphic_11">
+        <text transform="translate(1148.3496 1049)" fill="var(--fg)">
+          <tspan font-family="Gill Sans" font-size="20" font-weight="700" fill="var(--fg)" x="0" y="18">MainAxisAlignment</tspan>
+        </text>
+      </g>
+      <g id="Graphic_42">
+        <text transform="translate(163 1049)" fill="var(--fg)">
+          <tspan font-family="Gill Sans" font-size="20" font-weight="700" fill="var(--fg)" x="0" y="18">ROW</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
+</div>
+<h3 id="column"><a class="header" href="#column">Column</a></h3>
+<p>Un widget qui permet de placer des widgets le long d’un axe vertical selon plusieurs contraintes d’espacement. </p>
+<pre><code class="language-dart">Column(
+	mainAxisAlignment: MainAxisAlignment.center,
+	children: const [
+		Text(&quot;Hello&quot;),
+		Text(&quot;world&quot;),
+		Text(&quot;!&quot;)
+	]
+)
+</code></pre>
+<div align="center" class="wh-100">
+       <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="-103 1044 1262 1236" width="1262" height="1236">
+  <defs>
+    <font-face font-family="Gill Sans" font-size="20" panose-1="2 11 5 2 2 1 4 2 2 3" units-per-em="1000" underline-position="-75.19531" underline-thickness="49.80469" slope="0" x-height="449.70703" cap-height="687.0117" ascent="917.9688" descent="-230.46875" font-weight="400">
+      <font-face-src>
+        <font-face-name name="GillSans"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Gill Sans" font-size="20" panose-1="2 11 9 2 3 0 4 2 2 3" units-per-em="1000" underline-position="-75.19531" underline-thickness="49.80469" slope="0" x-height="501.46484" cap-height="681.6406" ascent="922.8516" descent="-234.86328" font-weight="700">
+      <font-face-src>
+        <font-face-name name="GillSans-Bold"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.19.2\n2021-11-30 10:39:27 +0000</metadata>
+  <g id="widget_column" fill-opacity="1" stroke="none" stroke-opacity="1" fill="none" stroke-dasharray="none">
+    <title>widget_column</title>
+    <g id="widget_column_Calque_1">
+      <title>Calque 1</title>
+      <g id="Group_53">
+        <g id="Graphic_59">
+          <rect x="1045.9785" y="1142" width="112" height="444.48" fill="var(--bg)"/>
+          <rect x="1045.9785" y="1142" width="112" height="444.48" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Group_55">
+          <g id="Graphic_58">
+            <rect x="1045.9785" y="1142" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="1045.9785" y="1142" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_57">
+            <rect x="1045.9785" y="1293" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="1045.9785" y="1293" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_56">
+            <rect x="1045.9785" y="1444" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="1045.9785" y="1444" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+        <g id="Graphic_66">
+          <text transform="translate(1087.0762 2252)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">min</tspan>
+          </text>
+        </g>
+        <g id="Graphic_54">
+          <text transform="translate(1098.7461 2159)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">-</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_34">
+        <g id="Graphic_40">
+          <rect x="867.3711" y="1142" width="112" height="942" fill="var(--bg)"/>
+          <rect x="867.3711" y="1142" width="112" height="942" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Group_36">
+          <g id="Graphic_39">
+            <rect x="867.3711" y="1142" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="867.3711" y="1142" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_38">
+            <rect x="867.6261" y="1533.48" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="867.6261" y="1533.48" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_37">
+            <rect x="867.3711" y="1942" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="867.3711" y="1942" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+        <g id="Graphic_65">
+          <text transform="translate(906.3936 2252)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">max</tspan>
+          </text>
+        </g>
+        <g id="Graphic_35">
+          <text transform="translate(865.7637 2159)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">spaceBetween</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_27">
+        <g id="Graphic_33">
+          <rect x="686.4824" y="1142" width="112" height="942" fill="var(--bg)"/>
+          <rect x="686.4824" y="1142" width="112" height="942" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Group_41">
+          <g id="Graphic_32">
+            <rect x="686.4824" y="1271.48" width="112.255" height="144" fill="var(--mkp-bof)"/>
+            <rect x="686.4824" y="1271.48" width="112.255" height="144" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_31">
+            <rect x="686.4824" y="1532.48" width="112" height="144" fill="var(--mkp-bof)"/>
+            <rect x="686.4824" y="1532.48" width="112" height="144" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_30">
+            <rect x="686.4824" y="1793.48" width="112.255" height="144" fill="var(--mkp-bof)"/>
+            <rect x="686.4824" y="1793.48" width="112.255" height="144" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+        <g id="Graphic_28">
+          <text transform="translate(689.2012 2159)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">spaceAround</tspan>
+          </text>
+        </g>
+        <g id="Graphic_64">
+          <text transform="translate(725.6324 2252)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">max</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_18">
+        <g id="Graphic_17">
+          <rect x="512.2012" y="1142" width="112" height="942" fill="var(--bg)"/>
+          <rect x="512.2012" y="1142" width="112" height="942" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Group_13">
+          <g id="Graphic_16">
+            <rect x="512.2012" y="1640" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="512.2012" y="1640" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_15">
+            <rect x="512.2012" y="1791" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="512.2012" y="1791" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_14">
+            <rect x="512.2012" y="1942" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="512.2012" y="1942" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+        <g id="Graphic_12">
+          <text transform="translate(553.3135 2159)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">end</tspan>
+          </text>
+        </g>
+        <g id="Graphic_63">
+          <text transform="translate(551.2236 2252)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">max</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_20">
+        <g id="Graphic_26">
+          <rect x="340.20117" y="1142" width="112" height="942" fill="var(--bg)"/>
+          <rect x="340.20117" y="1142" width="112" height="942" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Group_22">
+          <g id="Graphic_25">
+            <rect x="340.20117" y="1142" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="340.20117" y="1142" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_24">
+            <rect x="340.20117" y="1293" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="340.20117" y="1293" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_23">
+            <rect x="340.20117" y="1444" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="340.20117" y="1444" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+        <g id="Graphic_21">
+          <text transform="translate(377.26563 2159)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">start</tspan>
+          </text>
+        </g>
+        <g id="Graphic_62">
+          <text transform="translate(379.22363 2252)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">max</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_19">
+        <g id="Graphic_2">
+          <rect x="168.20117" y="1142" width="112" height="942" fill="var(--bg)"/>
+          <rect x="168.20117" y="1142" width="112" height="942" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Group_9">
+          <g id="Graphic_3">
+            <rect x="168.20117" y="1391" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="168.20117" y="1391" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_7">
+            <rect x="168.20117" y="1542" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="168.20117" y="1542" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Graphic_8">
+            <rect x="168.20117" y="1693" width="112" height="142" fill="var(--mkp-bof)"/>
+            <rect x="168.20117" y="1693" width="112" height="142" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+        </g>
+        <g id="Graphic_10">
+          <text transform="translate(197.36328 2154)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">center</tspan>
+          </text>
+        </g>
+        <g id="Graphic_60">
+          <text transform="translate(207.22363 2252)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="400" fill="var(--fg)" x="0" y="18">max</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_67">
+        <g id="Graphic_52">
+          <text transform="translate(-32.01367 2252)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="700" fill="var(--fg)" x="0" y="18">MainAxisSize</tspan>
+          </text>
+        </g>
+        <g id="Graphic_11">
+          <text transform="translate(-98 2159)" fill="var(--fg)">
+            <tspan font-family="Gill Sans" font-size="20" font-weight="700" fill="var(--fg)" x="0" y="18">MainAxisAlignment</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Graphic_42">
+        <text transform="translate(163 1049)" fill="var(--fg)">
+          <tspan font-family="Gill Sans" font-size="20" font-weight="700" fill="var(--fg)" x="0" y="18">COLUMN</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
+</div>
+<h3 id="listview"><a class="header" href="#listview">ListView</a></h3>
+<p>Un widget qui se comporte comme un Column mais avec la gestion du scroll.</p>
+<pre><code class="language-dart">ListView(
+	scrollDirection: Axis.vertical, // default
+	children: const [
+		Text(&quot;Hello&quot;),
+		Text(&quot;world&quot;),
+		Text(&quot;!&quot;)
+	]
+)
+
+// Prefers this way (more efficient)
+ListView.builder(
+	itemCount: 10,
+    itemBuilder: (context, index) {
+        return Text(&quot;$index&quot;)
+    }
+)
+</code></pre>
+<p>Préférer la factory <code>builder</code> car elle permet de gérer de très grandes listes en recyclant les vues. </p>
+<h3 id="container"><a class="header" href="#container">Container</a></h3>
+<p>Un widget qui permet de personnaliser les aspects graphiques tels que la position, les dimensions et le rendu. </p>
+<pre><code class="language-dart">Container(
+	height: 80,
+	width: 260,
+	color: Colors.blueGrey,
+	alignment: Alignment.center,
+	transform: Matrix4.rotationZ(-0.25),
+	child: const Text(&quot;Containers!&quot;, style: TextStyle(color: Colors.white, fontSize: 25))
+)
+</code></pre>
+<p>Pour appliquer un style sur un <strong>Container</strong>, il faut utiliser la classe <strong>BoxDecoration</strong>.</p>
+<pre><code class="language-dart">Container(
+	height: 100,
+	width: 100,
+	decoration: const BoxDecoration(
+		shape: BoxShape.circle,
+		boxShadow: [
+			BoxShadow(
+				color: Colors.grey,
+				spreadRadius: 5,
+				blurRadius: 7,
+				offset: Offset(0, 3)
+			)
+		],
+		gradient: LinearGradient(
+			begin: Alignment.topCenter,
+			end: Alignment.bottomCenter,
+			colors: [
+				Colors.red,
+				Colors.blue
+			]
+		)
+	)
+)
+</code></pre>
+<h3 id="stack--positioned"><a class="header" href="#stack--positioned">Stack &amp; Positioned</a></h3>
+<p>Il peut être nécessaire de placer des widgets l’un au dessus de l’autre (à la manière de la position absolute/relative en css). <strong>Stack</strong> et <strong>Positioned</strong> sont à utiliser dans ce cas de figure. </p>
+<pre><code class="language-dart"> Stack(
+      children: [
+        Container(
+            width: 100,
+            height: 100,
+            decoration: const BoxDecoration(color: Colors.red)),
+        const Text(&quot;Stack&quot;, style: TextStyle(fontSize: 25))
+      ],
+    )
+</code></pre>
+<p>Si le widget <strong>Text</strong> était placé avant le <strong>Container</strong>, il serait placé dessous et donc ne serait pas visible !</p>
+<p>On peut gérer le positionnement à l’intérieur d’une <strong>Stack</strong> grâce à <strong>Positioned</strong>. Dans l’exemple suivant, le texte sera placé en bas à droite par rapport au <strong>Container</strong>.</p>
+<pre><code class="language-dart">Stack(
+      children: [
+        Container(
+            width: 100,
+            height: 100,
+            decoration: const BoxDecoration(color: Colors.red)),
+        const Positioned(
+            bottom: 0,
+            right: 0,
+            child: Text(&quot;Stack&quot;, style: TextStyle(fontSize: 25)))
+      ],
+    )
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="stateful-widgets"><a class="header" href="#stateful-widgets">Stateful widgets</a></h1>
+<p>Nous avons manipulé jusqu’à présent des widgets sans état. Lorsque l’on créé un widget, il faut se demander s’il doit porter un état propre qui évolue au fil du temps. </p>
+<h2 id="stateless-widget"><a class="header" href="#stateless-widget">Stateless Widget</a></h2>
+<p>À utiliser lorsqu’il n’y a pas besoin d’état, comme un pur composant graphique avec des entrées / sorties par exemple. </p>
+<pre><code class="language-dart">class AWidget extends StatelessWidget {
+	final String name;
+
+	const AWidget({required this.name});
+
+	@override
+	Widget build(BuildContext context) {
+		return Row(
+			children: const [
+				Icon(Icons.person),
+				Text(name)
+			]
+		);
+	}
+}
+</code></pre>
+<h2 id="stateful-widget"><a class="header" href="#stateful-widget">Stateful Widget</a></h2>
+<p>À utiliser lorsque l’état de l’interface doit changer au cours du temps.  Par exemple, le widget <strong>Counter</strong> doit mémoriser le nombre de fois où l’utilisateur a cliqué sur le bouton d’ajout. </p>
+<pre><code class="language-dart">class Counter extends StatefulWidget {
+  final int from;
+  const Counter({Key? key, this.from = 0}) : super(key: key);
+
+  @override
+  State&lt;Counter&gt; createState() =&gt; _CounterState();
+}
+
+class _CounterState extends State&lt;Counter&gt; {
+  int _counter = 0;
+
+  get _count =&gt; _counter + widget.from;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      Text(&quot;$_count&quot;),
+      IconButton(
+        icon: const Icon(Icons.add),
+        onPressed: () {
+          setState(() {
+            _counter++;
+          });
+        },
+      )
+    ]);
+  }
+}
+
+</code></pre>
+<p>En héritant de <strong>State</strong>, <strong>_CounterState</strong> a accès à la méthode <code>setState</code> . Cette méthode, lorsqu’elle est appelée, permet d’indiquer à Flutter qu’il faut reconstruire le state qui mute au fil du temps contrairement au widget. 
+Les membres d’un state sont persistés à travers les différents builds. Seul le contenu de la méthode <strong>build</strong> n’y survit pas. 
+Dans un state, il est possible d’accéder aux inputs du widget associé grâce à la propriété <strong>widget</strong>. </p>
+<h2 id="bonnes-pratiques"><a class="header" href="#bonnes-pratiques">Bonnes pratiques</a></h2>
+<h3 id="performance"><a class="header" href="#performance">Performance</a></h3>
+<p>Un StatelessWidget n’est pas plus performant qu’un StatefulWidget. Un StatelessWidget est un StatefulWidget sans state (sucre syntaxique). 
+Quand toutes les variables d’un widget peuvent être <strong>final</strong>, penser à faire un <code>const constructor</code> . La classe sera alors immutable et le widget ne changera pas. </p>
+<h3 id="boilerplate"><a class="header" href="#boilerplate">Boilerplate</a></h3>
+<p>Préférer le StatelessWidget au StatefulWidget afin de réduire la quantité de code. </p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="exercices"><a class="header" href="#exercices">Exercices</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="oem-widgets"><a class="header" href="#oem-widgets">OEM Widgets</a></h1>
+<p>Dans le cadre du développement d’une application mobile, il peut être utile de pouvoir manipuler des composants natifs, appelés <strong>OEM: Orignal Equipment Manufacturer</strong> et fournis par le système cible. 
+Mais comme nous l’avons vu dans le chapitre sur le fonctionnement de Flutter, par choix du framework, les composants natifs ne sont pas disponibles. Toute l’interface est dessinée sur Skia. 
+Flutter met à disposition un large choix de composants regroupés dans des bibliothèques comme <strong>material</strong> pour android et <strong>cupertino</strong> pour iOS. </p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="oem-widgets-1"><a class="header" href="#oem-widgets-1">OEM Widgets</a></h1>
+<h2 id="material"><a class="header" href="#material">Material</a></h2>
+<p>La bibliothèque <code>flutter/material</code> est fournie nativement avec le SDK Flutter.  <a href="https://material.io/">Material Design</a> est la charte graphique utilisée sous android et plus généralement sur tous les produits de la marque Google. </p>
+<h3 id="materialapp"><a class="header" href="#materialapp">MaterialApp</a></h3>
+<p>Ce widget initialise tout ce qui est nécessaire pour faire une application material. Il gère notamment la taille de l’écran, la navigation, le thème…</p>
+<pre><code class="language-dart">MaterialApp(
+ 	title: 'Flutter Demo',
+	home: ...,
+	theme: ...,
+)
+</code></pre>
+<h3 id="scaffold"><a class="header" href="#scaffold">Scaffold</a></h3>
+<p>Ce widget implémente la structure material. </p>
+<pre><code class="language-dart">Scaffold(
+	appBar: ...,
+	drawer: ...
+	body: ...,
+	floatingActionButton: ...
+)
+</code></pre>
+<h3 id="buttons"><a class="header" href="#buttons">Buttons</a></h3>
+<p>Plusieurs widgets de type bouton sont disponibles.</p>
+<ul>
+<li><strong>ElevatedButton</strong>
+Précédemment <strong>RaisedButton</strong>. </li>
+</ul>
+<pre><code class="language-dart">class MyWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+        onPressed: () {}, child: const Text(&quot;ElevatedButton&quot;));
+  }
+}
+</code></pre>
+<p><a href="https://dartpad.dev/364b5e1de29cfee3b5b737f168d53eef">DartPad</a></p>
+<p align="center">
+    <img src="04_oem_widgets/../assets/elevated_button.png"
+        width="50%"
+        style="margin: 0 auto;"/>
+</p>
+<ul>
+<li><strong>TextButton</strong>
+Précédemment <strong>FlatButton</strong>. </li>
+</ul>
+<pre><code class="language-dart">class MyWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(onPressed: () {}, child: const Text(&quot;TextButton&quot;));
+  }
+}
+</code></pre>
+<p><a href="https://dartpad.dev/4f2f1d8fb51a728254c5c77cf4393fa9">DartPad</a></p>
+<p align="center">
+    <img src="04_oem_widgets/../assets/text_button.png"
+        width="50%"
+        style="margin: 0 auto;"/>
+</p>
+<ul>
+<li><strong>ButtonBar</strong>
+Un conteneur horizontal pour afficher une liste de boutons.</li>
+</ul>
+<pre><code class="language-dart">class MyWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ButtonBar(
+      children: [
+        ElevatedButton(onPressed: () {}, child: const Text(&quot;ElevatedButton&quot;)),
+        TextButton(onPressed: () {}, child: const Text(&quot;TextButton&quot;))
+      ],
+    );
+  }
+}
+</code></pre>
+<p><a href="https://dartpad.dev/a1a0a020d187d17afe0dec553e23c21d">DartPad</a></p>
+<p align="center">
+    <img src="04_oem_widgets/../assets/buttonbar.png"
+        width="50%"
+        style="margin: 0 auto;"/>
+</p>
+<ul>
+<li><strong>IconButton</strong>
+Rendre des icônes cliquables.</li>
+</ul>
+<pre><code class="language-dart">class MyWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(onPressed: () {}, icon: const Icon(Icons.person));
+  }
+}
+</code></pre>
+<p><a href="https://dartpad.dev/f6cbde167befb17f2a8ac5dc6f4028fc">DartPad</a></p>
+<p align="center">
+    <img src="04_oem_widgets/../assets/icon_button.png"
+        width="50%"
+        style="margin: 0 auto;"/>
+</p>
+<h3 id="inputs"><a class="header" href="#inputs">Inputs</a></h3>
+<h4 id="textfield"><a class="header" href="#textfield">TextField</a></h4>
+<p>Afficher un champ de saisie material. </p>
+<p>En général, un <strong>TextField</strong> est utilisé dans un Stateful Widget car il faut souvent associer un état au formulaire. Ce widget a une multitude de paramètres possibles, dont le controller qui permet d’interagir avec le champ de formulaire. On peut notamment remplir programmatiquement la valeur ou bien récupérer la valeur qu’à saisi l’utilisateur. </p>
+<p>Attention à ne pas oublier de désactiver le contrôleur à la destruction de l’état du widget grâce à la méthode <code>dispose</code>. </p>
+<pre><code class="language-dart">class MyWidget extends StatefulWidget {
+  const MyWidget({Key? key}) : super(key: key);
+
+  @override
+  State&lt;MyWidget&gt; createState() =&gt; _MyWidgetState();
+}
+
+class _MyWidgetState extends State&lt;MyWidget&gt; {
+  late TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: 'John');
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: _controller,
+      decoration: const InputDecoration(
+        label: Text('Name'),
+      ),
+    );
+  }
+}
+</code></pre>
+<p><a href="https://dartpad.dev/f6cbde167befb17f2a8ac5dc6f4028fc">DartPad</a></p>
+<p align="center">
+    <img src="04_oem_widgets/../assets/textfield.png"
+        width="100%"
+        style="margin: 0 auto;"/>
+</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="exercices-1"><a class="header" href="#exercices-1">Exercices</a></h1>
+<p>Récupérer le projet </p>
+<h2 id="objectif"><a class="header" href="#objectif">Objectif</a></h2>
+<p>Créer un écran d'inscription sous charte material qui respectera les contraintes suivantes : </p>
+<ul>
+<li>un champ de saisie &quot;Nom d'utilisateur&quot; (obligatoire)</li>
+<li>un champ de saisie &quot;Adresse e-mail&quot; (obligatoire) avec contrôle de surface</li>
+<li>un champ de saisie &quot;Téléphone&quot; (facultatif) avec contrôle de surface</li>
+<li>un champ de saisie &quot;Mot de passe&quot;</li>
+<li>un champ de saisie &quot;Confirmez votre mot de passe&quot;</li>
+<li>un bouton de soumission du formulaire</li>
+</ul>
+<h2 id="pratique"><a class="header" href="#pratique">Pratique</a></h2>
+<ol>
+<li>Compléter le widget <code>SigninPage</code> qui sera responsable du layout de la page (en-tête et contenu).</li>
+</ol>
+<details>
+<summary>Astuce</summary>
+<p>Utiliser un <code>Scaffold</code> et une <code>AppBar</code>. </p>
+</details>
+<details>
+<summary>Solution</summary>
+<pre><code class="language-dart">class SigninPage extends StatelessWidget {
+  const SigninPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(&quot;Inscription&quot;),
+      ),
+      body: Text(&quot;TODO&quot;),
+    );
+  }
+}
+</code></pre>
+</details>
+<ol start="2">
+<li>
+<p>Créer un stateful widget <code>SigninForm</code> et l'inclure dans la page.</p>
+</li>
+<li>
+<p>Créer un formulaire à l'aide du widget <code>Form</code>. On y associera une <code>GlobalKey</code> dont on parlera dans des leçons ultérieures. </p>
+</li>
+</ol>
+<pre><code class="language-dart">class MyCustomFormState extends State&lt;MyCustomForm&gt; {
+  final _formKey = GlobalKey&lt;FormState&gt;();
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: &lt;Widget&gt;[
+        ],
+      ),
+    );
+  }
+}
+</code></pre>
+<ol start="4">
+<li>Rajouter les cinq champs de formulaire et le bouton de soumission dans la colonne. Y associer un contrôleur de type <code>TextEditingController</code>. </li>
+</ol>
+<details>
+<summary>Solution</summary>
+<pre><code class="language-dart">class _SigninFormState extends State&lt;SigninForm&gt; {
+  final _formKey = GlobalKey&lt;FormState&gt;();
+  final _username = TextEditingController();
+  final _email = TextEditingController();
+  final _phone = TextEditingController();
+  final _password = TextEditingController();
+  final _passwordConfirmation = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+        key: _formKey,
+        child: Column(children: [
+          TextFormField(
+              controller: _username,
+              decoration:
+                  const InputDecoration(label: Text(&quot;Nom d'utilisateur&quot;))),
+          TextFormField(
+              controller: _email,
+              keyboardType: TextInputType.emailAddress,
+              decoration: const InputDecoration(label: Text(&quot;Adresse e-mail&quot;))),
+          TextFormField(
+              controller: _phone,
+              keyboardType: TextInputType.phone,
+              decoration: const InputDecoration(label: Text(&quot;Téléphone&quot;))),
+          TextFormField(
+              controller: _password,
+              keyboardType: TextInputType.visiblePassword,
+              decoration: const InputDecoration(label: Text(&quot;Mot de passe&quot;))),
+          TextFormField(
+              controller: _passwordConfirmation,
+              keyboardType: TextInputType.visiblePassword,
+              decoration: const InputDecoration(
+                  label: Text(&quot;Confirmez le mot de passe&quot;))),
+          ElevatedButton(
+              onPressed: null, child: const Text(&quot;Créer un compte&quot;))
+        ]));
+  }
+}
+
+</code></pre>
+</details>
+<ol start="5">
+<li>Implémenter le bouton de soumission du formulaire. On utilisera la <strong>globalKey</strong> précédemment créée pour récupérer l'état du formulaire à travers la propriété <code>_formKey.currentState</code>. Ensuite utiliser la méthode <code>validate</code> pour vérifier que tous les champs de formulaires soient valides. Émettre un évènement à l'aide d'un callback en tant que paramètre du widget. </li>
+</ol>
+<pre><code class="language-dart">class UserData {
+  final String username;
+  final String email;
+  final String phone;
+  final String password;
+
+  UserData({required this.username,required this.email, required this.phone, required this.password});
+}
+
+typedef UserDataCallback = void Function(UserData user);
+</code></pre>
+<details>
+<summary>Solution</summary>
+<pre><code class="language-dart">class _SigninFormState extends State&lt;SigninForm&gt; {
+  final _formKey = GlobalKey&lt;FormState&gt;();
+  final _username = TextEditingController();
+  final _email = TextEditingController();
+  final _phone = TextEditingController();
+  final _password = TextEditingController();
+  final _passwordConfirmation = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+        key: _formKey,
+        child: Column(children: [
+          TextFormField(
+              controller: _username,
+              decoration:
+                  const InputDecoration(label: Text(&quot;Nom d'utilisateur&quot;))),
+          TextFormField(
+              controller: _email,
+              keyboardType: TextInputType.emailAddress,
+              decoration: const InputDecoration(label: Text(&quot;Adresse e-mail&quot;))),
+          TextFormField(
+              controller: _phone,
+              keyboardType: TextInputType.phone,
+              decoration: const InputDecoration(label: Text(&quot;Téléphone&quot;))),
+          TextFormField(
+              controller: _password,
+              keyboardType: TextInputType.visiblePassword,
+              decoration: const InputDecoration(label: Text(&quot;Mot de passe&quot;))),
+          TextFormField(
+              controller: _passwordConfirmation,
+              keyboardType: TextInputType.visiblePassword,
+              decoration: const InputDecoration(
+                  label: Text(&quot;Confirmez le mot de passe&quot;))),
+          ElevatedButton(
+              onPressed: _onSubmit, child: const Text(&quot;Créer un compte&quot;))
+        ]));
+  }
+
+  _onSubmit() {
+    final state = _formKey.currentState;
+    if (state?.validate() ?? false) {
+      state?.save();
+
+      final onSubmit = widget.onSubmit;
+      if (onSubmit != null) {
+        onSubmit(UserData(
+            username: _username.text,
+            email: _email.text,
+            phone: _phone.text,
+            password: _password.text));
+      }
+    }
+  }
+}
+</code></pre>
+</details>
+<ol start="6">
+<li>Rajouter les contrôles de surfaces. On utilisera les validateurs présents dans <code>validator.dart</code>. </li>
+</ol>
+<details>
+<summary>Solution</summary>
+<pre><code class="language-dart">class _SigninFormState extends State&lt;SigninForm&gt; {
+@override
+  Widget build(BuildContext context) {
+    return Form(
+        key: _formKey,
+        child: Column(children: [
+          TextFormField(
+              controller: _username,
+              validator: Validators.require(&quot;Obligatoire&quot;),
+              decoration:
+                  const InputDecoration(label: Text(&quot;Nom d'utilisateur&quot;))),
+          TextFormField(
+              controller: _email,
+              validator: FormValidators([
+                Validators.require(&quot;Obligatoire&quot;),
+                Validators.email(&quot;Veuillez entrer une adresse e-mail valide&quot;)
+              ]).validate,
+              keyboardType: TextInputType.emailAddress,
+              decoration: const InputDecoration(label: Text(&quot;Adresse e-mail&quot;))),
+          TextFormField(
+              controller: _phone,
+              validator:
+                  Validators.phone(&quot;Veuillez entrer un téléphone valide&quot;),
+              keyboardType: TextInputType.phone,
+              decoration: const InputDecoration(label: Text(&quot;Téléphone&quot;))),
+          TextFormField(
+              controller: _password,
+              validator: FormValidators([
+                Validators.require(&quot;Obligatoire&quot;),
+                Validators.password(&quot;Veuillez entrer une adresse e-mail valide&quot;)
+              ]).validate,
+              keyboardType: TextInputType.visiblePassword,
+              decoration: const InputDecoration(label: Text(&quot;Mot de passe&quot;))),
+          TextFormField(
+              controller: _passwordConfirmation,
+              validator: FormValidators([
+                Validators.require(&quot;Obligatoire&quot;),
+                Validators.equals(() =&gt; _password.text,
+                    &quot;Veuillez entrer le même mot de passe&quot;)
+              ]).validate,
+              keyboardType: TextInputType.visiblePassword,
+              decoration: const InputDecoration(
+                  label: Text(&quot;Confirmez le mot de passe&quot;))),
+          ElevatedButton(
+              onPressed: _onSubmit, child: const Text(&quot;Créer un compte&quot;))
+        ]));
+  }
+</code></pre>
+</details>
+<ol start="7">
+<li>Ajuster le style (padding, ...)</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="oem-widgets-2"><a class="header" href="#oem-widgets-2">OEM Widgets</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="exercices-2"><a class="header" href="#exercices-2">Exercices</a></h1>
+
+                    </main>
+
+                </div>
+            </div>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+    </body>
+</html>

@@ -1,0 +1,21 @@
+@startuml
+!theme blueprint
+skinparam componentStyle rectangle
+skinparam defaultFontName Roboto
+title Dart SDK
+
+
+rectangle "Dart SDK" as SDK {
+    rectangle "Dart Tools" as Test {
+        component pub
+        component dart2js
+        component dartdoc
+        component dartfmt
+    }
+
+    rectangle "Dart VM" {
+         component "DVM"
+    }
+}
+
+@enduml 

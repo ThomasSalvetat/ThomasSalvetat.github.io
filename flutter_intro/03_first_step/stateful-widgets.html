@@ -1,0 +1,245 @@
+<!DOCTYPE HTML>
+<html lang="fr" class="sidebar-visible no-js mkp ">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Stateful Widgets - Introduction à flutter</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/css/custom.css">
+    </head>
+    <body>
+
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "mkp-dark" : "mkp";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('mkp')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../01_intro/01_intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../02_flutter/index.html"><strong aria-hidden="true">2.</strong> Flutter</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../02_flutter/dart.html"><strong aria-hidden="true">2.1.</strong> Dart</a></li><li class="chapter-item expanded "><a href="../02_flutter/historic.html"><strong aria-hidden="true">2.2.</strong> Historique</a></li><li class="chapter-item expanded "><a href="../02_flutter/flutter_architecture.html"><strong aria-hidden="true">2.3.</strong> Flutter</a></li></ol></li><li class="chapter-item expanded "><a href="../03_first_step/index.html"><strong aria-hidden="true">3.</strong> Pour commencer</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../03_first_step/configuration.html"><strong aria-hidden="true">3.1.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="../03_first_step/hello-world.html"><strong aria-hidden="true">3.2.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="../03_first_step/pub.html"><strong aria-hidden="true">3.3.</strong> PUB</a></li><li class="chapter-item expanded "><a href="../03_first_step/first-flutter-app.html"><strong aria-hidden="true">3.4.</strong> Première application flutter</a></li><li class="chapter-item expanded "><a href="../03_first_step/widgets.html"><strong aria-hidden="true">3.5.</strong> Widgets</a></li><li class="chapter-item expanded "><a href="../03_first_step/stateful-widgets.html" class="active"><strong aria-hidden="true">3.6.</strong> Stateful Widgets</a></li><li class="chapter-item expanded "><a href="../03_first_step/exercices.html"><strong aria-hidden="true">3.7.</strong> Exercices</a></li></ol></li><li class="chapter-item expanded "><a href="../04_oem_widgets/index.html"><strong aria-hidden="true">4.</strong> OEM Widgets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../04_oem_widgets/oem-widgets-material.html"><strong aria-hidden="true">4.1.</strong> Material</a></li><li class="chapter-item expanded "><a href="../04_oem_widgets/exercices-material.html"><strong aria-hidden="true">4.2.</strong> Exercice</a></li><li class="chapter-item expanded "><a href="../04_oem_widgets/oem-widgets-cupertino.html"><strong aria-hidden="true">4.3.</strong> Cupertino</a></li><li class="chapter-item expanded "><a href="../04_oem_widgets/exercices-cupertino.html"><strong aria-hidden="true">4.4.</strong> Exercice</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mkp">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mkp-dark">Dark</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                    <h1 class="menu-title">Introduction à flutter</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="stateful-widgets"><a class="header" href="#stateful-widgets">Stateful widgets</a></h1>
+<p>Nous avons manipulé jusqu’à présent des widgets sans état. Lorsque l’on créé un widget, il faut se demander s’il doit porter un état propre qui évolue au fil du temps. </p>
+<h2 id="stateless-widget"><a class="header" href="#stateless-widget">Stateless Widget</a></h2>
+<p>À utiliser lorsqu’il n’y a pas besoin d’état, comme un pur composant graphique avec des entrées / sorties par exemple. </p>
+<pre><code class="language-dart">class AWidget extends StatelessWidget {
+	final String name;
+
+	const AWidget({required this.name});
+
+	@override
+	Widget build(BuildContext context) {
+		return Row(
+			children: const [
+				Icon(Icons.person),
+				Text(name)
+			]
+		);
+	}
+}
+</code></pre>
+<h2 id="stateful-widget"><a class="header" href="#stateful-widget">Stateful Widget</a></h2>
+<p>À utiliser lorsque l’état de l’interface doit changer au cours du temps.  Par exemple, le widget <strong>Counter</strong> doit mémoriser le nombre de fois où l’utilisateur a cliqué sur le bouton d’ajout. </p>
+<pre><code class="language-dart">class Counter extends StatefulWidget {
+  final int from;
+  const Counter({Key? key, this.from = 0}) : super(key: key);
+
+  @override
+  State&lt;Counter&gt; createState() =&gt; _CounterState();
+}
+
+class _CounterState extends State&lt;Counter&gt; {
+  int _counter = 0;
+
+  get _count =&gt; _counter + widget.from;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      Text(&quot;$_count&quot;),
+      IconButton(
+        icon: const Icon(Icons.add),
+        onPressed: () {
+          setState(() {
+            _counter++;
+          });
+        },
+      )
+    ]);
+  }
+}
+
+</code></pre>
+<p>En héritant de <strong>State</strong>, <strong>_CounterState</strong> a accès à la méthode <code>setState</code> . Cette méthode, lorsqu’elle est appelée, permet d’indiquer à Flutter qu’il faut reconstruire le state qui mute au fil du temps contrairement au widget. 
+Les membres d’un state sont persistés à travers les différents builds. Seul le contenu de la méthode <strong>build</strong> n’y survit pas. 
+Dans un state, il est possible d’accéder aux inputs du widget associé grâce à la propriété <strong>widget</strong>. </p>
+<h2 id="bonnes-pratiques"><a class="header" href="#bonnes-pratiques">Bonnes pratiques</a></h2>
+<h3 id="performance"><a class="header" href="#performance">Performance</a></h3>
+<p>Un StatelessWidget n’est pas plus performant qu’un StatefulWidget. Un StatelessWidget est un StatefulWidget sans state (sucre syntaxique). 
+Quand toutes les variables d’un widget peuvent être <strong>final</strong>, penser à faire un <code>const constructor</code> . La classe sera alors immutable et le widget ne changera pas. </p>
+<h3 id="boilerplate"><a class="header" href="#boilerplate">Boilerplate</a></h3>
+<p>Préférer le StatelessWidget au StatefulWidget afin de réduire la quantité de code. </p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../03_first_step/widgets.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../03_first_step/exercices.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../03_first_step/widgets.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../03_first_step/exercices.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+        </div>
+
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../ace-theme-ayu-light.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../ace-theme-ayu-dark.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+    </body>
+</html>
